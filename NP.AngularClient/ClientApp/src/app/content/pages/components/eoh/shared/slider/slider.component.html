@@ -1,0 +1,14 @@
+
+<ion-range-slider #sliderElement
+				  type="double"
+				  [min]="minimo"
+				  [max]="maximo"
+				  step="0.5" 
+				  [from]="from"
+				  [to]="to"
+				  grid="true"
+				  grid_num="24"
+				  to_max="23.99"
+				  to_shadow="true"
+				  [prefix]="prefix"
+				  (onFinish)="update(sliderElement, $event)"></ion-range-slider>

@@ -1,0 +1,36 @@
+ 
+
+
+<div class="m-portlet">
+	<div class="m-portlet__head">
+		<div class="m-portlet__head-caption">
+			<div class="m-portlet__head-title">
+				<span class="m-portlet__head-icon m--hide">
+					<i class="la la-gear"></i>
+				</span>
+				<h3 class="m-portlet__head-text">
+				  <span>Permisos: <span *ngIf="userName"></span>{{userName}}</span>
+				</h3>
+			</div>
+		</div>
+	</div>
+	<div class="m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed">
+		<div class="m-portlet__body">
+
+
+			<perfect-scrollbar style="height: 55vh;">
+				<permission-tree #permissionTree></permission-tree>
+
+			</perfect-scrollbar>
+			
+
+		</div>
+		<div class="m-portlet__foot m-portlet__no-border m-portlet__foot--fit text-right">
+			<div class="m-form__actions m-form__actions--solid">
+				<button type="button" (click)="close()" mat-button matTooltip="Cancelar">Cancelar</button>&nbsp;
+				<m-spinner-button [options]="spinner" mat-button (click)="save()" matTooltip="Guardar los Permisos">Guardar</m-spinner-button>
+
+			</div>
+		</div>
+	</div>
+</div>

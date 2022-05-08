@@ -1,0 +1,15 @@
+C:\Users\maria.labus\source\repos\smart-wallet-back-end\TECSO.FWK.Documents\bin\Debug\netcoreapp2.1\TECSO.FWK.Documents.deps.json
+C:\Users\maria.labus\source\repos\smart-wallet-back-end\TECSO.FWK.Documents\bin\Debug\netcoreapp2.1\TECSO.FWK.Documents.dll
+C:\Users\maria.labus\source\repos\smart-wallet-back-end\TECSO.FWK.Documents\bin\Debug\netcoreapp2.1\TECSO.FWK.Documents.pdb
+C:\Users\maria.labus\source\repos\smart-wallet-back-end\TECSO.FWK.Documents\obj\Debug\netcoreapp2.1\TECSO.FWK.Documents.csprojAssemblyReference.cache
+C:\Users\maria.labus\source\repos\smart-wallet-back-end\TECSO.FWK.Documents\obj\Debug\netcoreapp2.1\TECSO.FWK.Documents.AssemblyInfoInputs.cache
+C:\Users\maria.labus\source\repos\smart-wallet-back-end\TECSO.FWK.Documents\obj\Debug\netcoreapp2.1\TECSO.FWK.Documents.AssemblyInfo.cs
+C:\Users\maria.labus\source\repos\smart-wallet-back-end\TECSO.FWK.Documents\obj\Debug\netcoreapp2.1\TECSO.FWK.Documents.dll
+C:\Users\maria.labus\source\repos\smart-wallet-back-end\TECSO.FWK.Documents\obj\Debug\netcoreapp2.1\TECSO.FWK.Documents.pdb
+C:\Proyectos\NosPremiamos\TECSO.FWK.Documents\bin\Debug\netcoreapp2.1\TECSO.FWK.Documents.deps.json
+C:\Proyectos\NosPremiamos\TECSO.FWK.Documents\bin\Debug\netcoreapp2.1\TECSO.FWK.Documents.dll
+C:\Proyectos\NosPremiamos\TECSO.FWK.Documents\bin\Debug\netcoreapp2.1\TECSO.FWK.Documents.pdb
+C:\Proyectos\NosPremiamos\TECSO.FWK.Documents\obj\Debug\netcoreapp2.1\TECSO.FWK.Documents.AssemblyInfoInputs.cache
+C:\Proyectos\NosPremiamos\TECSO.FWK.Documents\obj\Debug\netcoreapp2.1\TECSO.FWK.Documents.AssemblyInfo.cs
+C:\Proyectos\NosPremiamos\TECSO.FWK.Documents\obj\Debug\netcoreapp2.1\TECSO.FWK.Documents.dll
+C:\Proyectos\NosPremiamos\TECSO.FWK.Documents\obj\Debug\netcoreapp2.1\TECSO.FWK.Documents.pdb

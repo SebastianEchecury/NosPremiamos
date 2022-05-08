@@ -1,0 +1,14 @@
+C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\SW.Domain\bin\Release\netstandard2.0\SW.Domain.deps.json
+C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\SW.Domain\bin\Release\netstandard2.0\SW.Domain.dll
+C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\SW.Domain\bin\Release\netstandard2.0\SW.Domain.pdb
+C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\SW.Domain\bin\Release\netstandard2.0\TECSO.FWK.Domain_Std.dll
+C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\SW.Domain\bin\Release\netstandard2.0\TECSO.FWK.STD.dll
+C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\SW.Domain\bin\Release\netstandard2.0\TECSO.FWK.Domain_Std.pdb
+C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\SW.Domain\bin\Release\netstandard2.0\TECSO.FWK.STD.pdb
+C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\SW.Domain\obj\Release\netstandard2.0\SW.Domain.csprojAssemblyReference.cache
+C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\SW.Domain\obj\Release\netstandard2.0\SW.Domain.csproj.CoreCompileInputs.cache
+C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\SW.Domain\obj\Release\netstandard2.0\SW.Domain.AssemblyInfoInputs.cache
+C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\SW.Domain\obj\Release\netstandard2.0\SW.Domain.AssemblyInfo.cs
+C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\SW.Domain\obj\Release\netstandard2.0\SW.Domain.csproj.CopyComplete
+C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\SW.Domain\obj\Release\netstandard2.0\SW.Domain.dll
+C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\SW.Domain\obj\Release\netstandard2.0\SW.Domain.pdb

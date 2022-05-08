@@ -1,0 +1,13 @@
+C:\Proyectos\NosPremiamos\NP.Domain\bin\Debug\netstandard2.0\NP.Domain.deps.json
+C:\Proyectos\NosPremiamos\NP.Domain\bin\Debug\netstandard2.0\NP.Domain.dll
+C:\Proyectos\NosPremiamos\NP.Domain\bin\Debug\netstandard2.0\NP.Domain.pdb
+C:\Proyectos\NosPremiamos\NP.Domain\bin\Debug\netstandard2.0\TECSO.FWK.Domain_Std.dll
+C:\Proyectos\NosPremiamos\NP.Domain\bin\Debug\netstandard2.0\TECSO.FWK.STD.dll
+C:\Proyectos\NosPremiamos\NP.Domain\bin\Debug\netstandard2.0\TECSO.FWK.Domain_Std.pdb
+C:\Proyectos\NosPremiamos\NP.Domain\bin\Debug\netstandard2.0\TECSO.FWK.STD.pdb
+C:\Proyectos\NosPremiamos\NP.Domain\obj\Debug\netstandard2.0\NP.Domain.csprojAssemblyReference.cache
+C:\Proyectos\NosPremiamos\NP.Domain\obj\Debug\netstandard2.0\NP.Domain.AssemblyInfoInputs.cache
+C:\Proyectos\NosPremiamos\NP.Domain\obj\Debug\netstandard2.0\NP.Domain.AssemblyInfo.cs
+C:\Proyectos\NosPremiamos\NP.Domain\obj\Debug\netstandard2.0\NP.Domain.csproj.CopyComplete
+C:\Proyectos\NosPremiamos\NP.Domain\obj\Debug\netstandard2.0\NP.Domain.dll
+C:\Proyectos\NosPremiamos\NP.Domain\obj\Debug\netstandard2.0\NP.Domain.pdb

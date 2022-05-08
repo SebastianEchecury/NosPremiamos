@@ -1,0 +1,95 @@
+<form #detailForm="ngForm" class="m-form m-form--group-seperator-dashed">
+
+	<m-portlet [options]="{headLarge: true, enableSticky: true}" [loading$]="loading$">
+
+		<ng-container mPortletHeadTitle>
+			<div class="m-portlet__head-title">
+				<h3 class="m-portlet__head-text">
+					{{title}}
+				</h3>
+			</div>
+		</ng-container>
+		<ng-container mPortletHeadTools>
+			<button type="button" (click)="goBack()" mat-raised-button matTooltip="Volver a la lista de {{title}}">Volver</button>&nbsp;
+			<!--<button mat-raised-button (click)="reset()" [disabled]="selectedTab !== 0" matTooltip="Reset changes">Reset</button>&nbsp;-->
+
+			<div class="m-buttons--wrapper">
+				<!--<button type="button" (click)="onSave(detailForm)" mat-raised-button color="primary" matTooltip="Save & Continue">Save</button>-->
+				<m-spinner-button [options]="spinner" mat-raised-button (click)="onSave(detailForm)" matTooltip="Save & Continue">Save</m-spinner-button>
+				<button mat-icon-button [matMenuTriggerFor]="menu" color="primary">
+					<mat-icon>more_vert</mat-icon>
+				</button>
+				<mat-menu #menu="matMenu">
+					<button mat-menu-item color="primary" (click)="onSave(detailForm)">Save & Exit</button>
+					<!--<button mat-menu-item color="primary">Save & Duplicate</button>-->
+					<button mat-menu-item color="primary" (click)="onSaveAndContinue()">Save & Continue</button>
+				</mat-menu>
+			</div>
+		</ng-container>
+		<ng-container mPortletBody>
+			<mat-tab-group [(selectedIndex)]="selectedTab" *ngIf="detail">
+				<mat-tab label="Datos Generales">
+					<ng-template matTabContent>
+						<div class="m-form__section m-form__section--first">
+
+
+							<div class="row">
+								<div class="col-md-4 m--margin-bottom-10-mobile">
+									<mat-form-field class="mat-form-field-fluid">
+										<input #name="ngModel" matInput placeholder="Name" name="Name" [(ngModel)]="detail.Name" required>
+										<mat-error>
+											Nombre es
+											<strong>requerido</strong>
+										</mat-error>
+									</mat-form-field>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="m-portlet__body col-md-12">
+
+									<ng-container *ngFor="let w of detail.Weeks">
+										
+
+										<div class="m-form__section m-form__section--first">
+											<div class="m-form__heading">
+												<h3 class="m-form__heading-title"><span class="text-uppercase">{{w.Description}}   </span>  <span *ngIf="w.hasError" class="m--font-danger"> existe superposición de horarios </span> <i class="fa fa-plus-circle pull-right " style="cursor:pointer"  (click)="add(w)"></i></h3>
+												
+											</div>
+
+											<div class="m-form__seperator m-form__seperator--dashed col-md-12"></div>
+											
+											<ng-container *ngFor="let sc of w.ServicePlanSchedules; let i = index">
+												<div class="m-form__heading" *ngIf="i > 0">
+													<h3 class="m-form__heading-title"><i class="fa fa-trash pull-right " style="cursor:pointer" (click)="deleteSh(sc)"></i></h3>
+
+												</div>
+												<div class="m-form__group">
+													<eoc-slider minimo="0"
+																maximo="24"
+																prefix="Hora:"
+																[(from)]="sc.StartHour"
+																[(to)]="sc.EndHour"></eoc-slider>
+												</div>
+
+
+												from {{sc.StartHour}}
+												to {{sc.EndHour}}
+											</ng-container>
+
+										</div>
+										
+									</ng-container>
+								</div>
+							</div>
+
+							
+						</div>
+
+						<!--end::Form-->
+					</ng-template>
+				</mat-tab>
+			</mat-tab-group>
+		</ng-container>
+	</m-portlet>
+</form>
