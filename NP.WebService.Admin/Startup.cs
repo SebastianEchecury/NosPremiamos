@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using AutoMapper.EquivalencyExpression;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -11,10 +13,16 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Serialization;
+using NP.Admin.AppService;
+using NP.Admin.AppService.Interface;
 using NP.Admin.Domain.Interfaces.Repositories;
+using NP.Admin.Domain.Interfaces.Services;
+using NP.Admin.Domain.Services;
 using NP.infra.Data.Contexto;
+using NP.infra.Data.Repositories;
 using NP.WebService.Admin.Shared;
 using Swashbuckle.AspNetCore.Swagger;
+using Swashbuckle.AspNetCore.SwaggerGen;
 using TECSO.FWK.ApiServices.Filters;
 using TECSO.FWK.AppService;
 using TECSO.FWK.Caching;
@@ -50,7 +58,7 @@ namespace NP.WebService.Admin
 
                 c.DescribeAllEnumsAsStrings();
 
-                c.SwaggerDoc("v1", new Info { Title = "Smart Wallet (" + entorno + ")", Version = "v1" });
+                c.SwaggerDoc("v1", new Info { Title = "Nos Premiamos (" + entorno + ")", Version = "v1" });
 
                 var security = new Dictionary<string, IEnumerable<string>> {
                     { "Bearer", new string[] { } }
@@ -115,7 +123,7 @@ namespace NP.WebService.Admin
 
             AutoMapper.Mapper.Initialize(cfg =>
             {
-                cfg.AddCollectionMappers();
+                //cfg.AddCollectionMappers();
                 cfg.AddProfile<MappingProfile>();
 
             });
@@ -163,15 +171,38 @@ namespace NP.WebService.Admin
 
 
             services.AddTransient<TECSO.FWK.Domain.Mail.Smtp.ISmtpEmailSenderConfiguration, TECSO.FWK.Domain.Mail.Smtp.SmtpEmailSenderConfiguration>();
-         
+
             services.AddTransient<TECSO.FWK.Domain.Mail.IEmailSender, TECSO.FWK.Domain.Mail.Smtp.SmtpEmailSender>();
 
             services.AddTransient<NP.Admin.Domain.Url.IAppUrlService, AngularAppUrlService>();
             services.AddTransient<NP.Admin.Domain.Url.IWebUrlService, WebUrlService>();
 
-            //
 
 
+            //Categorias
+            services.AddTransient<ICategoriasRepository, CategoriasRepository>();
+            services.AddTransient<ICategoriasAppService, CategoriasAppService>();
+            services.AddTransient<ICategoriasService, CategoriasService>();
+
+            //Empleados
+            services.AddTransient<IEmpleadoRepository, EmpleadoRepository>();
+            services.AddTransient<IEmpleadoAppService, EmpleadoAppService>();
+            services.AddTransient<IEmpleadoService, EmpleadoService>();
+
+            //Parametros
+            services.AddTransient<IParametrosRepository, ParametrosRepository>();
+            services.AddTransient<IParametrosAppService, ParametrosAppService>();
+            services.AddTransient<IParametrosService, ParametrosService>();
+
+            //Permisos
+            services.AddTransient<IPermisosRepository, PermisosRepository>();
+            services.AddTransient<IPermisosAppService, PermisosAppService>();
+            services.AddTransient<IPermisosService, PermisosService>();
+
+            //Roles
+            services.AddTransient<IRoleRepository, RoleRepository>();
+            services.AddTransient<IRoleAppService, RoleAppService>();
+            services.AddTransient<IRoleService, RoleService>();
 
 
             //AppContenido
@@ -190,7 +221,7 @@ namespace NP.WebService.Admin
             //services.AddTransient<IAppMensajeRepository, AppMensajeRepository>();
             //services.AddTransient<IAppMensajeService, AppMensajeService>();
 
-           
+
             services.AddScoped<TECSO.FWK.Domain.Interfaces.Services.IPermissionProvider, PermissionProvider>();
 
 
@@ -269,45 +300,44 @@ namespace NP.WebService.Admin
         }
     }
 
-    //public class SecurityRequirementsOperationFilter : IOperationFilter
-    //{
-    //    public void Apply(Operation operation, OperationFilterContext context)
-    //    {
-    //        var actionAttrs = context.ApiDescription.ActionAttributes();
-    //        if (actionAttrs.OfType<AllowAnonymousAttribute>().Any())
-    //        {
-    //            return;
-    //        }
+    public class SecurityRequirementsOperationFilter : IOperationFilter
+    {
+        public void Apply(Operation operation, OperationFilterContext context)
+        {
+            var actionAttrs = context.ApiDescription.ActionAttributes();
+            if (actionAttrs.OfType<AllowAnonymousAttribute>().Any())
+            {
+                return;
+            }
 
-    //        var controllerAttrs = context.ApiDescription.ControllerAttributes();
-    //        var actionAuthorizeAttrs = actionAttrs.OfType<ApiAuthorizeAttribute>();
+            var controllerAttrs = context.ApiDescription.ControllerAttributes();
+            var actionAuthorizeAttrs = actionAttrs.OfType<ApiAuthorizeAttribute>();
 
-    //        if (!actionAuthorizeAttrs.Any() && controllerAttrs.OfType<AllowAnonymousAttribute>().Any())
-    //        {
-    //            return;
-    //        }
+            if (!actionAuthorizeAttrs.Any() && controllerAttrs.OfType<AllowAnonymousAttribute>().Any())
+            {
+                return;
+            }
 
-    //        var controllerAuthorizeAttrs = controllerAttrs.OfType<AuthorizeAttribute>();
-    //        if (controllerAuthorizeAttrs.Any() || actionAuthorizeAttrs.Any())
-    //        {
-    //            operation.Responses.Add("401", new Response { Description = "Unauthorized" });
+            var controllerAuthorizeAttrs = controllerAttrs.OfType<AuthorizeAttribute>();
+            if (controllerAuthorizeAttrs.Any() || actionAuthorizeAttrs.Any())
+            {
+                operation.Responses.Add("401", new Response { Description = "Unauthorized" });
 
-    //            //var permissions = controllerAuthorizeAttrs.Union(actionAuthorizeAttrs)
-    //            //    .SelectMany(p => p.Permissions)
-    //            //    .Distinct();
+                //var permissions = controllerAuthorizeAttrs.Union(actionAuthorizeAttrs);
 
-    //            //if (permissions.Any())
-    //            //{
-    //            //    operation.Responses.Add("403", new Response { Description = "Forbidden" });
-    //            //}
+                //if (permissions.Any())
+                //{
+                //    operation.Responses.Add("403", new Response { Description = "Forbidden" });
+                //}
 
-    //            //operation.Security = new List<IDictionary<string, IEnumerable<string>>>
-    //            //{
-    //            //    new Dictionary<string, IEnumerable<string>>
-    //            //    {
-    //            //        { "bearerAuth", permissions }
-    //            //    }
-    //            //};
-    //        }
-    //    }
+                //operation.Security = new List<IDictionary<string, IEnumerable<string>>>
+                //{
+                //    new Dictionary<string, IEnumerable<string>>
+                //    {
+                //        { "bearerAuth", permissions }
+                //    }
+                //};
+            }
+        }
     }
+}

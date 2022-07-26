@@ -1,3 +1,6 @@
+using AutoMapper;
+using AutoMapper.EquivalencyExpression;
+using NP.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -29,4 +32,17 @@ namespace NP.Admin.AppService.Model
 
         public override string Description => this.Descripcion;
     }
+
+
+    //public class CategoriasProfile : Profile
+    //{
+    //    public CategoriasProfile()
+    //    {
+    //        CreateMap<Categorias, CategoriasDto>()
+    //            .EqualityComparison((odto, o) => odto.Id == o.Id);
+
+    //        CreateMap<CategoriasDto, Categorias>()
+    //            .EqualityComparison((odto, o) => odto.Id == o.Id);
+    //    }
+    //}
 }

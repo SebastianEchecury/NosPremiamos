@@ -12,28 +12,19 @@ using TECSO.FWK.ApiServices.Filters;
 namespace NP.WebService.Admin.Controllers
 {
     [Route("api/[controller]")]
-    [TECSO.FWK.ApiServices.Filters.ApiAuthorize]
-    public class EmpleadosController : ManagerSecurityController<Empleados, int, EmpleadosDto, EmpleadosFilter, IEmpleadoAppService>
+    //[TECSO.FWK.ApiServices.Filters.ApiAuthorize]
+    public class EmpleadosController : ManagerController<Empleados, int, EmpleadosDto, EmpleadosFilter, IEmpleadoAppService>
     {
-        private IEmpleadoAppService userAppService;
-        private IMemoryCache _cache;
+
         private readonly IPermisosAppService permissionAppService;
 
-        public EmpleadosController(IEmpleadoAppService service, IEmpleadoAppService _userAppService, IMemoryCache memoryCache, IPermisosAppService _permissionAppService)
+        public EmpleadosController(IEmpleadoAppService service, IPermisosAppService _permissionAppService)
             : base(service)
         {
-            userAppService = _userAppService;
-            _cache = memoryCache;
             permissionAppService = _permissionAppService;
         }
 
-        protected override void InitializePermission()
-        {
-            this.InitializePermissionByDefault("Admin", "User");
-            this.PermissionContainer.AddPermission("UpdateUserPermissions", "Admin", "User", "Permisos");
-            this.PermissionContainer.AddPermission("ResetPassword", "Admin", "User", "Modificar");
-            this.PermissionContainer.AddPermission("SetUserLineasForEdit", "Admin", "User", "Modificar");
-        }
+        
 
        
 
@@ -76,17 +67,10 @@ namespace NP.WebService.Admin.Controllers
             return base.DeleteById(Id);
         }
 
-        [NonAction]
-        public override Task<IActionResult> SaveNewEntity([FromBody] EmpleadosDto dto)
-        {
-            return base.SaveNewEntity(dto);
-        }
-
-        [NonAction]
-        public override Task<IActionResult> UpdateEntity([FromBody] EmpleadosDto dto)
-        {
-            return base.UpdateEntity(dto);
-        }
+        //public override Task<IActionResult> GetAllAsync(EmpleadosFilter filter)
+        //{
+        //    return base.GetAllAsync(filter);
+        //}
 
 
     }

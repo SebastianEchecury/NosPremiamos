@@ -27,6 +27,7 @@ C:\Proyectos\NosPremiamos\TECSO.FWK.ApiServices\bin\Debug\netcoreapp2.1\TECSO.FW
 C:\Proyectos\NosPremiamos\TECSO.FWK.ApiServices\bin\Debug\netcoreapp2.1\TECSO.FWK.Domain_Std.pdb
 C:\Proyectos\NosPremiamos\TECSO.FWK.ApiServices\bin\Debug\netcoreapp2.1\TECSO.FWK.STD.pdb
 C:\Proyectos\NosPremiamos\TECSO.FWK.ApiServices\obj\Debug\netcoreapp2.1\TECSO.FWK.ApiServices.csprojAssemblyReference.cache
+C:\Proyectos\NosPremiamos\TECSO.FWK.ApiServices\obj\Debug\netcoreapp2.1\TECSO.FWK.ApiServices.csproj.CoreCompileInputs.cache
 C:\Proyectos\NosPremiamos\TECSO.FWK.ApiServices\obj\Debug\netcoreapp2.1\TECSO.FWK.ApiServices.AssemblyInfoInputs.cache
 C:\Proyectos\NosPremiamos\TECSO.FWK.ApiServices\obj\Debug\netcoreapp2.1\TECSO.FWK.ApiServices.AssemblyInfo.cs
 C:\Proyectos\NosPremiamos\TECSO.FWK.ApiServices\obj\Debug\netcoreapp2.1\TECSO.FWK.ApiServices.csproj.CopyComplete

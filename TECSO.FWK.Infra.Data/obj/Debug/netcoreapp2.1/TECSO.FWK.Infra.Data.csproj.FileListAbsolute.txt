@@ -23,6 +23,7 @@ C:\Proyectos\NosPremiamos\TECSO.FWK.Infra.Data\bin\Debug\netcoreapp2.1\TECSO.FWK
 C:\Proyectos\NosPremiamos\TECSO.FWK.Infra.Data\bin\Debug\netcoreapp2.1\TECSO.FWK.Domain_Std.pdb
 C:\Proyectos\NosPremiamos\TECSO.FWK.Infra.Data\bin\Debug\netcoreapp2.1\TECSO.FWK.STD.pdb
 C:\Proyectos\NosPremiamos\TECSO.FWK.Infra.Data\obj\Debug\netcoreapp2.1\TECSO.FWK.Infra.Data.csprojAssemblyReference.cache
+C:\Proyectos\NosPremiamos\TECSO.FWK.Infra.Data\obj\Debug\netcoreapp2.1\TECSO.FWK.Infra.Data.csproj.CoreCompileInputs.cache
 C:\Proyectos\NosPremiamos\TECSO.FWK.Infra.Data\obj\Debug\netcoreapp2.1\TECSO.FWK.Infra.Data.AssemblyInfoInputs.cache
 C:\Proyectos\NosPremiamos\TECSO.FWK.Infra.Data\obj\Debug\netcoreapp2.1\TECSO.FWK.Infra.Data.AssemblyInfo.cs
 C:\Proyectos\NosPremiamos\TECSO.FWK.Infra.Data\obj\Debug\netcoreapp2.1\TECSO.FWK.Infra.Data.csproj.CopyComplete

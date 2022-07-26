@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using TECSO.FWK.AppService.Interface;
 using TECSO.FWK.Domain.Interfaces.Services;
 using TECSO.FWK.Domain_Std.Interfaces;
 
@@ -15,14 +14,14 @@ namespace TECSO.FWK.ApiServices.Filters
 
     public class HttpGlobalActionLogFilter : IHttpGlobalActionLogFilter
     {
-        private readonly ILogger logger;
+        //private readonly ILogger logger;
         private readonly IAuthService authService;
         private readonly ÌRequestIdentifier requestIdentifier;
         
 
-        public HttpGlobalActionLogFilter(ILogger _logger, IAuthService _authService, ÌRequestIdentifier _RequestIdentifier)
+        public HttpGlobalActionLogFilter( IAuthService _authService, ÌRequestIdentifier _RequestIdentifier)
         {
-            logger = _logger;
+            //logger = _logger;
             authService = _authService;
             requestIdentifier = _RequestIdentifier;
         }
@@ -52,7 +51,7 @@ namespace TECSO.FWK.ApiServices.Filters
                 }
             };
 
-            this.logger.LogInformation(Newtonsoft.Json.JsonConvert.SerializeObject(xx));
+
 
 
         }
@@ -73,7 +72,7 @@ namespace TECSO.FWK.ApiServices.Filters
                 }
             };
 
-            this.logger.LogInformation(Newtonsoft.Json.JsonConvert.SerializeObject(xx));
+            //this.logger.LogInformation(Newtonsoft.Json.JsonConvert.SerializeObject(xx));
         }
     }
 }

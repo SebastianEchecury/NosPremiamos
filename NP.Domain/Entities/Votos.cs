@@ -14,6 +14,8 @@ namespace NP.Domain.Entities
         public int? AprobadorEmpleadoId { get; set; }
         public DateTime? FechaAprobado { get; set; }
         public int CategoriaId { get; set; }
+        public string Motivo { get; set; }
+        public bool? Aprobado { get; set; }
 
         public Empleados AprobadorEmpleado { get; set; }
         public Categorias Categoria { get; set; }

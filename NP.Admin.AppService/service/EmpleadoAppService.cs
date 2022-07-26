@@ -5,6 +5,12 @@ using NP.Admin.AppService.Model;
 using NP.Admin.AppService.Interface;
 using NP.Admin.Domain.Interfaces.Services;
 using NP.Admin.Domain.Url;
+using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Identity;
+using NP.Admin.Domain;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace NP.Admin.AppService
 {
@@ -62,67 +68,60 @@ namespace NP.Admin.AppService
         //    return await base.UpdateAsync(dto);
         //}
 
-        //public async Task<SysUsers> Login(string Username, string Password)
-        //{
-        //    var User = await this._serviceBase.Login(Username, Password);
-
-        //    var modulo = await this.appModuloService.GetAppModulo("LOG", true, false);
-
-        //    if (User == null)
-        //        throw new ValidationException(((EmpleadosCategoriasAprobadores)modulo.Items[0]).AppMensaje.FirstOrDefault(m => m.Clave == "ErrorUserPass").Valor);
-        //    else
-        //    {
-        //        var hp = new PasswordHasher<SysUsers>();
-
-        //        var result = hp.VerifyHashedPassword(User, User.PasswordHash, Password);
-        //        if (result != PasswordVerificationResult.Success)
-        //        {
-        //            throw new ValidationException(((EmpleadosCategoriasAprobadores)modulo.Items[0]).AppMensaje.FirstOrDefault(m => m.Clave == "ErrorUserPass").Valor);
-        //        }
-        //    }
+        public async Task<Empleados> Login(string Username, string Password)
+        {
+            var User = await this._serviceBase.Login(Username, Password);
 
 
-        //    return User;
-        //}
+            if (User == null)
+                throw new ValidationException("Usuario y/o Contraseña Incorrectas");
+            else
+            {
+                var hp = new PasswordHasher<Empleados>();
 
-        //public async Task<ResetPasswordOutput> ResetPassword(ResetPasswordInput input)
-        //{
-        //    var user = await this.GetByIdAsync(this._authService.GetCurretUserId());
+                var result = hp.VerifyHashedPassword(User, User.Contraseña, Password);
+                if (result != PasswordVerificationResult.Success)
+                {
+                    throw new ValidationException("Usuario y/o Contraseña Incorrectas");
+                }
+            }
 
-        //    var modulo = await this.appModuloService.GetAppModulo("LOG", true, false);
 
-        //    if (user == null)
-        //    {
-        //        throw new ValidationException(((EmpleadosCategoriasAprobadores)modulo.Items[0]).AppMensaje.FirstOrDefault(m => m.Clave == "ErrorCambioPass").Valor);
-        //    }
+            return User;
+        }
 
-        //    var hp = new PasswordHasher<SysUsers>();
-        //    var result = hp.VerifyHashedPassword(user, user.PasswordHash, input.Password);
-        //    if (result != PasswordVerificationResult.Success)
-        //    {
-        //        throw new ValidationException(((EmpleadosCategoriasAprobadores)modulo.Items[0]).AppMensaje.FirstOrDefault(m => m.Clave == "ErrorPassword").Valor);
-        //    }
+        public async Task<bool> ResetPassword(ResetPasswordInput input)
+        {
+            Empleados user = new Empleados();
+            if (input.EmpleadoId.HasValue)
+            {
+                user = await this.GetByIdAsync(input.EmpleadoId.Value);
+            }
+            else
+            {
+                user = await this.GetByIdAsync(this._authService.GetCurretUserId());
+            }
 
-          
+            if (user.Id == 0)
+            {
+                throw new ValidationException("Error en el cambio de contraseña");
+            }
 
-        //    var _passwordHasher = new PasswordHasher<SysUsers>();
-        //    user.PasswordHash = _passwordHasher.HashPassword(user, input.PasswordNueva);
-        //    user.PasswordResetCode = null;
-        //    //user.EmailConfirmed = true;
-        //    //user.ShouldChangePasswordOnNextLogin = false;
+            var hp = new PasswordHasher<Empleados>();
+            var result = hp.VerifyHashedPassword(user, user.Contraseña, input.Password);
+            if (result != PasswordVerificationResult.Success)
+            {
+                throw new ValidationException("Error en la Contraseña");
+            }
 
-        //    await this.UpdateAsync(user);
+            var _passwordHasher = new PasswordHasher<Empleados>();
+            user.Contraseña = _passwordHasher.HashPassword(user, input.PasswordNueva);
+            user.PrimerIngreso = false;
 
-        //    var vf = new ValidacionFilter();
-        //    vf.cliente = user.ClienteId;
-        //    await clienteAppService.ValidarResetPassword(vf);
+            await this.UpdateAsync(user);
 
-        //    return new ResetPasswordOutput
-        //    {
-        //        CanLogin = !user.IsDeleted,
-        //        UserName = user.Name
-        //    };
-        //}      
+            return true;
+        }
 
         //public async Task<GetPermissionsForEditOutput> GetUserPermissionsForEdit(int id)
         //{
@@ -186,7 +185,7 @@ namespace NP.Admin.AppService
         //{
         //    dto.UserRoles = dto.UserRoles.Where(e => e.IsAssigned).ToList();
         //    var user = MapObject<EmpleadosDto, SysUsers>(dto);
- 
+
         //    var hp = new PasswordHasher<SysUsers>();
 
 
@@ -230,5 +229,6 @@ namespace NP.Admin.AppService
         //    }
         //    return MapObject<SysUsers, EmpleadosDto>(usersDto.Items.FirstOrDefault());
         //}
+       
     }
 }

@@ -10,11 +10,9 @@ namespace NP.infra.Data.EntityConfig
         {
             modelBuilder.Entity<Categorias>(entity =>
             {
-                entity.Property(e => e.Descripcion).HasMaxLength(100);
-
                 entity.Property(e => e.Nombre)
                     .IsRequired()
-                    .HasMaxLength(10);
+                    .HasMaxLength(100);
 
                 entity.HasOne(d => d.Estado)
                     .WithMany(p => p.Categorias)
@@ -26,7 +24,13 @@ namespace NP.infra.Data.EntityConfig
             {
                 entity.Property(e => e.Apellido).HasMaxLength(30);
 
+                entity.Property(e => e.Contraseña).IsRequired();
+
                 entity.Property(e => e.Nombre).HasMaxLength(30);
+
+                entity.Property(e => e.Usuario)
+                    .IsRequired()
+                    .HasMaxLength(50);
             });
 
             modelBuilder.Entity<EmpleadosCategoriasAprobadores>(entity =>
@@ -95,7 +99,7 @@ namespace NP.infra.Data.EntityConfig
 
                 entity.Property(e => e.Nombre)
                     .IsRequired()
-                    .HasMaxLength(10);
+                    .HasMaxLength(50);
             });
 
             modelBuilder.Entity<Roles>(entity =>
@@ -136,6 +140,8 @@ namespace NP.infra.Data.EntityConfig
                 entity.Property(e => e.FechaAprobado).HasColumnType("datetime");
 
                 entity.Property(e => e.FechaVoto).HasColumnType("datetime");
+
+                entity.Property(e => e.Motivo).IsRequired();
 
                 entity.HasOne(d => d.AprobadorEmpleado)
                     .WithMany(p => p.VotosAprobadorEmpleado)

@@ -20,15 +20,14 @@ namespace NP.WebService.Admin.Controllers
     public class AuthController : TECSO.FWK.ApiServices.ControllerBase
     {
         private IConfiguration _Configuration;
-        private readonly ILogger logger;
+       
         private IEmpleadoAppService _UserService;
         private IPermisosAppService _PermissionService;
 
-        public AuthController(IEmpleadoAppService userService, IConfiguration configuration, ILogger _logger, IPermisosAppService permissionService)
+        public AuthController(IEmpleadoAppService userService, IConfiguration configuration, IPermisosAppService permissionService)
         {
             _UserService = userService;
             _Configuration = configuration;
-            logger = _logger;
             _PermissionService = permissionService;
             
         }
@@ -39,37 +38,28 @@ namespace NP.WebService.Admin.Controllers
         {
             if (!ModelState.IsValid)
             {
-                await logger.LogInformation("Modelo invalido");
+                
                 return BadRequest(ModelState);
             }            
 
             try
             {
-                //var User = await _UserService.Login(credentials.Username, credentials.Password);               
+                var User = await _UserService.Login(credentials.Username, credentials.Password);               
                 
                 
 
                 var expirationtime = DateTime.Now.AddYears(1);
-                //var tokenGenerated = BuildToken(User, expirationtime);
+                var tokenGenerated = BuildToken(User, expirationtime);
 
-                //var roles = await _PermissionService.GetPermissionForUser(User.Id);
+                var roles = await _PermissionService.GetPermissionForUser(User.Id);
 
 
                 return Ok(new
                 {
-                    //username = credentials.Username,
-                    //email = User.Email,
-                    //displayName = cliente.Alias,
-                    //token = tokenGenerated,
-                    //expires = expirationtime,
-                    //rosentalCod = cliente.RosentalCod,
-                    //userActivo = User.IsActive.GetValueOrDefault(false),
-                    //validacionUser = validacion,
-                    //cliente = new { clienteId = cliente.Id, rosentalCod = cliente.RosentalCod, dniPersona = cliente.NumeroDocumento, cuit = cliente.NumeroCuit },
-                    //productosCuenta = productoCuenta,
-                    //cobrosPendientes = countCobros,
-                    ////clienteActivo = clienteActivo,
-                    //roles = roles
+                    username = credentials.Username,
+                    primerIngreso = User.PrimerIngreso,
+                    token = tokenGenerated,
+                    roles = roles
                 });
             }
             catch (Exception ex)
@@ -83,20 +73,19 @@ namespace NP.WebService.Admin.Controllers
         public async Task<IActionResult> ResetPassword([FromBody]ResetPasswordInput input)
         {
             if (!ModelState.IsValid)
-            {
-                await logger.LogInformation("Modelo invalido");
+            {                
                 return BadRequest(ModelState);
             }
 
             try
             {
-                //var resetPassword = await _UserService.ResetPassword(input);
+                var resetPassword = await _UserService.ResetPassword(input);
                 //UserName = user.UserName
                 return Ok();
             }
             catch (Exception ex)
             {
-                return ReturnError<string> (ex);
+                return ReturnError<string>(ex);
             }
         }
 

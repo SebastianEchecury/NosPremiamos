@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "dgSpecHash": "zOEKFKmFtJSO0iRe4NfHXjurltmgYUWqg6CrCE1xrEXRLo2wh0ipe5Ahpfjx4xDdn37/Kf5EWYhSYjRKevcMww==",
+  "success": true,
+  "projectFilePath": "C:\\Proyectos\\NosPremiamos\\TECSO.FWK.STD\\TECSO.FWK.STD.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\maria.labus\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\2.1.2\\microsoft.extensions.caching.abstractions.2.1.2.nupkg.sha512",
+    "C:\\Users\\maria.labus\\.nuget\\packages\\microsoft.extensions.caching.memory\\2.1.2\\microsoft.extensions.caching.memory.2.1.2.nupkg.sha512",
+    "C:\\Users\\maria.labus\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\2.1.1\\microsoft.extensions.dependencyinjection.abstractions.2.1.1.nupkg.sha512",
+    "C:\\Users\\maria.labus\\.nuget\\packages\\microsoft.extensions.options\\2.1.1\\microsoft.extensions.options.2.1.1.nupkg.sha512",
+    "C:\\Users\\maria.labus\\.nuget\\packages\\microsoft.extensions.primitives\\2.1.1\\microsoft.extensions.primitives.2.1.1.nupkg.sha512",
+    "C:\\Users\\maria.labus\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\maria.labus\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\maria.labus\\.nuget\\packages\\system.buffers\\4.4.0\\system.buffers.4.4.0.nupkg.sha512",
+    "C:\\Users\\maria.labus\\.nuget\\packages\\system.collections.immutable\\1.5.0\\system.collections.immutable.1.5.0.nupkg.sha512",
+    "C:\\Users\\maria.labus\\.nuget\\packages\\system.memory\\4.5.1\\system.memory.4.5.1.nupkg.sha512",
+    "C:\\Users\\maria.labus\\.nuget\\packages\\system.numerics.vectors\\4.4.0\\system.numerics.vectors.4.4.0.nupkg.sha512",
+    "C:\\Users\\maria.labus\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.1\\system.runtime.compilerservices.unsafe.4.5.1.nupkg.sha512"
+  ],
+  "logs": []
+}

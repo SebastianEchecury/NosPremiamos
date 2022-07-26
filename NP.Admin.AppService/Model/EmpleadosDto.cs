@@ -8,21 +8,25 @@ namespace NP.Admin.AppService.Model
     {
         public EmpleadosDto()
         {
-            EmpleadosCategoriasAprobadores = new HashSet<EmpleadosCategoriasAprobadoresDto>();
-            EmpleadosRoles = new HashSet<EmpleadosRoles>();
-            VotosAprobadorEmpleado = new HashSet<VotosDto>();
-            VotosVotadoEmpleado = new HashSet<VotosDto>();
-            VotosVotanteEmpleado = new HashSet<VotosDto>();
+            //EmpleadosCategoriasAprobadores = new HashSet<EmpleadosCategoriasAprobadoresDto>();
+            //EmpleadosRoles = new HashSet<EmpleadosRolesDto>();
+            //VotosAprobadorEmpleado = new HashSet<VotosDto>();
+            //VotosVotadoEmpleado = new HashSet<VotosDto>();
+            //VotosVotanteEmpleado = new HashSet<VotosDto>();
         }
 
         public string Nombre { get; set; }
         public string Apellido { get; set; }
+        public string Usuario { get; set; }
+        public string Contraseña { get; set; }
+        public bool? Eliminado { get; set; }
+        public bool? PrimerIngreso { get; set; }
 
-        public ICollection<EmpleadosCategoriasAprobadoresDto> EmpleadosCategoriasAprobadores { get; set; }
-        public ICollection<EmpleadosRoles> EmpleadosRoles { get; set; }
-        public ICollection<VotosDto> VotosAprobadorEmpleado { get; set; }
-        public ICollection<VotosDto> VotosVotadoEmpleado { get; set; }
-        public ICollection<VotosDto> VotosVotanteEmpleado { get; set; }
+        //public ICollection<EmpleadosCategoriasAprobadoresDto> EmpleadosCategoriasAprobadores { get; set; }
+        //public ICollection<EmpleadosRolesDto> EmpleadosRoles { get; set; }
+        //public ICollection<VotosDto> VotosAprobadorEmpleado { get; set; }
+        //public ICollection<VotosDto> VotosVotadoEmpleado { get; set; }
+        //public ICollection<VotosDto> VotosVotanteEmpleado { get; set; }
 
         public override string Description => this.Apellido;
     }

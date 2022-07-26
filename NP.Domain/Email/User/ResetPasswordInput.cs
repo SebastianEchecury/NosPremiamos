@@ -10,6 +10,7 @@ namespace NP.Admin.Domain
         [Required]
         public string PasswordNueva { get; set; }
 
+        public int?  EmpleadoId { get; set; }
 
         //public string ReturnUrl { get; set; }
 

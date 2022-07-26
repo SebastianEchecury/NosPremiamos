@@ -29,7 +29,7 @@ namespace NP.infra.Data.Repositories
 
         public async Task<Empleados> GetUser(string Username)
         {
-            return await this.Context.Empleados.FirstOrDefaultAsync(e => e.Nombre == Username);
+            return await this.Context.Empleados.FirstOrDefaultAsync(e => e.Usuario == Username);
         }
 
         public async Task<List<EmpleadosRoles>> GetUserRoles(int EmpleadoId)
@@ -39,7 +39,7 @@ namespace NP.infra.Data.Repositories
 
         protected override IQueryable<Empleados> AddIncludeForGet(DbSet<Empleados> dbSet)
         {
-            return base.AddIncludeForGet(dbSet).Include("SysUsersRoles");
+            return base.AddIncludeForGet(dbSet).Include("EmpleadosRoles");
         }
 
         public override Task<Empleados> UpdateAsync(Empleados entity)

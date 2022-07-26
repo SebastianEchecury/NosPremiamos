@@ -9,6 +9,8 @@ C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\TECSO.FWK.STD\obj\Debug\
 C:\Proyectos\NosPremiamos\TECSO.FWK.STD\bin\Debug\netstandard2.0\TECSO.FWK.STD.deps.json
 C:\Proyectos\NosPremiamos\TECSO.FWK.STD\bin\Debug\netstandard2.0\TECSO.FWK.STD.dll
 C:\Proyectos\NosPremiamos\TECSO.FWK.STD\bin\Debug\netstandard2.0\TECSO.FWK.STD.pdb
+C:\Proyectos\NosPremiamos\TECSO.FWK.STD\obj\Debug\netstandard2.0\TECSO.FWK.STD.csprojAssemblyReference.cache
+C:\Proyectos\NosPremiamos\TECSO.FWK.STD\obj\Debug\netstandard2.0\TECSO.FWK.STD.csproj.CoreCompileInputs.cache
 C:\Proyectos\NosPremiamos\TECSO.FWK.STD\obj\Debug\netstandard2.0\TECSO.FWK.STD.AssemblyInfoInputs.cache
 C:\Proyectos\NosPremiamos\TECSO.FWK.STD\obj\Debug\netstandard2.0\TECSO.FWK.STD.AssemblyInfo.cs
 C:\Proyectos\NosPremiamos\TECSO.FWK.STD\obj\Debug\netstandard2.0\TECSO.FWK.STD.dll

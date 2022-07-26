@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using AutoMapper.EquivalencyExpression;
+using NP.Admin.AppService.Model;
+using NP.Domain.Entities;
 using TECSO.FWK.AppService.Model;
 
 namespace NP.WebService.Admin
@@ -12,11 +14,11 @@ namespace NP.WebService.Admin
         public MappingProfile()
         {
             // Add as many of these lines as you need to map your objects
-            //CreateMap<SysUsers, EmpleadosDto>()
-            //    .ForMember(d => d.UserRoles, o => o.MapFrom(s => s.SysUsersRoles))
+            //CreateMap<Empleados, EmpleadosDto>()
+            //    .ForMember(d => d.EmpleadosRoles, o => o.MapFrom(s => s.EmpleadosRoles))
             //    .EqualityComparison((odto, o) => odto.Id == o.Id);
-            //CreateMap<EmpleadosDto, SysUsers>()
-            //    .ForMember(d => d.SysUsersRoles, o => o.MapFrom(s => s.UserRoles))
+            //CreateMap<EmpleadosDto, Empleados>()
+            //    .ForMember(d => d.EmpleadosRoles, o => o.MapFrom(s => s.EmpleadosRoles))
             //    .EqualityComparison((odto, o) => odto.Id == o.Id);
 
 
@@ -102,10 +104,21 @@ namespace NP.WebService.Admin
             //CreateMap<AppModuloDto, EmpleadosCategoriasAprobadores>()
             //.ForMember(d => d.AppContenido, o => o.MapFrom(s => s.AppContenidoDto))
             //    .ForMember(d => d.AppMensaje, o => o.MapFrom(s => s.AppMensajeDto));
-            
-            //CreateMap<Fondeo, FondeoDto>();
-            //CreateMap<FondeoDto, Fondeo>();
-            
+
+            CreateMap<Categorias, CategoriasDto>()
+               .EqualityComparison((odto, o) => odto.Id == o.Id);
+
+            CreateMap<CategoriasDto, Categorias>()
+                .EqualityComparison((odto, o) => odto.Id == o.Id);
+
+            //CreateMap<Empleados, EmpleadosDto>()
+            //  .EqualityComparison((odto, o) => odto.Id == o.Id);
+
+            //CreateMap<EmpleadosDto, Empleados>()
+            //    .EqualityComparison((odto, o) => odto.Id == o.Id);
+
+
+
             //CreateMap<WsRetiroOutput, RetiroDto>();
         }
 

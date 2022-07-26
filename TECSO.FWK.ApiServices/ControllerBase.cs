@@ -32,16 +32,6 @@ namespace TECSO.FWK.ApiServices
         {
             var userName = authService.GetCurretUserName();
             var sessionId = authService.GetSessionID();
-            logger.Log(new AppService.Model.LogDto()
-            {
-                LogDate =DateTime.Now,
-                LogMessage =String.Join(",",message),
-                LogType = AppService.Model.LogType.Error,
-                LogLevel = status ==  ActionStatus.Error ? Domain.Entities.LogLevel.Error : Domain.Entities.LogLevel.Warning,
-                SessionId = sessionId,
-                UserName = userName,
-                StackTrace= stackTrace
-            });
             return this.ReturnData<T>(default(T), status, message);
         }
 
