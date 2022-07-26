@@ -1,0 +1,265 @@
+<form #detailForm="ngForm" class="m-form m-form--group-seperator-dashed">
+
+	<m-portlet [options]="{headLarge: true, enableSticky: true}" [loading$]="loading$">
+
+		<ng-container mPortletHeadTitle>
+			<div class="m-portlet__head-title">
+				<h3 class="m-portlet__head-text">
+					{{title}}
+				</h3>
+			</div>
+		</ng-container>
+		<ng-container mPortletHeadTools>
+			<button type="button" (click)="goBack()" mat-raised-button matTooltip="Volver a la lista de {{title}}">Volver</button>&nbsp;
+			<!--<button mat-raised-button (click)="reset()" [disabled]="selectedTab !== 0" matTooltip="Reset changes">Reset</button>&nbsp;-->
+
+			
+
+			<div class="m-buttons--wrapper">
+				<!--<button type="button" mat-raised-button color="primary" matTooltip="Save & Continue">Save</button>-->
+
+
+				<m-spinner-button [options]="spinner" (click)="onSave(detailForm)" matTooltip="Save & Continue">Save</m-spinner-button>
+
+				<button mat-icon-button [matMenuTriggerFor]="menu" color="primary">
+					<mat-icon>more_vert</mat-icon>
+				</button>
+				<mat-menu #menu="matMenu">
+					<button mat-menu-item color="primary" (click)="onSave(detailForm)">Save & Exit</button>
+					<!--<button mat-menu-item color="primary">Save & Duplicate</button>-->
+					<button mat-menu-item color="primary" (click)="onSaveAndContinue()">Save & Continue</button>
+				</mat-menu>
+			</div>
+		</ng-container>
+		<ng-container mPortletBody>
+			<mat-tab-group [(selectedIndex)]="selectedTab">
+				<mat-tab label="Datos Generales">
+					<ng-template matTabContent>
+						<!--begin::Form-->
+						<!--<form #detailForm="ngForm" novalidate (ngSubmit)="detailForm.form.valid && save(detailForm)" autocomplete="off">-->
+						<!--<form [formGroup]="mainForm" class="m-form m-form--group-seperator-dashed">-->
+						<!--<m-alert *ngIf="hasFormErrors" type="warn" [showCloseButton]="true" [duration]="10000" (close)="onAlertClose($event)">
+							Oh snap! Change a few things up and try submitting again.
+						</m-alert>-->
+
+						<div class="m-form__section m-form__section--first">
+							<div class="m-form__group">
+								<div class="row">
+
+									<div class="col-md-4 m--margin-bottom-10-mobile">
+										<mat-form-field class="mat-form-field-fluid">
+											<input #name="ngModel" matInput placeholder="Usuario" name="name" [(ngModel)]="detail.Name" required>
+											<mat-error>
+												Usuario is
+												<strong>required</strong>
+											</mat-error>
+											 
+										</mat-form-field>
+									</div>
+
+									{{Email.email}}
+									<div class="col-md-4 m--margin-bottom-10-mobile">
+										<mat-form-field class="mat-form-field-fluid">
+											<input #Email="ngModel" type="email" email matInput placeholder="Email" name="Email" [(ngModel)]="detail.Email" required
+												    [errorStateMatcher]="matcher"
+												   >
+											 
+
+											<mat-error *ngIf="Email.hasError('email') && !Email.hasError('required')">
+												Please enter a valid email address
+											</mat-error>
+											<mat-error *ngIf="Email.hasError('required')">
+												Email is
+												<strong>required</strong>
+											</mat-error>
+										</mat-form-field>
+									</div>
+
+
+
+
+
+									<div class="col-md-6 m--margin-bottom-10-mobile">
+										<mat-form-field class="mat-form-field-fluid">
+											<input #DisplayName="ngModel" matInput placeholder="Nombre" name="DisplayName" [(ngModel)]="detail.DisplayName" required>
+											<mat-error>
+												Nombre
+												<strong>required</strong>
+											</mat-error>
+											<!--<mat-hint align="start">
+				Enter
+				<strong>Nombre para mostrar</strong>
+			</mat-hint>-->
+										</mat-form-field>
+									</div>
+
+
+									<div class="col-md-4 m--margin-bottom-10-mobile">
+										<mat-checkbox id="IsActive" type="checkbox" name="Activo"
+													  [(ngModel)]="detail.IsActive">Activo</mat-checkbox>
+									</div>
+
+									<!--<div class="col-md-4 m--margin-bottom-10-mobile">
+		<mat-form-field class="mat-form-field-fluid">
+			<input matInput placeholder="Enter Manufacture" formControlName="manufacture" [matAutocomplete]="manuf">
+			<mat-autocomplete #manuf="matAutocomplete">
+				<mat-option *ngFor="let manufacture of filteredManufactures | async" [value]="manufacture">
+					{{ manufacture }}
+				</mat-option>
+			</mat-autocomplete>
+			<mat-error>
+				Manufacture is
+				<strong>required</strong>
+			</mat-error>
+			<mat-hint align="start">
+				Please enter
+				<strong>Manufacture</strong>
+			</mat-hint>
+		</mat-form-field>
+	</div>
+	<div class="col-md-4 m--margin-bottom-10-mobile">
+		<mat-form-field class="mat-form-field-fluid">
+			<mat-select placeholder="Enter Model year" formControlName="modelYear">
+				<mat-option value="{{year}}" *ngFor="let year of availableYears;">{{year}}</mat-option>
+			</mat-select>
+			<mat-error>
+				Model year
+				<strong>required</strong>
+			</mat-error>
+			<mat-hint align="start">
+				Please enter
+				<strong>Model year</strong>
+			</mat-hint>
+		</mat-form-field>
+	</div>-->
+								</div>
+							</div>
+
+							<!--<div class="m-form__group">
+								<div class="row">
+									<div class="col-md-4 m--margin-bottom-10-mobile">
+										<mat-form-field class="mat-form-field-fluid">
+											<input matInput placeholder="Enter Mileage" formControlName="mileage">
+											<mat-error>
+												Mileage is
+												<strong>required</strong>
+											</mat-error>
+											<mat-hint align="start">
+												Please enter
+												<strong>Mileage</strong>
+											</mat-hint>
+										</mat-form-field>
+									</div>
+									<div class="col-md-4 m--margin-bottom-10-mobile">
+										<mat-form-field class="mat-form-field-fluid">
+											<input matInput placeholder="Enter Color" formControlName="color" [matAutocomplete]="col">
+											<mat-autocomplete #col="matAutocomplete">
+												<mat-option *ngFor="let col of filteredColors | async" [value]="col">
+													{{ col }}
+												</mat-option>
+											</mat-autocomplete>
+											<mat-error>
+												Color
+												<strong>required</strong>
+											</mat-error>
+											<mat-hint align="start">
+												Please enter
+												<strong>Color</strong>
+											</mat-hint>
+										</mat-form-field>
+									</div>
+									<div class="col-md-4 m--margin-bottom-10-mobile">
+										<mat-form-field class="mat-form-field-fluid">
+											<input matInput placeholder="Enter Price" formControlName="price">
+											<span matPrefix>$&nbsp;</span>
+											<mat-error>
+												Price is
+												<strong>required</strong>
+											</mat-error>
+											<mat-hint align="start">
+												Please enter
+												<strong>Price</strong>
+											</mat-hint>
+										</mat-form-field>
+									</div>
+								</div>
+
+							</div>
+
+							<div class="m-form__group">
+								<div class="row">
+									<div class="col-md-4 m--margin-bottom-10-mobile">
+										<mat-form-field class="mat-form-field-fluid">
+											<input matInput placeholder="Enter VIN code" formControlName="VINCode">
+											<mat-error>
+												VIN Code is
+												<strong>required</strong>
+											</mat-error>
+											<mat-hint align="start">
+												Please enter
+												<strong>VIN Code</strong>
+											</mat-hint>
+										</mat-form-field>
+									</div>
+									<div class="col-md-4 m--margin-bottom-10-mobile">
+										<div>Condition:</div>
+										<mat-radio-group formControlName="condition" class="example-radio-group">
+											<mat-radio-button class="example-radio-button" value="0">New</mat-radio-button>
+											<mat-radio-button class="example-radio-button" value="1">Used</mat-radio-button>
+										</mat-radio-group>
+									</div>
+									<div class="col-md-4">
+										<div>Status:</div>
+										<mat-radio-group formControlName="status" class="example-radio-group">
+											<mat-radio-button class="example-radio-button" value="0">Selling</mat-radio-button>
+											<mat-radio-button class="example-radio-button" value="1">Sold</mat-radio-button>
+										</mat-radio-group>
+									</div>
+								</div>
+							</div>
+
+							<div class="m-form__group">
+								<div class="row">
+									<div class="col-md-12 m--margin-bottom-10-mobile">
+										<mat-form-field class="mat-form-field-fluid">
+											<textarea matInput rows="7" placeholder="Enter Description" formControlName="description"></textarea>
+										</mat-form-field>
+									</div>
+								</div>
+							</div>-->
+						</div>
+
+						<!--end::Form-->
+					</ng-template>
+				</mat-tab>
+				<mat-tab>
+					<ng-template mat-tab-label>
+						Roles&nbsp;<span class="badge badge-primary">{{getAssignedRoleCount()}}</span>
+					</ng-template> 
+					<ng-template matTabContent>
+
+						
+						<div class="m-section">
+
+							<div class="m-section__content">
+								<mat-list>
+									<mat-list-item *ngFor="let role of roles">
+										<mat-checkbox id="EditUser_{{role.RoleName}}" type="checkbox" name="{{role.RoleName}}"
+													  [(ngModel)]="role.IsAssigned">{{role.RoleDisplayName}}</mat-checkbox>
+
+									</mat-list-item>
+								</mat-list>
+							</div>
+						</div>
+
+
+
+
+
+						<!--<m-remarks-list [remarksListState]="remarksListState" [(loadingSubject)]="loadingSubject"></m-remarks-list>-->
+					</ng-template>
+				</mat-tab>
+			</mat-tab-group>
+		</ng-container>
+	</m-portlet>
+</form>

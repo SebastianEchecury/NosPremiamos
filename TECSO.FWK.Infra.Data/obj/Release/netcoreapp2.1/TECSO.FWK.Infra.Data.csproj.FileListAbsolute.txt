@@ -1,0 +1,16 @@
+C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\TECSO.FWK.Infra.Data\bin\Release\netcoreapp2.1\TECSO.FWK.Infra.Data.deps.json
+C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\TECSO.FWK.Infra.Data\bin\Release\netcoreapp2.1\TECSO.FWK.Infra.Data.runtimeconfig.json
+C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\TECSO.FWK.Infra.Data\bin\Release\netcoreapp2.1\TECSO.FWK.Infra.Data.runtimeconfig.dev.json
+C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\TECSO.FWK.Infra.Data\bin\Release\netcoreapp2.1\TECSO.FWK.Infra.Data.dll
+C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\TECSO.FWK.Infra.Data\bin\Release\netcoreapp2.1\TECSO.FWK.Infra.Data.pdb
+C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\TECSO.FWK.Infra.Data\bin\Release\netcoreapp2.1\TECSO.FWK.Domain_Std.dll
+C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\TECSO.FWK.Infra.Data\bin\Release\netcoreapp2.1\TECSO.FWK.STD.dll
+C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\TECSO.FWK.Infra.Data\bin\Release\netcoreapp2.1\TECSO.FWK.Domain_Std.pdb
+C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\TECSO.FWK.Infra.Data\bin\Release\netcoreapp2.1\TECSO.FWK.STD.pdb
+C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\TECSO.FWK.Infra.Data\obj\Release\netcoreapp2.1\TECSO.FWK.Infra.Data.csprojAssemblyReference.cache
+C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\TECSO.FWK.Infra.Data\obj\Release\netcoreapp2.1\TECSO.FWK.Infra.Data.csproj.CoreCompileInputs.cache
+C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\TECSO.FWK.Infra.Data\obj\Release\netcoreapp2.1\TECSO.FWK.Infra.Data.AssemblyInfoInputs.cache
+C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\TECSO.FWK.Infra.Data\obj\Release\netcoreapp2.1\TECSO.FWK.Infra.Data.AssemblyInfo.cs
+C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\TECSO.FWK.Infra.Data\obj\Release\netcoreapp2.1\TECSO.FWK.Infra.Data.csproj.CopyComplete
+C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\TECSO.FWK.Infra.Data\obj\Release\netcoreapp2.1\TECSO.FWK.Infra.Data.dll
+C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\TECSO.FWK.Infra.Data\obj\Release\netcoreapp2.1\TECSO.FWK.Infra.Data.pdb

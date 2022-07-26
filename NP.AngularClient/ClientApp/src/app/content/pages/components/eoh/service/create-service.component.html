@@ -1,0 +1,114 @@
+<form #detailForm="ngForm" class="m-form m-form--group-seperator-dashed">
+
+	<m-portlet [options]="{headLarge: true, enableSticky: true}" [loading$]="loading$">
+
+		<ng-container mPortletHeadTitle>
+			<div class="m-portlet__head-title">
+				<h3 class="m-portlet__head-text">
+					{{title}}
+				</h3>
+			</div>
+		</ng-container>
+		<ng-container mPortletHeadTools>
+			<button type="button" (click)="goBack()" mat-raised-button matTooltip="Volver a la lista de {{title}}">Volver</button>&nbsp;
+			<div class="m-buttons--wrapper">
+
+				<m-spinner-button [options]="spinner" (click)="onSave(detailForm)" matTooltip="Save">Save</m-spinner-button>
+
+				<button mat-icon-button [matMenuTriggerFor]="menu" color="primary">
+					<mat-icon>more_vert</mat-icon>
+				</button>
+				<mat-menu #menu="matMenu">					
+					<button mat-menu-item color="primary" (click)="onSaveAndContinue()">Save & Continue</button>
+				</mat-menu>
+			</div>
+		</ng-container>
+		<ng-container mPortletBody>
+			<mat-tab-group [(selectedIndex)]="selectedTab">
+				<mat-tab label="Datos Generales">
+					<ng-template matTabContent> 
+
+						<div class="m-form__section m-form__section--first">
+							<div class="m-form__group">
+								<div class="row">
+
+									<div class="col-md-4 m--margin-bottom-10-mobile">
+										<mat-form-field class="mat-form-field-fluid">
+											<input #Name="ngModel" matInput placeholder="Nombre" name="name" [(ngModel)]="detail.Name" required>
+											<mat-error>
+												Nombre es
+												<strong>requerido</strong>
+											</mat-error>
+										</mat-form-field>
+									</div>
+
+									<div class="col-md-4 m--margin-bottom-10-mobile">
+										<mat-form-field class="mat-form-field-fluid">
+											<input #ClientNumber="ngModel" matInput placeholder="Número Cliente" name="ClientNumber" [(ngModel)]="detail.ClientNumber" required>
+											<mat-error>
+												Número de Cliente es
+												<strong>requerido</strong>
+											</mat-error>
+										</mat-form-field>
+									</div>
+
+									<div class="col-md-4 m--margin-bottom-10-mobile">
+										<mat-form-field class="mat-form-field-fluid">
+											<input #ContractNumber="ngModel" matInput placeholder="Número Contrato"  name="ContractNumber" [(ngModel)]="detail.ContractNumber" required>
+											<mat-error>
+												Número de Contrato es
+												<strong>requerido</strong>
+											</mat-error>
+										</mat-form-field>
+									</div>
+
+									<div class="col-md-4 m--margin-bottom-10-mobile">
+										<mat-form-field>
+											<input #DischargeDate="ngModel" matInput [matDatepicker]="picker" placeholder="Fecha de Alta" name="DischargeDate" [(ngModel)]="detail.DischargeDate" required>
+											<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+											<mat-datepicker #picker></mat-datepicker>
+											<mat-error>
+												Fecha de Alta es
+												<strong>requerida</strong>
+											</mat-error>
+										</mat-form-field>
+									</div>
+
+									<div class="col-md-4 m--margin-bottom-10-mobile">
+										<div class="m-form__control">
+											<ipranges-combo name="IpRangeId" #IpRangeId="ngModel" [(ngModel)]="detail.IpRangeId" placeholder="{{'Rango de IP'}}" emptyText="{{'Seleccione..'}}" isRequired="{{true}}"></ipranges-combo>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							
+						</div>
+
+						
+					</ng-template>
+				</mat-tab>
+				<mat-tab>
+					<ng-template mat-tab-label>
+						 Dispositivos
+					</ng-template> 
+					<ng-template matTabContent>
+
+
+						<div class="m-form__section m-form__section--first">
+							<div class="m-form__group">
+								<div class="row">
+
+								 
+								</div>
+							</div>
+
+
+						</div>
+
+					</ng-template>
+				</mat-tab>
+			</mat-tab-group>
+		</ng-container>
+	</m-portlet>
+</form>

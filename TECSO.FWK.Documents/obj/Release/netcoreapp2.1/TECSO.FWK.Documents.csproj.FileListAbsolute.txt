@@ -1,0 +1,9 @@
+C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\TECSO.FWK.Documents\bin\Release\netcoreapp2.1\TECSO.FWK.Documents.deps.json
+C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\TECSO.FWK.Documents\bin\Release\netcoreapp2.1\TECSO.FWK.Documents.dll
+C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\TECSO.FWK.Documents\bin\Release\netcoreapp2.1\TECSO.FWK.Documents.pdb
+C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\TECSO.FWK.Documents\obj\Release\netcoreapp2.1\TECSO.FWK.Documents.csprojAssemblyReference.cache
+C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\TECSO.FWK.Documents\obj\Release\netcoreapp2.1\TECSO.FWK.Documents.csproj.CoreCompileInputs.cache
+C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\TECSO.FWK.Documents\obj\Release\netcoreapp2.1\TECSO.FWK.Documents.AssemblyInfoInputs.cache
+C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\TECSO.FWK.Documents\obj\Release\netcoreapp2.1\TECSO.FWK.Documents.AssemblyInfo.cs
+C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\TECSO.FWK.Documents\obj\Release\netcoreapp2.1\TECSO.FWK.Documents.dll
+C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\TECSO.FWK.Documents\obj\Release\netcoreapp2.1\TECSO.FWK.Documents.pdb
