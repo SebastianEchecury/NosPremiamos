@@ -44,7 +44,7 @@ namespace NP.WebService.Admin.Controllers
 
             try
             {
-                var User = await _UserService.Login(credentials.Username, credentials.Password);               
+                var User = await _UserService.Login(credentials.Email, credentials.Password);               
                 
                 
 
@@ -56,7 +56,7 @@ namespace NP.WebService.Admin.Controllers
 
                 return Ok(new
                 {
-                    username = credentials.Username,
+                    username = credentials.Email,
                     primerIngreso = User.PrimerIngreso,
                     token = tokenGenerated,
                     roles = roles
