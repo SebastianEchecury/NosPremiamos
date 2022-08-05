@@ -115,18 +115,18 @@ export default function createApi({ url, tagTypes = [], endpoints, ...options })
           query: (id) => ({
             url: '',
             params: {
-              PrimaryKey: id
-            },
-            responseHandler: (response) => {
-              if (response.ok) {
-                return response.json();
+               id
+            }
+          }),
+          providesTags: (result, error, id) => ([{ type: apiTagType, id: id }]),
+            transformResponse: (response) => {
+              if (response.Status == 0) {
+                return response.DataObject;
               }
               else {
                 return response.json().then((response) => normalizeErrors(response.errors));
               }
             }
-          }),
-          providesTags: (result, error, id) => ([{ type: apiTagType, id: id }])
         }),
         getItems: () => rktBuilder.query({
           query: ({ filter, order = [], pagination = {} } = {}) => ({
@@ -150,8 +150,8 @@ export default function createApi({ url, tagTypes = [], endpoints, ...options })
             })
           },
           transformResponse: (response) => ({
-            data: response.items,
-            length: response.totalCount
+            data: response.DataObject,
+            length: response.DataObject.length
           }),
           providesTags: (result) => {
             if (result?.data) {

@@ -6,8 +6,8 @@ export default () => {
     <footer className="footer section py-5">
       <p className="mb-0 text-center text-xl-left">
         Copyright ©
-        <Card.Link href="https://tecso.coop/" target="_blank" className="text-blue text-decoration-none fw-normal ms-1">
-          Tecso
+        <Card.Link href="#" target="_blank" className="text-blue text-decoration-none fw-normal ms-1">
+         
         </Card.Link>
       </p>
     </footer>

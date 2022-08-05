@@ -56,6 +56,8 @@ namespace NP.WebService.Admin.Controllers
 
                 return Ok(new
                 {
+                    nombre = User.Nombre,
+                    apellido = User.Apellido,
                     username = credentials.Email,
                     primerIngreso = User.PrimerIngreso,
                     token = tokenGenerated,

@@ -1,12 +1,11 @@
 import { useSelector } from 'react-redux';
 
 function PermissionChecker (permissionKey) {
-  const { permissions } = useSelector((state) => state.auth);
   
   if (permissionKey === undefined)
       return false;
       
-  return permissions?.some(x => x === permissionKey);
+  return JSON.parse(localStorage.usuario).roles.some(x=> x=== permissionKey);
 
 };
 

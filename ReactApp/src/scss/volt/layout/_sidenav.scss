@@ -1,6 +1,8 @@
 /*
  * Sidebar
 */
+@import url("https://use.fontawesome.com/releases/v5.13.0/css/all.css");
+
 .sidebar {
 	display: block;
 	position: fixed;
@@ -182,9 +184,9 @@
 	.accordion-button {
 		&::after {
 			background-image: none;
-			content: '\f054';
-			font-family: $font-awesome-5;
-			font-size: $font-size-sm;
+			content: "\f054";
+			font-family: "Font Awesome 5 Free";
+			font-size: normal;
 			font-weight: 900;
 			height: 1.25rem;
 			width: .5rem;

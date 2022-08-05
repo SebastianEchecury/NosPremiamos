@@ -1,7 +1,7 @@
 export const permissionsKeys = {
-    USER_DELETE: "TASACOMUNAL.Seguridad.Usuarios.Delete",
-    USER_UPDATE: "TASACOMUNAL.Seguridad.Usuarios.Update",
-    USER_ADD: "TASACOMUNAL.Seguridad.Usuarios.Add",
+    USER_DELETE: "eliminar.usuario",
+    USER_UPDATE: "editar.usuario",
+    USER_ADD: "alta.usuario",
     USER_MANAGER: "TASACOMUNAL.Seguridad.Usuarios.Manage",
     USER_VIEW: "TASACOMUNAL.Seguridad.Usuarios.View",
     ROLE_DELETE: "TASACOMUNAL.Seguridad.Roles.Delete",

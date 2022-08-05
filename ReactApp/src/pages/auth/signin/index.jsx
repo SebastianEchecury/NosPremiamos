@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Col, Row, Form, Card, Button, FormCheck, Container, Image } from '@themesberg/react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 import { useLoginMutation } from "../../../redux/apis/auth";
-import { TranslatableText, useTranslations } from "../../../components/translations";
+import { TranslatableText } from "../../../components/translations";
 import { Routes } from "../../../routes";
 import { useSelector } from "react-redux";
 
@@ -33,10 +33,11 @@ let Signin = (props) => {
   });
 
   useEffect(() => {
-    if (token) {
+    if (isLoginSuccess) {    
+      localStorage.setItem('usuario', JSON.stringify(loginData))
       history.push(Routes.Dashboard.path);
     }
-  }, [token, history]);
+  }, [token]);
 
   useEffect(() => {
     if (isLoginError) {

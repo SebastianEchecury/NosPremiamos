@@ -18,18 +18,19 @@ import { faPlayCircle } from '@fortawesome/free-regular-svg-icons';
 import { Image, Nav } from '@themesberg/react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useLogoutMutation } from '../../redux/apis/auth';
+import { useHistory } from 'react-router-dom';
 
 export default () => {
   const { translations: layoutTranslations } = useTranslations({ group: translationsGroupNames.Layout, keys: ['Configuracion', 'Dashboard', 'Procesos', 'Seguridad', 'TasaComunal'] });
   const { translations: rolesTranslations } = useTranslations({ group: translationsGroupNames.Roles, keys: ['Roles'] });
   const { translations: terminalesTranslations } = useTranslations({ group: translationsGroupNames.Terminales, keys: ['CobrarTasa', 'Cupos', 'LiquidarSaldoCuentaCorriente', 'OtorgarCuposDesdeCtg', 'TalonariosTickets', 'Terminales'] });
   const { translations: usersTranslations } = useTranslations({ group: translationsGroupNames.Users, keys: ['Users'] });
+  let history = useHistory();
 
-  const [logout] = useLogoutMutation();
+  
 
   const logoutClickHandler = () => {
-    logout();
+    history.push(Routes.Signin.path);
   };
 
   return (
@@ -38,10 +39,9 @@ export default () => {
         <Image src={Logo} className="navbar-brand-light" />
       </Link>
       <SidebarDivider />
-      <CollapsableSidebarItem title={layoutTranslations.Configuracion} icon={faCog}>
-        <CollapsableSidebarItem title={layoutTranslations.Seguridad} icon={faUnlockKeyhole}>
-          {PermissionChecker(permissionsKeys.ROLE_MANAGER) && <SidebarItem title={rolesTranslations.Roles} link="/roles" icon={faIdBadge} />}
-          {PermissionChecker(permissionsKeys.USER_MANAGER) && <SidebarItem title={usersTranslations.Users} link="/users" icon={faUserGroup} />}
+      <CollapsableSidebarItem title='Configuracion' icon={faCog}>
+        <CollapsableSidebarItem title='Seguridad' icon={faUnlockKeyhole}>
+          {PermissionChecker(permissionsKeys.USER_ADD) && <SidebarItem title='Empleados' link="/users" icon={faUserGroup} />}
         </CollapsableSidebarItem>
         {PermissionChecker(permissionsKeys.CONFIGURACION_TERMINAL_ADMINISTRAR) && <SidebarItem title={terminalesTranslations.Terminales} link={Routes.Terminales.path} icon={faBroadcastTower} />}
       </CollapsableSidebarItem>
@@ -60,7 +60,7 @@ export default () => {
           <span>
             <span className="sidebar-icon text-danger"><FontAwesomeIcon icon={faSignOutAlt} /></span>
             <span className="sidebar-text text-danger">
-              <TranslatableText group={translationsGroupNames.Generic} entry="Logout">Logout</TranslatableText>
+              <TranslatableText  entry="Cerrar sesión"/>
             </span>
           </span>
         </Nav.Link>

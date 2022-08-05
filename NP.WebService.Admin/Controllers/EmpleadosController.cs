@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
@@ -61,17 +62,31 @@ namespace NP.WebService.Admin.Controllers
             }
         }
 
-        [NonAction]
-        public override Task<IActionResult> DeleteById(int Id)
-        {
-            return base.DeleteById(Id);
-        }
+        
 
         //public override Task<IActionResult> GetAllAsync(EmpleadosFilter filter)
         //{
         //    return base.GetAllAsync(filter);
         //}
 
+        [HttpGet("GetHeader")]
+        public async Task<IActionResult> GetHeader()
+        {
+            
+            var idEmpleado =  authService.GetCurretUserId();
 
+            var empleado = Service.GetByIdAsync(idEmpleado).Result;
+
+
+            return ReturnData(new
+            {
+                empleado.Id,
+                empleado.Usuario,
+                empleado.Nombre,
+                empleado.Apellido
+            });
+        }
+
+      
     }
 }

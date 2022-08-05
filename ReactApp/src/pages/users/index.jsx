@@ -10,7 +10,6 @@ import withRedux from '../../redux/hoc/manager';
 
 import Table from './table';
 import Header from './header';
-import { translationsGroupNames } from '../../utils/translationsGroupNames';
 
 const Users = ({ source, onQueryChange }) => {
   const { id } = useParams();
@@ -42,18 +41,18 @@ const Users = ({ source, onQueryChange }) => {
       <Modal show={!!id} onHide={onCancelHandler} backdrop="static" keyboard={false}>
         <Modal.Header closeButton>
           <Modal.Title>
-            <TranslatableText group={translationsGroupNames.Generic} entry="Delete" />
+            <TranslatableText entry="Eliminar" />
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <TranslatableText group={translationsGroupNames.Confirmations} entry="DeleteConfirmation" />
+          <TranslatableText  entry="Confirmar Eliminacion" />
         </Modal.Body>
         <Modal.Footer>
           <Button type="button" variant="outline-primary" onClick={onCancelHandler}>
-            <TranslatableText group={translationsGroupNames.Generic} entry="Cancel" />
+            <TranslatableText  entry="Cancelar" />
           </Button>
           <Button type="button" className="ms-2" onClick={onSaveHandler}>
-            <TranslatableText group={translationsGroupNames.Generic} entry="Save" />
+            <TranslatableText  entry="Guardar" />
           </Button>
         </Modal.Footer>
       </Modal>

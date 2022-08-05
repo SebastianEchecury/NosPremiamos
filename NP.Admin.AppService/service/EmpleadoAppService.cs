@@ -11,6 +11,9 @@ using Microsoft.AspNetCore.Identity;
 using NP.Admin.Domain;
 using System.Collections.Generic;
 using System.Linq;
+using NP.Admin.Domain.Entities;
+using System.Net.Mail;
+using System;
 
 namespace NP.Admin.AppService
 {
@@ -19,13 +22,15 @@ namespace NP.Admin.AppService
     {
         protected readonly IRoleService _roleService;
         protected readonly IPermisosService _PermissionService;
+        private readonly IEmpleadoRolesService _rolesService;
+        private readonly IUserEmailer userEmailer;
 
         private readonly IAuthService _authService;
         public IAppUrlService AppUrlService { get; set; }
 
         public EmpleadoAppService(IEmpleadoService serviceBase,
-            IRoleService roleService,
-            IPermisosService permissionService,
+            IRoleService roleService, IUserEmailer _userEmailer,
+            IPermisosService permissionService, IEmpleadoRolesService rolesService,
             IAppUrlService appUrlService, IAuthService authService)
             : base(serviceBase)
         {
@@ -33,6 +38,8 @@ namespace NP.Admin.AppService
             _PermissionService = permissionService;
             AppUrlService = appUrlService;
             this._authService = authService;
+            _rolesService = rolesService;
+            userEmailer = _userEmailer;
         }
 
         //public async Task<List<EmpleadosRolesDto>> GetUserRoles(int id)
@@ -181,32 +188,46 @@ namespace NP.Admin.AppService
         //    return newDto;
         //}
 
-        //public async override Task<EmpleadosDto> AddAsync(EmpleadosDto dto)
-        //{
-        //    dto.UserRoles = dto.UserRoles.Where(e => e.IsAssigned).ToList();
-        //    var user = MapObject<EmpleadosDto, SysUsers>(dto);
+        public async override Task<EmpleadosDto> AddAsync(EmpleadosDto dto)
+        {
+            var user = MapObject<EmpleadosDto, Empleados>(dto);
 
-        //    var hp = new PasswordHasher<SysUsers>();
+            var hp = new PasswordHasher<Empleados>();
 
 
-        //    if (dto.Password.IsNullOrEmpty())
-        //    {
-        //        dto.Password = dto.Name;
-        //    }
+            if (string.IsNullOrEmpty(dto.Contraseña))
+            {
+                dto.Contraseña = Guid.NewGuid().ToString().Substring(1,8);
+            }
 
-        //    user.PasswordHash = hp.HashPassword(user, dto.Password);
-        //    user.EmailConfirmed = false;
-        //    user.SetNewPasswordResetCode();
+            user.Contraseña = hp.HashPassword(user, dto.Contraseña);
+            user.PrimerIngreso = false;
+            user.Eliminado = false;
 
-        //    var result = MapObject<SysUsers, EmpleadosDto>(await this.AddAsync(user));
-        //    //if (!user.Mail.IsNullOrEmpty())
-        //    //{ 
-        //    //    var emailActivationLink = AppUrlService.CreatePasswordResetUrlFormat();
-        //    //    await _userEmailer.SendPasswordResetLinkAsync(user, emailActivationLink);
-        //    //}
-        //    return result;
+            var result = MapObject<Empleados, EmpleadosDto>(await this.AddAsync(user));
 
-        //}
+            foreach(var rolid in dto.UsuarioRoles)
+            {
+                var er = new EmpleadosRoles();
+                er.EmpleadoId = result.Id;
+                er.RolId = rolid;
+                await _rolesService.AddAsync(er);
+                
+            }
+
+            if (!string.IsNullOrEmpty(user.Usuario))
+            {
+                MailMessage mail = new MailMessage();
+                mail.To.Add(user.Usuario);
+                mail.Subject = "Bienvenido a Nos Premiamos";
+                mail.Body = string.Format("Hola {0}, {1} esta es tu contraseña: {2} para tu primer ingreso, luego deberas seguir los pasos para cambiarla", user.Apellido, user.Nombre, dto.Contraseña);
+
+                
+                await userEmailer.SendEmail(mail);
+            }
+            return result;
+
+        }
 
         //public async Task<String> ResetPassword(int id)
         //{
@@ -229,6 +250,6 @@ namespace NP.Admin.AppService
         //    }
         //    return MapObject<SysUsers, EmpleadosDto>(usersDto.Items.FirstOrDefault());
         //}
-       
+
     }
 }

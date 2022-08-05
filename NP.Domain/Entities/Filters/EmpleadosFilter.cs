@@ -10,12 +10,14 @@ namespace NP.Admin.Domain.Entities.Filters
     public class EmpleadosFilter : FilterPagedListBase<Empleados, int>
     {
         public string Nombre { get; internal set; }
+        public string Usuario { get; set; }
 
         public override List<Expression<Func<Empleados, object>>> GetIncludesForPageList()
         {
             return new List<Expression<Func<Empleados, object>>>
             {
-                e => e.EmpleadosRoles
+                e => e.EmpleadosRoles,
+                
             };
         }
 
@@ -28,15 +30,15 @@ namespace NP.Admin.Domain.Entities.Filters
                 Expression<Func<Empleados, bool>> filterTextExp = e => e.Nombre.Contains(this.Nombre);
                 baseFE = baseFE.And(filterTextExp);
             }
+            if (!string.IsNullOrEmpty(this.Usuario))
+            {
+                baseFE = baseFE.And(e => e.Usuario == this.Usuario);
+            }
 
 
             return baseFE;
         }
 
     }
-
-
-
-
 
 }

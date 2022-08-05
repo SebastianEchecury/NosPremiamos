@@ -2,6 +2,7 @@ import React, { Children, cloneElement, isValidElement, useEffect } from "react"
 import { useLocation } from "react-router-dom";
 import { Accordion, Nav } from "@themesberg/react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import SidebarItem from "./sidebar-item";
 

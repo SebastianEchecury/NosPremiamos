@@ -19,9 +19,9 @@ export const Routes = {
   Users: {
     path: "/users",
     Create: { path: "/users/create" },
-    Delete: { path: "/users/:id/delete" },
-    Update: { path: "/users/:id/update" },
-    View: { path: "/users/:id/view" }
+    Delete: { path: "/users/:Id/delete" },
+    Update: { path: "/users/:Id/update" },
+    View: { path: "/users/:Id/view" }
   },
   Roles: {
     path: "/roles",

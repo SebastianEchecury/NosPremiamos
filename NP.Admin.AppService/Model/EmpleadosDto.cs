@@ -9,7 +9,7 @@ namespace NP.Admin.AppService.Model
         public EmpleadosDto()
         {
             //EmpleadosCategoriasAprobadores = new HashSet<EmpleadosCategoriasAprobadoresDto>();
-            //EmpleadosRoles = new HashSet<EmpleadosRolesDto>();
+            EmpleadosRoles = new List<EmpleadosRolesDto>();
             //VotosAprobadorEmpleado = new HashSet<VotosDto>();
             //VotosVotadoEmpleado = new HashSet<VotosDto>();
             //VotosVotanteEmpleado = new HashSet<VotosDto>();
@@ -21,9 +21,11 @@ namespace NP.Admin.AppService.Model
         public string Contraseña { get; set; }
         public bool? Eliminado { get; set; }
         public bool? PrimerIngreso { get; set; }
+        public List<int> UsuarioRoles { get; set; }
+
 
         //public ICollection<EmpleadosCategoriasAprobadoresDto> EmpleadosCategoriasAprobadores { get; set; }
-        //public ICollection<EmpleadosRolesDto> EmpleadosRoles { get; set; }
+        public List<EmpleadosRolesDto> EmpleadosRoles { get; set; }
         //public ICollection<VotosDto> VotosAprobadorEmpleado { get; set; }
         //public ICollection<VotosDto> VotosVotadoEmpleado { get; set; }
         //public ICollection<VotosDto> VotosVotanteEmpleado { get; set; }

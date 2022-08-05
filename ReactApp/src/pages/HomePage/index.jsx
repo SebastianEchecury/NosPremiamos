@@ -59,8 +59,8 @@ const HomePage = () => {
         <RouteWithSidebar exact path={Routes.Users.path} component={Users} />
         <RouteWithSidebar exact path={Routes.Users.Create.path} component={User} />
         <RouteWithSidebar exact path={Routes.Users.Delete.path} component={Users} />
-        <RouteWithSidebar exact path={Routes.Users.Update.path} component={({ match }) => <User id={match.params.id} />} />
-        <RouteWithSidebar exact path={Routes.Users.View.path} component={({ match }) => <User id={match.params.id} disabled={true} />} />
+        <RouteWithSidebar exact path={Routes.Users.Update.path} component={({ match }) => <User Id={match.params.Id} />} />
+        <RouteWithSidebar exact path={Routes.Users.View.path} component={({ match }) => <User Id={match.params.Id} disabled={true} />} />
 
         <RouteWithSidebar exact path={Routes.Roles.path} component={Roles} />
         <RouteWithSidebar exact path={Routes.Roles.Create.path} component={Role} />

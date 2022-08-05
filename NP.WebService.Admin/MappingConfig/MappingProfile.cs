@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using AutoMapper.EquivalencyExpression;
 using NP.Admin.AppService.Model;
+using NP.Admin.Domain.Entities;
 using NP.Domain.Entities;
 using TECSO.FWK.AppService.Model;
 
@@ -111,11 +112,23 @@ namespace NP.WebService.Admin
             CreateMap<CategoriasDto, Categorias>()
                 .EqualityComparison((odto, o) => odto.Id == o.Id);
 
-            //CreateMap<Empleados, EmpleadosDto>()
-            //  .EqualityComparison((odto, o) => odto.Id == o.Id);
+            CreateMap<Empleados, EmpleadosDto>()
+              .EqualityComparison((odto, o) => odto.Id == o.Id);
 
-            //CreateMap<EmpleadosDto, Empleados>()
-            //    .EqualityComparison((odto, o) => odto.Id == o.Id);
+            CreateMap<EmpleadosDto, Empleados>()
+                .EqualityComparison((odto, o) => odto.Id == o.Id);
+
+            CreateMap<Roles, RolesDto>()
+            .EqualityComparison((odto, o) => odto.Id == o.Id);
+
+            CreateMap<RolesDto, Roles>()
+                .EqualityComparison((odto, o) => odto.Id == o.Id);
+
+            CreateMap<EmpleadosRoles, EmpleadosRolesDto>()
+                .EqualityComparison((odto, o) => odto.Id == o.Id);
+
+            CreateMap<EmpleadosRolesDto, EmpleadosRoles>()
+                .EqualityComparison((odto, o) => odto.Id == o.Id);
 
 
 

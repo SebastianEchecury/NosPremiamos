@@ -15,9 +15,11 @@ using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Serialization;
 using NP.Admin.AppService;
 using NP.Admin.AppService.Interface;
+using NP.Admin.Domain;
 using NP.Admin.Domain.Interfaces.Repositories;
 using NP.Admin.Domain.Interfaces.Services;
 using NP.Admin.Domain.Services;
+using NP.Domain.Email.User;
 using NP.infra.Data.Contexto;
 using NP.infra.Data.Repositories;
 using NP.WebService.Admin.Shared;
@@ -204,6 +206,12 @@ namespace NP.WebService.Admin
             services.AddTransient<IRoleAppService, RoleAppService>();
             services.AddTransient<IRoleService, RoleService>();
 
+            //EmpleadosRoles
+            services.AddTransient<IEmpleadoRolesRepository, EmpleadoRolesRepository>();
+            services.AddTransient<IEmpleadoRolesAppService, EmpleadoRolesAppService>();
+            services.AddTransient<IEmpleadoRolesService, EmpleadoRolesService>();
+
+            services.AddTransient<IUserEmailer, UserEmailer>();
 
             //AppContenido
             //services.AddTransient<IAppContenidoAppService, AppContenidoAppService>();

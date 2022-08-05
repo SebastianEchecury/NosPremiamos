@@ -23,7 +23,8 @@ namespace TECSO.FWK.Domain.Mail.Smtp
         /// </summary>
         public virtual int Port
         {
-            get { return Convert.ToInt32(SettingManager[EmailSettingNames.Smtp.Port]); }
+            get { return Convert.ToInt32(SettingManager[EmailSettingNames.Smtp.
+                Port]); }
         }
 
         /// <summary>

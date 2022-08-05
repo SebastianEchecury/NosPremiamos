@@ -51,7 +51,7 @@ namespace NP.Admin.Domain.Services
         {
             if (mode == SaveMode.Add)
             {
-                 Empleados existuser = (await this.repository.GetAllAsync( new EmpleadosFilter() { Nombre = entity.Nombre })).FirstOrDefault();
+                 Empleados existuser = (await this.repository.GetAllAsync( new EmpleadosFilter() { Usuario = entity.Usuario })).FirstOrDefault();
 
                 if (existuser != null)
                     throw new DomainValidationException("El Usuario ya existe");

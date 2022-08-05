@@ -53,7 +53,7 @@ namespace TECSO.FWK.ApiServices
 
 
 
-        [HttpGet("{Id}")]
+        [HttpGet]
         public virtual async Task<IActionResult> GetByIdAsync(TPrimaryKey Id)
         {
             try
@@ -130,7 +130,7 @@ namespace TECSO.FWK.ApiServices
         }
 
 
-        [HttpGet]
+        [HttpGet("List")]
         public virtual async Task<IActionResult> GetAllAsync(TFilter filter)
         {
             try

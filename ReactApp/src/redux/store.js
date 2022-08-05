@@ -16,6 +16,7 @@ import { api as users } from './apis/users';
 import { api as userTypes } from './apis/user-types';
 import { api as contenidos} from './apis/contenidos';
 import { api as talonarioTickets} from './apis/talonario-tickets';
+import {api as userRoles} from './apis/user-roles';
 
 import authReducer from './slices/auth';
 import missingTranslationsReducer from './slices/missing-translations';
@@ -36,7 +37,8 @@ const apis = [
   userTypes,
   terminales,
   contenidos,
-  talonarioTickets
+  talonarioTickets,
+  userRoles
 
 ];
 

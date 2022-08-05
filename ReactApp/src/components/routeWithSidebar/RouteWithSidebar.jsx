@@ -22,6 +22,7 @@ let RouteWithSidebar = ({ permission, component: Component, ...rest }) => {
     /*if (PathKey !== undefined && Permission !== undefined && !Permission.some(x => x === PathKey)) {
       history.push(Routes.NotFound.path)
     }*/
+    
   }, [auth.token]);
 
   useEffect(() => {
