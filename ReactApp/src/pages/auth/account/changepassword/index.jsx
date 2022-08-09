@@ -7,16 +7,11 @@ import { useHistory } from 'react-router-dom';
 import { useResetPasswordMutation } from '../../../../redux/apis/auth';
 import { Routes } from './../../../../routes';
 import { translationsGroupNames } from '../../../../utils/translationsGroupNames';
-import {useGetQuery as userGetIdUser } from '../../../../redux/apis/users'
 
-export default   ({userId, resetCode}) => {
+export default   () => {
     const history = useHistory();
     const { translations } = useTranslations({ group: translationsGroupNames.Generic, keys: ['ConfirmPassword', 'Password'] });
-    const { translations: genericTranslations } = useTranslations({ group: translationsGroupNames.Generic, keys: ['ConfirmPassword','Password'] });
-    const { translations: errorsTranslations } = useTranslations({ group: translationsGroupNames.Errors, keys: ['FieldRequired', 'InvalidFormat', 'PasswordsMustMatch'] });
-    const {data: user = {}} = userGetIdUser(userId);
-    const isRegister = (user.isActive && user.emailConfirmed)? true: false;
-
+  
   const [resetPassword, { isSuccess: isResetPasswordSuccess, isError: isResetPasswordError, data: resetPasswordData, error: resetPasswordError }] = useResetPasswordMutation();
 
   const formik = useFormik({
@@ -24,15 +19,13 @@ export default   ({userId, resetCode}) => {
     initialValues: {
       confirmpassword: '',
       password: '',
-      id: userId,
-      passwordResetCode: resetCode,
       errorResetPassword: ''
     },
     validationSchema: Yup.object().shape({
-      password: Yup.string().required(errorsTranslations.FieldRequired.replace('{0}',genericTranslations.Password)),
+      password: Yup.string().required('Debe ingresar Contraseña'),
       confirmpassword: Yup.string()
-        .oneOf([Yup.ref('password'), null], errorsTranslations.PasswordsMustMatch.replace('{0}',genericTranslations.ConfirmPasswords))
-        .required(errorsTranslations.FieldRequired.replace('{0}',genericTranslations.Password))
+        .oneOf([Yup.ref('password'), null], 'Las contraseñas deben ser iguales')
+        .required('Debe confirmar Contraseña')
 
     }),
     onSubmit: (values) => {
@@ -60,39 +53,34 @@ export default   ({userId, resetCode}) => {
                 <Row className="justify-content-center form-bg-image" >
                     <Col xs={12} className="d-flex align-items-center justify-content-center">
                         <div className="bg-white shadow-soft border rounded border-light p-4 p-lg-5 w-100 fmxw-500">
-                            <div className="text-center text-md-center mb-4 mt-md-0" hidden={!isRegister}>
+                            <div className="text-center text-md-center mb-4 mt-md-0">
                             <h3 className="mb-0">
-                                <TranslatableText group={translationsGroupNames.Generic} entry="ChangePassword" />
-                            </h3>
-                            </div>
-                            <div className="text-center text-md-center mb-4 mt-md-0" hidden={isRegister}>
-                            <h3 className="mb-0">
-                                <TranslatableText group={translationsGroupNames.Generic}  entry="SetUpUser" />
+                                <TranslatableText entry="Cambio de Contraseña" />
                             </h3>
                             </div>
                             <Form className="mt-4" onSubmit={formik.handleSubmit}>
                             <Form.Group>
                                 <Form.Group id="password" className="mb-4">
                                 <Form.Label>
-                                    <TranslatableText group={translationsGroupNames.Generic} entry="YourPassword" />
+                                    <TranslatableText  entry="Nueva Contraseña" />
                                 </Form.Label>                      
                                     <Form.Control
                                     type="password"
                                     {...formik.getFieldProps('password')}
                                     isInvalid={!!formik.errors.password}
-                                    placeholder={translations.Password}
+                                    placeholder='Ingrese su nueva contraseña'
                                 />                        
                                 <Form.Control.Feedback type="invalid">{formik.errors.password}</Form.Control.Feedback>
                                 </Form.Group>
                                 <Form.Group id="confirmpassword" className="mb-4">
                                 <Form.Label>
-                                    <TranslatableText group={translationsGroupNames.Generic} entry="ConfirmPassword" />
+                                    <TranslatableText entry="Confirmar Contraseña" />
                                 </Form.Label>                      
                                     <Form.Control
                                     type="password"
                                     {...formik.getFieldProps('confirmpassword')}
                                     isInvalid={!!formik.errors.confirmpassword}
-                                    placeholder={translations.ConfirmPassword}
+                                    placeholder='Confirma tu nueva contraseña'
                                 />                        
                                 <Form.Control.Feedback type="invalid">{formik.errors.confirmpassword}</Form.Control.Feedback>
                                 </Form.Group> 
@@ -105,16 +93,13 @@ export default   ({userId, resetCode}) => {
                                 />                  
                                    <Form.Control.Feedback type="invalid">{formik.errors.errorResetPassword}</Form.Control.Feedback>
                                 </Form.Group>                            
-                                <Button type="submit" variant="primary" hidden={!isRegister} className="w-100">
-                                    <TranslatableText group={translationsGroupNames.Generic}  entry="ConfirmChange" />
-                                </Button> 
-                                <Button type="submit" variant="primary" hidden={isRegister} className="w-100">
-                                    <TranslatableText group={translationsGroupNames.Generic}  entry="RegisterUser" />
+                                <Button type="submit" variant="primary" className="w-100">
+                                    <TranslatableText   entry="Restableser Contraseña" />
                                 </Button> 
                                 <br/>
                                 <br/>
                                 <Button variant="primary" onClick={onCancelClick} className="w-100">
-                                    <TranslatableText group={translationsGroupNames.Generic} entry="Cancel" />
+                                    <TranslatableText entry="Cancelar" />
                                 </Button>
                             </Form.Group>
                             </Form>

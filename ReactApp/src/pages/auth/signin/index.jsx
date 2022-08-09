@@ -34,8 +34,14 @@ let Signin = (props) => {
 
   useEffect(() => {
     if (isLoginSuccess) {    
-      localStorage.setItem('usuario', JSON.stringify(loginData))
+      localStorage.setItem('usuario', JSON.stringify(loginData));
+      const primerIngreso =  JSON.parse(localStorage.getItem('usuario')).primerIngreso;
+      if(!primerIngreso){
+        history.push(Routes.AccountChangePassword.path);
+      }
+      else{
       history.push(Routes.Dashboard.path);
+      }
     }
   }, [token]);
 

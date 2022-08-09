@@ -211,7 +211,7 @@ namespace NP.Admin.AppService
                 var er = new EmpleadosRoles();
                 er.EmpleadoId = result.Id;
                 er.RolId = rolid;
-                await _rolesService.AddAsync(er);
+                _rolesService.AddAsync(er);
                 
             }
 

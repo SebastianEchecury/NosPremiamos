@@ -22,9 +22,9 @@ import { useHistory } from 'react-router-dom';
 
 export default () => {
   const { translations: layoutTranslations } = useTranslations({ group: translationsGroupNames.Layout, keys: ['Configuracion', 'Dashboard', 'Procesos', 'Seguridad', 'TasaComunal'] });
-  const { translations: rolesTranslations } = useTranslations({ group: translationsGroupNames.Roles, keys: ['Roles'] });
+
   const { translations: terminalesTranslations } = useTranslations({ group: translationsGroupNames.Terminales, keys: ['CobrarTasa', 'Cupos', 'LiquidarSaldoCuentaCorriente', 'OtorgarCuposDesdeCtg', 'TalonariosTickets', 'Terminales'] });
-  const { translations: usersTranslations } = useTranslations({ group: translationsGroupNames.Users, keys: ['Users'] });
+  
   let history = useHistory();
 
   
