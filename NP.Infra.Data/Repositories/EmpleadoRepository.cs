@@ -39,14 +39,11 @@ namespace NP.infra.Data.Repositories
 
         protected override IQueryable<Empleados> AddIncludeForGet(DbSet<Empleados> dbSet)
         {
-            return base.AddIncludeForGet(dbSet).Include("EmpleadosRoles");
+            return base.AddIncludeForGet(dbSet).Include(e=> e.EmpleadosRoles);
         }
+        
 
-        public override Task<Empleados> UpdateAsync(Empleados entity)
-        {
-
-            return base.UpdateAsync(entity);
-        }
+       
 
         
 

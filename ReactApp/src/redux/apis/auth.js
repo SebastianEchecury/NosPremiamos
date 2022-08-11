@@ -46,10 +46,10 @@ export const api = createApi({
       }),
     }),
     ResetPassword: builder.mutation({
-      query: ({ password , confirmpassword, id, passwordResetCode}) => ({
-        url: 'ResetPassword',
+      query: ({ password , passwordnueva, empleadoid,}) => ({
+        url: 'CambiarPassword',
         method: 'POST',
-        body:{password, confirmpassword, id, passwordResetCode},
+        body:{password, passwordnueva, empleadoid},
         responseHandler: (response) => {
           if (response.ok) {
             return response.ok;

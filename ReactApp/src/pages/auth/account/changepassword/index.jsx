@@ -19,12 +19,14 @@ export default   () => {
     initialValues: {
       confirmpassword: '',
       password: '',
+      passwordnueva: '',
       errorResetPassword: ''
     },
     validationSchema: Yup.object().shape({
       password: Yup.string().required('Debe ingresar Contraseña'),
+      passwordnueva: Yup.string().required('Debe ingresar Contraseña'),
       confirmpassword: Yup.string()
-        .oneOf([Yup.ref('password'), null], 'Las contraseñas deben ser iguales')
+        .oneOf([Yup.ref('passwordnueva'), null], 'Las contraseñas deben ser iguales')
         .required('Debe confirmar Contraseña')
 
     }),
@@ -38,7 +40,7 @@ export default   () => {
           history.push(Routes.AccountChangePassword.SuccessPassword.path);
         }
         else if (isResetPasswordError) {
-            formik.setErrors({password: resetPasswordError.data.password? [].concat(...Object.values(resetPasswordError.data.password).join('. ')): '' , errorResetPassword: resetPasswordError.data.passwordResetCode? resetPasswordError.data.passwordResetCode: '' });
+            formik.setErrors({ errorResetPassword: [].concat(...Object.values(JSON.parse(resetPasswordError.data).Messages)) });
         }
       }, [isResetPasswordSuccess, resetPasswordData, isResetPasswordError, resetPasswordError, history]);
      
@@ -59,19 +61,32 @@ export default   () => {
                             </h3>
                             </div>
                             <Form className="mt-4" onSubmit={formik.handleSubmit}>
+                            
                             <Form.Group>
-                                <Form.Group id="password" className="mb-4">
+                            <Form.Group id="password" className="mb-4">
                                 <Form.Label>
-                                    <TranslatableText  entry="Nueva Contraseña" />
+                                    <TranslatableText  entry="Contraseña" />
                                 </Form.Label>                      
                                     <Form.Control
                                     type="password"
                                     {...formik.getFieldProps('password')}
                                     isInvalid={!!formik.errors.password}
-                                    placeholder='Ingrese su nueva contraseña'
+                                    placeholder='Ingrese su contraseña'
                                 />                        
                                 <Form.Control.Feedback type="invalid">{formik.errors.password}</Form.Control.Feedback>
-                                </Form.Group>
+                            </Form.Group>
+                                <Form.Group id="passwordnew" className="mb-4">
+                                <Form.Label>
+                                    <TranslatableText  entry="Nueva Contraseña" />
+                                </Form.Label>                      
+                                    <Form.Control
+                                    type="password"
+                                    {...formik.getFieldProps('passwordnueva')}
+                                    isInvalid={!!formik.errors.passwordnueva}
+                                    placeholder='Ingrese su nueva contraseña'
+                                />                        
+                                <Form.Control.Feedback type="invalid">{formik.errors.passwordnueva}</Form.Control.Feedback>
+                            </Form.Group>
                                 <Form.Group id="confirmpassword" className="mb-4">
                                 <Form.Label>
                                     <TranslatableText entry="Confirmar Contraseña" />

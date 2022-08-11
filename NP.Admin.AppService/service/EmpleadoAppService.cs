@@ -42,38 +42,6 @@ namespace NP.Admin.AppService
             userEmailer = _userEmailer;
         }
 
-        //public async Task<List<EmpleadosRolesDto>> GetUserRoles(int id)
-        //{
-        //    var rolesusuarios = await this._serviceBase.GetUserRoles(id);
-
-        //    return await GetUserRoles(rolesusuarios);
-        //}
-
-        //private async Task<List<EmpleadosRolesDto>> GetUserRoles(List<EmpleadosRolesDto> rolesusuarios)
-        //{
-        //    var allrole = await this._roleService.GetAllAsync(new RoleFilter());
-
-        //    var result = new List<EmpleadosRolesDto>();
-
-        //    foreach (var r in allrole)
-        //    {
-        //        var ur = new EmpleadosRolesDto();
-        //        ur.RoleId = r.Id;
-        //        ur.RoleName = r.Name;
-        //        ur.RoleDisplayName = r.DisplayName;
-        //        ur.IsAssigned = rolesusuarios.Any(e => e.RoleId == r.Id);
-        //        result.Add(ur);
-        //    }
-
-        //    return result;
-        //}
-
-        //public override async Task<EmpleadosDto> UpdateAsync(EmpleadosDto dto)
-        //{
-        //    dto.UserRoles = dto.UserRoles.Where(e => e.IsAssigned).ToList();
-
-        //    return await base.UpdateAsync(dto);
-        //}
 
         public async Task<Empleados> Login(string Username, string Password)
         {
@@ -123,70 +91,12 @@ namespace NP.Admin.AppService
 
             var _passwordHasher = new PasswordHasher<Empleados>();
             user.Contraseña = _passwordHasher.HashPassword(user, input.PasswordNueva);
-            user.PrimerIngreso = false;
+            user.PrimerIngreso = true;
 
             await this.UpdateAsync(user);
 
             return true;
-        }
-
-        //public async Task<GetPermissionsForEditOutput> GetUserPermissionsForEdit(int id)
-        //{
-        //    var permissions = await this._PermissionService.GetAllAsync<PermissionsFilter>(null);
-        //    var grantedPermissions = await this._serviceBase.GetGrantedPermissionsAsync(id);
-
-        //    GetPermissionsForEditOutput result = GetPermissionsForEditOutput.GetPermissionsForEdit(permissions, grantedPermissions);
-
-        //    return result;
-        //}
-
-        //public async Task UpdateUserPermissions(UpdateUserPermissionsInput input)
-        //{
-        //    if (input.GrantedPermissionNames == null)
-        //    {
-        //        throw new TecsoException("Falta lista de permisos");
-        //    }
-        //    await _serviceBase.SetGrantedPermissionsAsync(input.Id, input.GrantedPermissionNames);
-        //}
-
-        //public async Task<string[]> GetPermissionForCurrentUser()
-        //{
-        //    var grantedPermissionsUser = await this._PermissionService.GetPermissionForCurrentUser();
-        //    return grantedPermissionsUser;
-        //}
-
-        //public async override Task<EmpleadosDto> GetDtoByIdAsync(int id)
-        //{
-        //    if (id > 0)
-        //    {
-        //        var dto = await base.GetDtoByIdAsync(id);
-        //        dto.UserRoles = await this.GetUserRoles(id);
-        //        return dto;
-        //    }
-        //    else
-        //    {
-        //        return await this.GetDefaultDtoAsync();
-        //    }
-
-        //}
-
-        //public async Task<EmpleadosDto> GetDefaultDtoAsync()
-        //{
-        //    var allrole = await this._roleService.GetAllAsync(new RoleFilter());
-        //    var roles = new List<UserRoleDto>();
-        //    foreach (var r in allrole)
-        //    {
-        //        var ur = new UserRoleDto();
-        //        ur.RoleId = r.Id;
-        //        ur.RoleName = r.Name;
-        //        ur.RoleDisplayName = r.DisplayName;
-        //        ur.IsAssigned = r.IsDefault;
-        //        roles.Add(ur);
-        //    }
-
-        //    var newDto = new EmpleadosDto() { UserRoles = roles };
-        //    return newDto;
-        //}
+        }       
 
         public async override Task<EmpleadosDto> AddAsync(EmpleadosDto dto)
         {
@@ -229,27 +139,21 @@ namespace NP.Admin.AppService
 
         }
 
-        //public async Task<String> ResetPassword(int id)
-        //{
-        //    var user = await this.GetByIdAsync(id);
+        public override async Task<EmpleadosDto> UpdateAsync(EmpleadosDto dto)
+        {
 
-        //    user.SetNewPasswordResetCode();
-        //    await this.UpdateAsync(user);
-        //    var emailActivationLink = AppUrlService.CreatePasswordResetUrlFormat();
-        //    await _userEmailer.SendPasswordResetLinkAsync(user, emailActivationLink);
-        //    return user.PasswordResetCode;
-        //}
+            //Roles Agregar
+            foreach (var rolid in dto.UsuarioRoles)
+            {
+                    var er = new EmpleadosRoles();
+                    er.EmpleadoId = dto.Id;
+                    er.RolId = rolid;
+                   await _rolesService.AddAsync(er);
+            }
 
-        //public async Task<EmpleadosDto> GetUserByEmailAsync(string email)
-        //{
-        //    UserFilter userFilter = new UserFilter() { Email = email };
-        //    var usersDto = await this._serviceBase.GetPagedListAsync(userFilter);
-        //    if(usersDto.Items.Count == 0)
-        //    {
-        //        return null;
-        //    }
-        //    return MapObject<SysUsers, EmpleadosDto>(usersDto.Items.FirstOrDefault());
-        //}
+
+            return await base.UpdateAsync(dto);
+        }
 
     }
 }

@@ -11,10 +11,6 @@ namespace NP.Admin.Domain
         public string PasswordNueva { get; set; }
 
         public int?  EmpleadoId { get; set; }
-
-        //public string ReturnUrl { get; set; }
-
-        //public string SingleSignIn { get; set; }
     }
     public class ResetPasswordOutput
     {
