@@ -20,8 +20,8 @@ export default function Row({ value, index, values }) {
       {value.Eliminado && <Cell><Badge bg="typography-light-mode-tertiary"><TranslatableText  entry="Inactivo" /></Badge></Cell>}
       <Cell>        
         {PermissionChecker(permissionsKeys.USER_UPDATE) && !value.isSystem && <IconButton title='Editar' icon={faEdit} href={Routes.Users.Update.path.replace(':Id', value.Id)} className="mx-1" />}
-        {PermissionChecker(permissionsKeys.USER_DELETE) && !value.isSystem && value.Eliminado && <IconButton title='Eliminar' icon={faTrash} href={Routes.Users.Delete.path.replace(':Id', value.Id)} className="mx-1" />}
-        {PermissionChecker(permissionsKeys.USER_DELETE) && !value.Eliminado && <IconButton title='Activar' icon={faCheck} href={Routes.Users.View.path.replace(':Id', value.Id)} className="mx-1" />}
+        {PermissionChecker(permissionsKeys.USER_DELETE) && !value.isSystem && !value.Eliminado && <IconButton title='Eliminar' icon={faTrash} href={Routes.Users.Delete.path.replace(':Id', value.Id)} className="mx-1" />}
+        {PermissionChecker(permissionsKeys.USER_DELETE) && value.Eliminado && <IconButton title='Activar' icon={faCheck} href={Routes.Users.View.path.replace(':Id', value.Id)} className="mx-1" />}
       </Cell>
     </TecsoRow>
   );
