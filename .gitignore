@@ -1,0 +1,17 @@
+/build/
+*.suo
+*.user
+bin/
+obj/
+Debug/
+Release/
+.vs/
+/MIPSDK_Installer_2018R1.msi
+/packages/
+/NS.WebService.Admin/Controllers/MovimientoController.cs
+/NS.WebService.Admin/temp/_.txt
+/NS.WebService.Admin/temp/*.txt
+
+.vs/slnx.sqlite
+/.vs/NosPremiamos/v16
+/.vs/NosPremiamos/v15
