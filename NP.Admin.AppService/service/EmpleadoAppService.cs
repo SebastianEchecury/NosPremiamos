@@ -100,42 +100,54 @@ namespace NP.Admin.AppService
 
         public async override Task<EmpleadosDto> AddAsync(EmpleadosDto dto)
         {
-            var user = MapObject<EmpleadosDto, Empleados>(dto);
-
-            var hp = new PasswordHasher<Empleados>();
-
-
-            if (string.IsNullOrEmpty(dto.Contraseña))
+            try
             {
-                dto.Contraseña = Guid.NewGuid().ToString().Substring(1,8);
+                var user = MapObject<EmpleadosDto, Empleados>(dto);
+
+                var hp = new PasswordHasher<Empleados>();
+
+
+                if (string.IsNullOrEmpty(dto.Contraseña))
+                {
+                    dto.Contraseña = Guid.NewGuid().ToString().Substring(1, 8);
+                }
+
+                user.Contraseña = hp.HashPassword(user, dto.Contraseña);
+                user.PrimerIngreso = false;
+                user.Eliminado = false;
+
+
+
+                if (!string.IsNullOrEmpty(user.Usuario))
+                {
+                    MailMessage mail = new MailMessage();
+                    mail.To.Add(user.Usuario);
+                    mail.Subject = "Bienvenido a Nos Premiamos";
+                    mail.Body = string.Format("Hola {0}, {1} esta es tu contraseña: {2} para tu primer ingreso, luego deberas seguir los pasos para cambiarla", user.Apellido, user.Nombre, dto.Contraseña);
+
+
+                    await userEmailer.SendEmail(mail);
+                }
+
+                var result = MapObject<Empleados, EmpleadosDto>(await this.AddAsync(user));
+
+
+                foreach (var rolid in dto.UsuarioRoles)
+                {
+                    var er = new EmpleadosRoles();
+                    er.EmpleadoId = result.Id;
+                    er.RolId = rolid;
+                     await _rolesService.AddAsync(er);
+
+                }
+
+
+                return result;
             }
-
-            user.Contraseña = hp.HashPassword(user, dto.Contraseña);
-            user.PrimerIngreso = false;
-            user.Eliminado = false;
-
-            var result = MapObject<Empleados, EmpleadosDto>(await this.AddAsync(user));
-
-            foreach(var rolid in dto.UsuarioRoles)
+            catch (Exception ex)
             {
-                var er = new EmpleadosRoles();
-                er.EmpleadoId = result.Id;
-                er.RolId = rolid;
-                _rolesService.AddAsync(er);
-                
+                throw new ValidationException("Ha Ocurrido un error, intente nuevamente");
             }
-
-            if (!string.IsNullOrEmpty(user.Usuario))
-            {
-                MailMessage mail = new MailMessage();
-                mail.To.Add(user.Usuario);
-                mail.Subject = "Bienvenido a Nos Premiamos";
-                mail.Body = string.Format("Hola {0}, {1} esta es tu contraseña: {2} para tu primer ingreso, luego deberas seguir los pasos para cambiarla", user.Apellido, user.Nombre, dto.Contraseña);
-
-                
-                await userEmailer.SendEmail(mail);
-            }
-            return result;
 
         }
 

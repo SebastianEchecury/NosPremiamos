@@ -63,7 +63,7 @@ export default function UserForm({ Id, disabled = false }) {
       history.goBack();
     }
     else if (isUpdateSuccess) {
-      toast.success(updateData.message);
+      toast.success(updateData.message.Messages);
       history.goBack();
     }
   }, [isAddSuccess, addData, isUpdateSuccess, updateData]);
