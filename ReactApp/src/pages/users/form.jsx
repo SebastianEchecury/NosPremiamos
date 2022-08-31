@@ -107,7 +107,7 @@ export default function UserForm({ Id, disabled = false }) {
                 <Form.Label>
                   <TranslatableText  entry="Usuario" />
                 </Form.Label>
-                <Form.Control type="email" {...formik.getFieldProps('Usuario')} isInvalid={!!formik.errors.Usuario} disabled={disabled || !!Id} />
+                <Form.Control type="email" {...formik.getFieldProps('Usuario')} isInvalid={!!formik.errors.Usuario && formik.touched.Usuario} disabled={disabled || !!Id} />
                 <Form.Control.Feedback type="invalid">{formik.errors.Usuario}</Form.Control.Feedback>
               </Form.Group>
             </Col>
@@ -116,7 +116,7 @@ export default function UserForm({ Id, disabled = false }) {
                 <Form.Label>
                   <TranslatableText  entry="Nombre" />
                 </Form.Label>
-                <Form.Control type="text"  {...formik.getFieldProps('Nombre')} isInvalid={!!formik.errors.Nombre} disabled={disabled} />
+                <Form.Control type="text"  {...formik.getFieldProps('Nombre')} isInvalid={!!formik.errors.Nombre && formik.touched.Nombre} disabled={disabled} />
                 <Form.Control.Feedback type="invalid">{formik.errors.Nombre}</Form.Control.Feedback>
               </Form.Group>
             </Col>
@@ -127,7 +127,7 @@ export default function UserForm({ Id, disabled = false }) {
                 <Form.Label>
                   <TranslatableText  entry="Apellido" />
                 </Form.Label>
-                <Form.Control type="text"  {...formik.getFieldProps('Apellido')} isInvalid={!!formik.errors.Apellido} disabled={disabled} />
+                <Form.Control type="text"  {...formik.getFieldProps('Apellido')} isInvalid={!!formik.errors.Apellido && formik.touched.Apellido} disabled={disabled} />
                 <Form.Control.Feedback type="invalid">{formik.errors.Apellido}</Form.Control.Feedback>
               </Form.Group>
             </Col>
