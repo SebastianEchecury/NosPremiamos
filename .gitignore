@@ -1,7 +1,7 @@
 /build/
 *.suo
 *.user
-bin/
+*.bin/
 obj/
 Debug/
 Release/
@@ -15,3 +15,5 @@ Release/
 .vs/slnx.sqlite
 /.vs/NosPremiamos/v16
 /.vs/NosPremiamos/v15
+/.vs/NosPremiamos/v17
+
