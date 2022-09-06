@@ -14,6 +14,7 @@ using System.Linq;
 using NP.Admin.Domain.Entities;
 using System.Net.Mail;
 using System;
+using NP.Admin.Domain.Entities.Filters;
 
 namespace NP.Admin.AppService
 {
@@ -117,6 +118,16 @@ namespace NP.Admin.AppService
                 user.Eliminado = false;
 
 
+                var result = MapObject<Empleados, EmpleadosDto>(await this.AddAsync(user));
+
+                foreach (var rolid in dto.UsuarioRoles)
+                {
+                    var er = new EmpleadosRoles();
+                    er.EmpleadoId = result.Id;
+                    er.RolId = rolid;
+                    await _rolesService.AddAsync(er);
+
+                }
 
                 if (!string.IsNullOrEmpty(user.Usuario))
                 {
@@ -127,26 +138,14 @@ namespace NP.Admin.AppService
 
 
                     await userEmailer.SendEmail(mail);
-                }
-
-                var result = MapObject<Empleados, EmpleadosDto>(await this.AddAsync(user));
-
-
-                foreach (var rolid in dto.UsuarioRoles)
-                {
-                    var er = new EmpleadosRoles();
-                    er.EmpleadoId = result.Id;
-                    er.RolId = rolid;
-                     await _rolesService.AddAsync(er);
-
-                }
+                }              
 
 
                 return result;
             }
             catch (Exception ex)
             {
-                throw new ValidationException("Ha Ocurrido un error, intente nuevamente");
+                throw new ValidationException(ex.Message);
             }
 
         }
@@ -154,17 +153,26 @@ namespace NP.Admin.AppService
         public override async Task<EmpleadosDto> UpdateAsync(EmpleadosDto dto)
         {
 
+            //Eliminar Roles
+            var filterEmpleadosRoles = new EmpleadosRolesFilter();
+            filterEmpleadosRoles.IdEmpleado = dto.Id;
+            var rolesEmpleados =  _rolesService.GetAllAsync(filterEmpleadosRoles).Result;
+            for (int i = rolesEmpleados.Count - 1; i >= 0; i--)
+            {
+                await _rolesService.DeleteAsync(rolesEmpleados[i].Id);
+            }
+            var result = await base.UpdateAsync(dto);
+
             //Roles Agregar
             foreach (var rolid in dto.UsuarioRoles)
             {
-                    var er = new EmpleadosRoles();
-                    er.EmpleadoId = dto.Id;
-                    er.RolId = rolid;
-                   await _rolesService.AddAsync(er);
+                var er = new EmpleadosRoles();
+                er.EmpleadoId = dto.Id;
+                er.RolId = rolid;
+                await _rolesService.AddAsync(er);
             }
 
-
-            return await base.UpdateAsync(dto);
+            return result;
         }
 
     }

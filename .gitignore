@@ -1,11 +1,11 @@
 /build/
 *.suo
 *.user
-*.bin/
-obj/
+**/bin
+**/obj
 Debug/
 Release/
-.vs/
+*.vs/
 /MIPSDK_Installer_2018R1.msi
 /packages/
 /NS.WebService.Admin/Controllers/MovimientoController.cs
@@ -13,7 +13,7 @@ Release/
 /NS.WebService.Admin/temp/*.txt
 
 .vs/slnx.sqlite
-/.vs/NosPremiamos/v16
-/.vs/NosPremiamos/v15
-/.vs/NosPremiamos/v17
+**/.vs/NosPremiamos/v16
+**/.vs/NosPremiamos/v15
+**/.vs/NosPremiamos/v17
 

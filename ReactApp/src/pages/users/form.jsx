@@ -7,13 +7,11 @@ import toast from 'react-hot-toast';
 
 import { TranslatableText } from '../../components/translations';
 import { useGetListQuery as useGetRolesQuery } from '../../redux/apis/roles';
-import {useAddMutation as useAddEmpleadoRolMutation} from '../../redux/apis/user-roles'
 import { useAddMutation, useGetQuery as useGetUserQuery, useUpdateMutation } from '../../redux/apis/users';
 
 export default function UserForm({ Id, disabled = false }) {
   const history = useHistory();
   const [add, { isSuccess: isAddSuccess, data: addData, isError: isAddError, error: addError }] = useAddMutation();
-  const [addEmpleadoRol, { isSuccess: isAddEmpleadoRolSuccess, data: addEmpleadoRolData, isError: isAddEmpleadoRolError, error: addEmpleadoRolError }] = useAddEmpleadoRolMutation();
   const [update, { isSuccess: isUpdateSuccess, data: updateData, isError: isUpdateError, error: updateError }] = useUpdateMutation();
   const { data: roles = [] } = useGetRolesQuery();
   const { data: { Nombre, Apellido, Usuario, EmpleadosRoles } = {} } = useGetUserQuery(Id, { skip: !!!Id });
@@ -63,18 +61,18 @@ export default function UserForm({ Id, disabled = false }) {
       history.goBack();
     }
     else if (isUpdateSuccess) {
-      toast.success(updateData.message.Messages);
+      toast.success("Asociado se edito con exito");
       history.goBack();
     }
   }, [isAddSuccess, addData, isUpdateSuccess, updateData]);
 
   useEffect(() => {
     if (isAddError) {
-      toast.error([].concat(...Object.values(addError.data)));
+      toast.error([].concat(...Object.values(JSON.parse(addError.data).Messages)));
       formik.setErrors({ ...addError.data, email: addError.data.email || addError.data.userName });
     }
     else if (isUpdateError) {
-      toast.error([].concat(...Object.values(updateError.data)));
+      toast.error([].concat(...Object.values(JSON.parse(updateError.data).Messages)));
       formik.setErrors({ ...updateError.data, email: updateError.data.email || updateError.data.userName });
     }
   }, [isAddError, addError, isUpdateError, updateError]);

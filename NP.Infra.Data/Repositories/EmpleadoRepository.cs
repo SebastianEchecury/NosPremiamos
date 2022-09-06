@@ -93,8 +93,27 @@ namespace NP.infra.Data.Repositories
             }
         }
 
-       
 
+        public override async Task<Empleados> UpdateAsync(Empleados entity)
+        {
+            try
+            {
+                Context.Entry(entity).State = EntityState.Modified;
+                if (String.IsNullOrEmpty(entity.Contraseña))
+                {
+                    Context.Entry(entity).Property(e => e.Contraseña).IsModified = false;
+                    Context.Entry(entity).Property(e => e.Eliminado).IsModified = false;
+                    Context.Entry(entity).Property(e => e.PrimerIngreso).IsModified = false;
+                }  
+                await base.SaveChangesAsync();
+                return entity;
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex);
+                throw;
+            }
+        }
 
     }
 }

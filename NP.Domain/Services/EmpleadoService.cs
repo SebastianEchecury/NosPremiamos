@@ -4,6 +4,7 @@ using NP.Admin.Domain.Interfaces.Repositories;
 using NP.Admin.Domain.Interfaces.Services;
 using NP.Domain.Entities;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using TECSO.FWK.Domain;
@@ -47,14 +48,14 @@ namespace NP.Admin.Domain.Services
 
 
 
-        protected override async void ValidateEntity(Empleados entity, SaveMode mode)
+        protected override async Task ValidateEntity(Empleados entity, SaveMode mode)
         {
             if (mode == SaveMode.Add)
             {
-                 Empleados existuser = (await this.repository.GetAllAsync( new EmpleadosFilter() { Usuario = entity.Usuario })).FirstOrDefault();
+                Empleados existuser = (await this.repository.GetAllAsync( new EmpleadosFilter() { Usuario = entity.Usuario })).FirstOrDefault();
 
                 if (existuser != null)
-                    throw new DomainValidationException("El Usuario ya existe");
+                    throw new ValidationException("El Usuario ya existe");
 
             }
 
