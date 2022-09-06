@@ -379,7 +379,9 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xpath.xdocument\\4.3.0\\system.xml.xpath.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\maria.labus\\.nuget\\packages\\system.xml.xpath.xmldocument\\4.3.0\\system.xml.xpath.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\windowsazure.storage\\8.1.4\\windowsazure.storage.8.1.4.nupkg.sha512",
-    "C:\\Users\\maria.labus\\.nuget\\packages\\zxing.net\\0.16.4\\zxing.net.0.16.4.nupkg.sha512"
+    "C:\\Users\\maria.labus\\.nuget\\packages\\zxing.net\\0.16.4\\zxing.net.0.16.4.nupkg.sha512",
+    "C:\\Users\\maria.labus\\.nuget\\packages\\tecso.fwk.apiservices\\1.0.0\\tecso.fwk.apiservices.1.0.0.nupkg.sha512",
+    "C:\\Users\\maria.labus\\.nuget\\packages\\tecso.fwk.infra.data\\1.0.0\\tecso.fwk.infra.data.1.0.0.nupkg.sha512"
   ],
   "logs": [
     {

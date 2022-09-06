@@ -18,11 +18,11 @@ C:\Proyectos\NosPremiamos\TECSO.FWK.AppService\bin\Debug\netcoreapp2.1\TECSO.FWK
 C:\Proyectos\NosPremiamos\TECSO.FWK.AppService\bin\Debug\netcoreapp2.1\TECSO.FWK.STD.dll
 C:\Proyectos\NosPremiamos\TECSO.FWK.AppService\bin\Debug\netcoreapp2.1\TECSO.FWK.Domain_Std.pdb
 C:\Proyectos\NosPremiamos\TECSO.FWK.AppService\bin\Debug\netcoreapp2.1\TECSO.FWK.STD.pdb
-C:\Proyectos\NosPremiamos\TECSO.FWK.AppService\obj\Debug\netcoreapp2.1\TECSO.FWK.AppService.csproj.CoreCompileInputs.cache
+C:\Proyectos\NosPremiamos\TECSO.FWK.AppService\obj\Debug\netcoreapp2.1\TECSO.FWK.AppService.csproj.AssemblyReference.cache
+C:\Proyectos\NosPremiamos\TECSO.FWK.AppService\obj\Debug\netcoreapp2.1\TECSO.FWK.AppService.GeneratedMSBuildEditorConfig.editorconfig
 C:\Proyectos\NosPremiamos\TECSO.FWK.AppService\obj\Debug\netcoreapp2.1\TECSO.FWK.AppService.AssemblyInfoInputs.cache
 C:\Proyectos\NosPremiamos\TECSO.FWK.AppService\obj\Debug\netcoreapp2.1\TECSO.FWK.AppService.AssemblyInfo.cs
+C:\Proyectos\NosPremiamos\TECSO.FWK.AppService\obj\Debug\netcoreapp2.1\TECSO.FWK.AppService.csproj.CoreCompileInputs.cache
 C:\Proyectos\NosPremiamos\TECSO.FWK.AppService\obj\Debug\netcoreapp2.1\TECSO.FWK.AppService.csproj.CopyComplete
 C:\Proyectos\NosPremiamos\TECSO.FWK.AppService\obj\Debug\netcoreapp2.1\TECSO.FWK.AppService.dll
 C:\Proyectos\NosPremiamos\TECSO.FWK.AppService\obj\Debug\netcoreapp2.1\TECSO.FWK.AppService.pdb
-C:\Proyectos\NosPremiamos\TECSO.FWK.AppService\obj\Debug\netcoreapp2.1\TECSO.FWK.AppService.csproj.AssemblyReference.cache
-C:\Proyectos\NosPremiamos\TECSO.FWK.AppService\obj\Debug\netcoreapp2.1\TECSO.FWK.AppService.GeneratedMSBuildEditorConfig.editorconfig

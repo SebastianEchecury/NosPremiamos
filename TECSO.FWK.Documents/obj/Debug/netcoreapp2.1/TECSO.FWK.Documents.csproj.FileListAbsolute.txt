@@ -9,9 +9,10 @@ C:\Users\maria.labus\source\repos\smart-wallet-back-end\TECSO.FWK.Documents\obj\
 C:\Proyectos\NosPremiamos\TECSO.FWK.Documents\bin\Debug\netcoreapp2.1\TECSO.FWK.Documents.deps.json
 C:\Proyectos\NosPremiamos\TECSO.FWK.Documents\bin\Debug\netcoreapp2.1\TECSO.FWK.Documents.dll
 C:\Proyectos\NosPremiamos\TECSO.FWK.Documents\bin\Debug\netcoreapp2.1\TECSO.FWK.Documents.pdb
-C:\Proyectos\NosPremiamos\TECSO.FWK.Documents\obj\Debug\netcoreapp2.1\TECSO.FWK.Documents.csprojAssemblyReference.cache
-C:\Proyectos\NosPremiamos\TECSO.FWK.Documents\obj\Debug\netcoreapp2.1\TECSO.FWK.Documents.csproj.CoreCompileInputs.cache
+C:\Proyectos\NosPremiamos\TECSO.FWK.Documents\obj\Debug\netcoreapp2.1\TECSO.FWK.Documents.csproj.AssemblyReference.cache
+C:\Proyectos\NosPremiamos\TECSO.FWK.Documents\obj\Debug\netcoreapp2.1\TECSO.FWK.Documents.GeneratedMSBuildEditorConfig.editorconfig
 C:\Proyectos\NosPremiamos\TECSO.FWK.Documents\obj\Debug\netcoreapp2.1\TECSO.FWK.Documents.AssemblyInfoInputs.cache
 C:\Proyectos\NosPremiamos\TECSO.FWK.Documents\obj\Debug\netcoreapp2.1\TECSO.FWK.Documents.AssemblyInfo.cs
+C:\Proyectos\NosPremiamos\TECSO.FWK.Documents\obj\Debug\netcoreapp2.1\TECSO.FWK.Documents.csproj.CoreCompileInputs.cache
 C:\Proyectos\NosPremiamos\TECSO.FWK.Documents\obj\Debug\netcoreapp2.1\TECSO.FWK.Documents.dll
 C:\Proyectos\NosPremiamos\TECSO.FWK.Documents\obj\Debug\netcoreapp2.1\TECSO.FWK.Documents.pdb
