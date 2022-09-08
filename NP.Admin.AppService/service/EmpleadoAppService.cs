@@ -53,6 +53,12 @@ namespace NP.Admin.AppService
                 throw new ValidationException("Usuario y/o Contraseña Incorrectas");
             else
             {
+
+                if (User.Eliminado.Value)
+                {
+                    throw new ValidationException("Usuario inactivo");
+                }
+
                 var hp = new PasswordHasher<Empleados>();
 
                 var result = hp.VerifyHashedPassword(User, User.Contraseña, Password);
@@ -60,6 +66,7 @@ namespace NP.Admin.AppService
                 {
                     throw new ValidationException("Usuario y/o Contraseña Incorrectas");
                 }
+                
             }
 
 
@@ -175,6 +182,26 @@ namespace NP.Admin.AppService
             return result;
         }
 
+        public override Task DeleteAsync(int id)
+        {
+            var result = base.DeleteAsync(id);
+
+            if(result.Exception == null)
+            {
+                var empleado = this.GetByIdAsync(id).Result;
+                if(!empleado.Eliminado.Value && !empleado.PrimerIngreso.Value)
+                {
+                    MailMessage mail = new MailMessage();
+                    mail.To.Add(empleado.Usuario);
+                    mail.Subject = "Bienvenido a Nos Premiamos";
+                    mail.Body = string.Format("Hola {0}, {1} esta es tu contraseña: {2} para volver a activar tu usuario deberas ingresar y seguir los pasos para cambiarla la contraseña", empleado.Apellido, empleado.Nombre, empleado.Apellido);
+
+                    userEmailer.SendEmail(mail);
+                }
+            }
+
+            return result;
+        }
 
     }
 }
