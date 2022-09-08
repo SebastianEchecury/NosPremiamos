@@ -9,3 +9,16 @@ C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\TECSO.FWK.Domain_Std\obj
 C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\TECSO.FWK.Domain_Std\obj\Debug\netstandard2.0\TECSO.FWK.Domain_Std.csproj.CopyComplete
 C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\TECSO.FWK.Domain_Std\obj\Debug\netstandard2.0\TECSO.FWK.Domain_Std.dll
 C:\Users\maria.labus\Source\Repos\smart-wallet-back-end\TECSO.FWK.Domain_Std\obj\Debug\netstandard2.0\TECSO.FWK.Domain_Std.pdb
+C:\Proyectos\NosPremiamos\TECSO.FWK.Domain_Std\bin\Debug\netstandard2.0\TECSO.FWK.Domain_Std.deps.json
+C:\Proyectos\NosPremiamos\TECSO.FWK.Domain_Std\bin\Debug\netstandard2.0\TECSO.FWK.Domain_Std.dll
+C:\Proyectos\NosPremiamos\TECSO.FWK.Domain_Std\bin\Debug\netstandard2.0\TECSO.FWK.Domain_Std.pdb
+C:\Proyectos\NosPremiamos\TECSO.FWK.Domain_Std\bin\Debug\netstandard2.0\TECSO.FWK.STD.dll
+C:\Proyectos\NosPremiamos\TECSO.FWK.Domain_Std\bin\Debug\netstandard2.0\TECSO.FWK.STD.pdb
+C:\Proyectos\NosPremiamos\TECSO.FWK.Domain_Std\obj\Debug\netstandard2.0\TECSO.FWK.Domain_Std.csproj.AssemblyReference.cache
+C:\Proyectos\NosPremiamos\TECSO.FWK.Domain_Std\obj\Debug\netstandard2.0\TECSO.FWK.Domain_Std.GeneratedMSBuildEditorConfig.editorconfig
+C:\Proyectos\NosPremiamos\TECSO.FWK.Domain_Std\obj\Debug\netstandard2.0\TECSO.FWK.Domain_Std.AssemblyInfoInputs.cache
+C:\Proyectos\NosPremiamos\TECSO.FWK.Domain_Std\obj\Debug\netstandard2.0\TECSO.FWK.Domain_Std.AssemblyInfo.cs
+C:\Proyectos\NosPremiamos\TECSO.FWK.Domain_Std\obj\Debug\netstandard2.0\TECSO.FWK.Domain_Std.csproj.CoreCompileInputs.cache
+C:\Proyectos\NosPremiamos\TECSO.FWK.Domain_Std\obj\Debug\netstandard2.0\TECSO.FWK.Domain_Std.csproj.CopyComplete
+C:\Proyectos\NosPremiamos\TECSO.FWK.Domain_Std\obj\Debug\netstandard2.0\TECSO.FWK.Domain_Std.dll
+C:\Proyectos\NosPremiamos\TECSO.FWK.Domain_Std\obj\Debug\netstandard2.0\TECSO.FWK.Domain_Std.pdb
