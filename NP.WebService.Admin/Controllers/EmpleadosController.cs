@@ -87,6 +87,5 @@ namespace NP.WebService.Admin.Controllers
             });
         }
 
-      
     }
 }

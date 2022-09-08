@@ -15,7 +15,6 @@ export default function UserForm({ Id, disabled = false }) {
   const [update, { isSuccess: isUpdateSuccess, data: updateData, isError: isUpdateError, error: updateError }] = useUpdateMutation();
   const { data: roles = [] } = useGetRolesQuery();
   const { data: { Nombre, Apellido, Usuario, EmpleadosRoles } = {} } = useGetUserQuery(Id, { skip: !!!Id });
-  const {er, setEr} = useState([]);
 
   const formik = useFormik({
     enableReinitialize: true,

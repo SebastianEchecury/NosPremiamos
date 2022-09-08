@@ -10,6 +10,7 @@ using NP.infra.Data.Contexto;
 using NP.Domain.Entities;
 using NP.Admin.Domain.Entities;
 using NP.Admin.Domain.Interfaces.Repositories;
+using Microsoft.AspNetCore.Identity;
 
 namespace NP.infra.Data.Repositories
 {
@@ -101,10 +102,17 @@ namespace NP.infra.Data.Repositories
                 Context.Entry(entity).State = EntityState.Modified;
                 if (String.IsNullOrEmpty(entity.Contraseña))
                 {
-                    Context.Entry(entity).Property(e => e.Contraseña).IsModified = false;
-                    Context.Entry(entity).Property(e => e.Eliminado).IsModified = false;
+                    Context.Entry(entity).Property(e => e.Contraseña).IsModified = false;                    
+                    
+                }
+                if (!entity.PrimerIngreso.HasValue)
+                {
                     Context.Entry(entity).Property(e => e.PrimerIngreso).IsModified = false;
-                }  
+                }
+                if (!entity.Eliminado.HasValue)
+                {
+                    Context.Entry(entity).Property(e => e.Eliminado).IsModified = false;
+                }
                 await base.SaveChangesAsync();
                 return entity;
             }
@@ -113,6 +121,22 @@ namespace NP.infra.Data.Repositories
                 HandleException(ex);
                 throw;
             }
+        }
+
+        public override Task DeleteAsync(Empleados entity)
+        {
+            if (entity.Eliminado.Value)
+            {
+                entity.PrimerIngreso = false;
+                entity.Eliminado = false;
+                var hp = new PasswordHasher<Empleados>();
+                entity.Contraseña = hp.HashPassword(entity, entity.Apellido);
+            }
+            else { 
+                entity.Eliminado = true;
+            }
+
+            return this.UpdateAsync(entity);
         }
 
     }

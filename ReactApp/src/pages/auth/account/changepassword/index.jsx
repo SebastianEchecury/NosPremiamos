@@ -6,11 +6,9 @@ import * as Yup from 'yup';
 import { useHistory } from 'react-router-dom';
 import { useResetPasswordMutation } from '../../../../redux/apis/auth';
 import { Routes } from './../../../../routes';
-import { translationsGroupNames } from '../../../../utils/translationsGroupNames';
 
 export default   () => {
     const history = useHistory();
-    const { translations } = useTranslations({ group: translationsGroupNames.Generic, keys: ['ConfirmPassword', 'Password'] });
   
   const [resetPassword, { isSuccess: isResetPasswordSuccess, isError: isResetPasswordError, data: resetPasswordData, error: resetPasswordError }] = useResetPasswordMutation();
 

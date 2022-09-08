@@ -114,7 +114,7 @@ namespace TECSO.FWK.ApiServices
             }
         }
 
-        [HttpDelete("{Id}")]
+        [HttpDelete()]
         public virtual async Task<IActionResult> DeleteById(TPrimaryKey Id)
         {
             try

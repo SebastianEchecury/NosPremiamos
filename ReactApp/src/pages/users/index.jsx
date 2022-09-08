@@ -5,19 +5,22 @@ import { Button, Modal } from '@themesberg/react-bootstrap';
 
 import Manager from '../../components/manager';
 import { TranslatableText } from '../../components/translations';
-import { api as users, useDeleteMutation } from '../../redux/apis/users';
+import { api as users, useDeleteMutation, useGetQuery as useGetUserQuery } from '../../redux/apis/users';
 import withRedux from '../../redux/hoc/manager';
 
 import Table from './table';
 import Header from './header';
+import { useState } from 'react';
 
 const Users = ({ source, onQueryChange }) => {
-  const { id } = useParams();
+  const { Id } = useParams();
   const history = useHistory();
+  const { data: { Eliminado } = {} } = useGetUserQuery(Id, { skip: !!!Id });
   const [remove, { isSuccess: isDeleteSuccess, data: deleteData, isError: isDeleteError, error: deleteError }] = useDeleteMutation();
+  const [isactivo, setIsActivo] = useState(true);
 
   const onSaveHandler = () => {
-    remove(id);
+    remove(Id);
   };
   const onCancelHandler = () => {
     history.goBack();
@@ -25,7 +28,13 @@ const Users = ({ source, onQueryChange }) => {
 
   useEffect(() => {
     if (isDeleteSuccess) {
-      toast.success(deleteData.message);
+      if(Eliminado)
+      {
+      toast.success("Se activo asociado con exito");
+      }
+      else{
+        toast.success("Se elimino asociado con exito");
+      }
       history.goBack();
     }
     else if (isDeleteError) {
@@ -35,24 +44,34 @@ const Users = ({ source, onQueryChange }) => {
     }
   }, [isDeleteSuccess, deleteData, isDeleteError, deleteError]);
 
+  useEffect(() => {
+    if(Eliminado){
+      setIsActivo(false)
+    }
+  }, [Eliminado]);
+
   return (
     <>
       <Manager header={Header} table={Table} source={source} onQueryChange={onQueryChange} />
-      <Modal show={!!id} onHide={onCancelHandler} backdrop="static" keyboard={false}>
+      <Modal show={!!Id} onHide={onCancelHandler} backdrop="static" keyboard={false}>
         <Modal.Header closeButton>
           <Modal.Title>
-            <TranslatableText entry="Eliminar" />
+           {(isactivo) && <TranslatableText entry="Eliminar" />}
+
+           {(!isactivo) && <TranslatableText entry="Activar" />}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <TranslatableText  entry="Confirmar Eliminacion" />
+        {(isactivo) && <TranslatableText  entry="Confirmar Eliminacion" />}
+        {(!isactivo) && <TranslatableText  entry="Confirmar Activación" />}
         </Modal.Body>
         <Modal.Footer>
           <Button type="button" variant="outline-primary" onClick={onCancelHandler}>
             <TranslatableText  entry="Cancelar" />
           </Button>
           <Button type="button" className="ms-2" onClick={onSaveHandler}>
-            <TranslatableText  entry="Guardar" />
+          {(isactivo) && <TranslatableText  entry="Eliminar" />}          
+          {(!isactivo) && <TranslatableText  entry="Activar" />}
           </Button>
         </Modal.Footer>
       </Modal>

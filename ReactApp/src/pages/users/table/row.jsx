@@ -21,7 +21,7 @@ export default function Row({ value, index, values }) {
       <Cell>        
         {PermissionChecker(permissionsKeys.USER_UPDATE) && !value.isSystem && <IconButton title='Editar' icon={faEdit} href={Routes.Users.Update.path.replace(':Id', value.Id)} className="mx-1" />}
         {PermissionChecker(permissionsKeys.USER_DELETE) && !value.isSystem && !value.Eliminado && <IconButton title='Eliminar' icon={faTrash} href={Routes.Users.Delete.path.replace(':Id', value.Id)} className="mx-1" />}
-        {PermissionChecker(permissionsKeys.USER_DELETE) && value.Eliminado && <IconButton title='Activar' icon={faCheck} href={Routes.Users.View.path.replace(':Id', value.Id)} className="mx-1" />}
+        {PermissionChecker(permissionsKeys.USER_DELETE) && value.Eliminado && <IconButton title='Re-Activar' icon={faCheck} href={Routes.Users.Delete.path.replace(':Id', value.Id)} className="mx-1" />}
       </Cell>
     </TecsoRow>
   );

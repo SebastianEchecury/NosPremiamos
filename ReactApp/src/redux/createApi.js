@@ -76,11 +76,11 @@ export default function createApi({ url, tagTypes = [], endpoints, ...options })
           invalidatesTags: [{ type: apiTagType, id: '*' }]
         }),
         delete: () => rktBuilder.mutation({
-          query: (id) => ({
+          query: (Id) => ({
             url: '',
             method: 'DELETE',
             params: {
-              PrimaryKey: id
+              Id: Id
             },
             responseHandler: (response) => {
               if (response.ok) {
