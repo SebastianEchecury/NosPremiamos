@@ -1,5 +1,5 @@
 import React from 'react';
-import { faUser, faTools, faCircle, faUserShield, faShieldAlt, faBroadcastTower, faHome, faClipboardCheck, faReceipt, faCreditCard, faMoneyBillTransfer, faWallet, faSignOutAlt, faCog, faUnlockKeyhole, faIdBadge, faUserGroup } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faTools, faCircle, faUserShield, faShieldAlt, faBroadcastTower, faHome, faClipboardCheck, faReceipt, faCreditCard, faMoneyBillTransfer, faWallet, faSignOutAlt, faCog, faUnlockKeyhole, faIdBadge, faUserGroup, faArchive, faEnvelope, faTasks, faCheck, faEnvelopeCircleCheck, faEnvelopesBulk, faLineChart } from '@fortawesome/free-solid-svg-icons';
 
 import Brand from './brand';
 import Header from './header';
@@ -14,7 +14,7 @@ import PermissionChecker from '../permissionChecker';
 import { Routes } from '../../routes';
 import { translationsGroupNames } from '../../utils/translationsGroupNames';
 import { TranslatableText, useTranslations } from '../translations';
-import { faPlayCircle } from '@fortawesome/free-regular-svg-icons';
+import { faEnvelopeOpen, faPlayCircle } from '@fortawesome/free-regular-svg-icons';
 import { Image, Nav } from '@themesberg/react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -41,19 +41,17 @@ export default () => {
       <SidebarDivider />
       <CollapsableSidebarItem title='Configuracion' icon={faCog}>
         <CollapsableSidebarItem title='Seguridad' icon={faUnlockKeyhole}>
-          {PermissionChecker(permissionsKeys.USER_ADD) && <SidebarItem title='Empleados' link="/users" icon={faUserGroup} />}
+          {PermissionChecker(permissionsKeys.USER_ADD) && <SidebarItem title='Empleados' link="/users" icon={faUserGroup} />}          
+          {PermissionChecker(permissionsKeys.PARAMETRO_UPDATE) && <SidebarItem title='Parametros' link="" icon={faCog} />}
         </CollapsableSidebarItem>
-        {PermissionChecker(permissionsKeys.CONFIGURACION_TERMINAL_ADMINISTRAR) && <SidebarItem title={terminalesTranslations.Terminales} link={Routes.Terminales.path} icon={faBroadcastTower} />}
+        {PermissionChecker(permissionsKeys.CATEGORIA_ADD) && <SidebarItem title='Categorias' link="" icon={faTasks} />}
       </CollapsableSidebarItem>
-      {PermissionChecker(permissionsKeys.REPRESENTANTE_DASHBOARD_MANAGER) && <SidebarItem title={layoutTranslations.Dashboard} link={Routes.Dashboard.path} icon={faHome} />}
-      {PermissionChecker(permissionsKeys.TERMINAL_DASHBOARD_MANAGER) && <SidebarItem title={layoutTranslations.Dashboard} link={Routes.Dashboard.path} icon={faHome} />}
-      {PermissionChecker(permissionsKeys.TERMINAL_TALONARIO_TICKETS_GENERAR) && <SidebarItem title={terminalesTranslations.TalonariosTickets} link={Routes.Terminales.Talonarios.path} icon={faReceipt} />}
-      {PermissionChecker(permissionsKeys.TERMINAL_CUPOS_LISTA) && <SidebarItem title={terminalesTranslations.Cupos} link={Routes.Terminales.Cupos.path} icon={faClipboardCheck} />}
-      {PermissionChecker(permissionsKeys.TERMINAL_LIQUIDACION_SALDO_CUENTA_CORRIENTE) && <SidebarItem title={terminalesTranslations.LiquidarSaldoCuentaCorriente} link={Routes.Terminales.Saldo.path} icon={faWallet} />}
-      {PermissionChecker(permissionsKeys.TERMINAL_TASA_COBRAR) && <SidebarItem title={terminalesTranslations.CobrarTasa} link="/cobrartasa" icon={faCreditCard} />}
-      <CollapsableSidebarItem title={layoutTranslations.Procesos} icon={faPlayCircle}>
-        {PermissionChecker(permissionsKeys.TERMINAL_PROCESOS_OTORGAR_CUPOS_DESDE_CTG) && <SidebarItem title={terminalesTranslations.OtorgarCuposDesdeCtg} link={Routes.Terminales.Cupos.Ctg.path} icon={faCircle} />}
-      </CollapsableSidebarItem>
+      {PermissionChecker(permissionsKeys.VOTO_ADD) && <SidebarItem title="Votar" link="" icon={faEnvelopeOpen} />}   
+      {PermissionChecker(permissionsKeys.VOTO_UPDATE) && <SidebarItem title="Control de Votos" link="" icon={faEnvelopeCircleCheck} />}   
+      {PermissionChecker(permissionsKeys.VOTO_VIEW_EMITIDOS) && <SidebarItem title="Mis Votos Emitidos" link="" icon={faEnvelope} />}   
+      {PermissionChecker(permissionsKeys.VOTO_VIEW) && <SidebarItem title="Mis Votos" link="" icon={faArchive} />}
+      {PermissionChecker(permissionsKeys.VOTO_VIEW_RANKING) && <SidebarItem title="Ranking de Votos" link="" icon={faLineChart} />}
+
       <SidebarDivider />
       <Nav.Item className="sticky-bottom">
         <Nav.Link onClick={logoutClickHandler}>
