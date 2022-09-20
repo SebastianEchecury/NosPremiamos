@@ -7,6 +7,7 @@ using NP.Admin.Domain.Entities;
 using NP.Admin.Domain.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace NP.infra.Data.Repositories
 {
