@@ -6,13 +6,23 @@ namespace NP.Domain.Entities
 {
     public partial class TipoDato: Entity<int>
     {
-            public TipoDato()
-            {
-                Parametros = new HashSet<Parametros>();
-            }
+        public enum TipoDatoEnum
+        {
+            String = 1,
+            Int32,
+            Decimal,
+            Int64,
+            Boolean,
+            DateTime
+        }
 
-            public string Descripcion { get; set; }
+        public TipoDato()
+        {
+            Parametros = new HashSet<Parametros>();
+        }
 
-            public ICollection<Parametros> Parametros { get; set; }
+        public string Descripcion { get; set; }
+
+        public ICollection<Parametros> Parametros { get; set; }
     }
 }

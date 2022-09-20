@@ -25,12 +25,6 @@ namespace NP.WebService.Admin.Controllers
         }
 
         [NonAction]
-        public override Task<IActionResult> UpdateEntity([FromBody] ParametrosDto dto)
-        {
-            return base.UpdateEntity(dto);
-        }
-
-        [NonAction]
         public override Task<IActionResult> SaveNewEntity([FromBody] ParametrosDto dto)
         {
             return base.SaveNewEntity(dto);

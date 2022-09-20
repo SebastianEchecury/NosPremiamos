@@ -16,6 +16,7 @@ using TECSO.FWK.Domain_Std.Interfaces;
 using TECSO.FWK.AppService.Interface;
 using Newtonsoft.Json;
 using TECSO.FWK.AppService.Model;
+using System.ComponentModel.DataAnnotations;
 
 namespace TECSO.FWK.Domain.Services
 {
@@ -115,12 +116,16 @@ namespace TECSO.FWK.Domain.Services
             _repository = repository;
         }
 
-       
+
 
         public virtual Task<TEntity> AddAsync(TEntity entity)
         {
-            this.ValidateEntity(entity, SaveMode.Add);
-            return _repository.AddAsync(entity);
+            if (this.ValidateEntity(entity, SaveMode.Add).Result)
+            {
+                return _repository.AddAsync(entity);
+            }
+
+            throw new ValidationException("No es posible agregar la entidad");
         }
 
        
@@ -159,13 +164,17 @@ namespace TECSO.FWK.Domain.Services
 
         public Task<TEntity> UpdateAsync(TEntity entity)
         {
-            this.ValidateEntity(entity, SaveMode.Update);
-            return _repository.UpdateAsync(entity);
+            if (this.ValidateEntity(entity, SaveMode.Update).Result)
+            {
+                return _repository.UpdateAsync(entity);
+            }
+
+            throw new ValidationException("No es posible actualizar la entidad");
         }
 
-        protected virtual void ValidateEntity(TEntity entity, SaveMode mode)
+        protected virtual async Task<bool> ValidateEntity(TEntity entity, SaveMode mode)
         {
-             
+            return true;
         }
 
        

@@ -159,6 +159,8 @@ namespace NP.Admin.AppService
 
         public override async Task<EmpleadosDto> UpdateAsync(EmpleadosDto dto)
         {
+            // Limpio contaseña para evitar que se actualice en BD en caso de que sea un update normal
+            dto.Contraseña = String.Empty;
 
             //Eliminar Roles
             var filterEmpleadosRoles = new EmpleadosRolesFilter();

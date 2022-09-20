@@ -48,7 +48,7 @@ namespace NP.Admin.Domain.Services
 
 
 
-        protected override  async void  ValidateEntity(Empleados entity, SaveMode mode)
+        protected override async Task<bool> ValidateEntity(Empleados entity, SaveMode mode)
         {
             if (mode == SaveMode.Add)
             {
@@ -59,7 +59,7 @@ namespace NP.Admin.Domain.Services
 
             }
 
-            base.ValidateEntity(entity, mode);
+            return await base.ValidateEntity(entity, mode);
         }
        
        

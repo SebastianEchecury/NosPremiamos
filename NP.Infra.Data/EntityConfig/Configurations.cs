@@ -85,7 +85,7 @@ namespace NP.infra.Data.EntityConfig
                     .HasMaxLength(500);
 
                 entity.HasOne(d => d.TipoDato)
-                    .WithMany(p => p.Parametros)
+                    .WithMany(p => p.Parametros) // TO-DO: es necesario?
                     .HasForeignKey(d => d.TipoDatoId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Parametros_TipoDato");
