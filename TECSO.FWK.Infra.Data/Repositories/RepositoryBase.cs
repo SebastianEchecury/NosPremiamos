@@ -424,6 +424,11 @@ namespace TECSO.FWK.Infra.Data.Repositories
 
                 }
 
+                if (!String.IsNullOrEmpty(filter.Sort))
+                {
+                    query = System.Linq.Dynamic.Core.DynamicQueryableExtensions.OrderBy(query, filter.Sort);
+                }
+
                 return await query.ToListAsync();
             }
             catch (Exception ex)
