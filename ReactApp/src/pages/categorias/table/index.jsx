@@ -23,7 +23,7 @@ export default function Table(props) {
 
   return (
     <TecsoTable {...props} row={(props) => <Row {...props} />}>   
-      <Header order={[{ name: 'asc' }]} className="d-flex">
+      <Header  className="d-flex">
         <TranslatableText  entry="Nombre" />
         <SortDescription className="ms-2" conditions={(order) => ({ Nombre: order })} />
         <TextFilterDescription className="ms-2" conditions={(value) => ({ Nombre: value })} />

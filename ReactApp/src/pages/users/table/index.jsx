@@ -26,7 +26,7 @@ export default function Table(props) {
           <TextFilterForm conditions={(value) => ({ Usuario: value })} />
         </OptionMenu>
       </Header>
-      <Header order={[{ name: 'asc' }]} className="d-flex">
+      <Header  className="d-flex">
         <TranslatableText  entry="Nombre" />
         <SortDescription className="ms-2" conditions={(order) => ({ Nombre: order })} />
         <TextFilterDescription className="ms-2" conditions={(value) => ({ Nombre: value })} />
