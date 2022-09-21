@@ -1,0 +1,10 @@
+@import "../../scss/taco.scss";
+
+.sidebar-item {
+  color: $primary  !important;
+
+  &.active {
+    color: $white  !important;
+    background-color: $primary-active  !important;
+  }
+}

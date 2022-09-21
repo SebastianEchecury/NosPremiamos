@@ -1,0 +1,13 @@
+@import "../../scss/taco.scss";
+
+.section {
+  border-style: none !important;
+
+  .header {
+    background-color: $white  !important;
+  }
+
+  .footer {
+    background-color: $white  !important;
+  }
+}

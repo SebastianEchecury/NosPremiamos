@@ -1,0 +1,10 @@
+body {
+  overflow: hidden;
+  background-color: $light;
+}
+
+@include media-breakpoint-down(lg) {
+  body {
+    overflow: unset;
+  }
+}

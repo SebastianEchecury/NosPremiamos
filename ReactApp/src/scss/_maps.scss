@@ -1,0 +1,5 @@
+// Color system
+$custom-colors: (
+  "primary-active": $primary-active
+);
+$theme-colors: map-merge($theme-colors, $custom-colors);

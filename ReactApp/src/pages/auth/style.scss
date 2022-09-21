@@ -1,0 +1,14 @@
+@import "../../scss/taco.scss";
+
+.auth {
+  width: 30vw !important;
+  box-shadow: $box-shadow  !important;
+}
+
+@include media-breakpoint-down(lg) {
+  .auth {
+    width: 100vw !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+  }
+}
