@@ -1,48 +1,42 @@
-import React, { useState, useEffect } from 'react';
-import { Route, } from "react-router-dom";
-import Preloader from "../Preloader";
-import { useHistory } from 'react-router-dom';
-import { Routes } from "../../routes";
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { Route, useHistory, } from 'react-router-dom';
+
+import { Routes } from '../../routes';
 
 import Sidebar from '../sidebar';
 import Navbar from '../navbar';
 import Footer from "../footer";
-import { useSelector } from 'react-redux';
 
 let RouteWithSidebar = ({ permission, component: Component, ...rest }) => {
-  const [loaded, setLoaded] = useState(false);
   const auth = useSelector((state) => state.auth);
-
-  let history = useHistory();
+  const history = useHistory();
 
   useEffect(() => {
     if (!auth.token)
-      history.push(Routes.Signin.path)
-
-    /*if (PathKey !== undefined && Permission !== undefined && !Permission.some(x => x === PathKey)) {
-      history.push(Routes.NotFound.path)
-    }*/
-    
+      history.push(Routes.Signin.path);
   }, [auth.token]);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setLoaded(true), 1000);
-    return () => clearTimeout(timer);
-  }, []);
 
   return (
     <Route {...rest} render={props => (
-      <>
-        <Preloader show={loaded ? false : true} />
-        <Sidebar />
-        <div className="content px-0">
-          <Navbar />
+      <div className="d-flex">
+        <nav className="vh-100 p-4 d-none d-lg-block shadow bg-white" style={{ width: '300px', minWidth: '300px' }}>
+          <Sidebar />
+        </nav>
+        <div className="flex-fill bg-light">
+          <div className="vh-100 d-flex flex-column">
+            <header className="px-4">
+              <Navbar />
+            </header>
+            <main className="flex-fill p-4 overflow-auto">
+              <Component {...props} />
+            </main>
+            <footer className="p-4">
+              <Footer />
+            </footer>
+          </div>
         </div>
-        <main className="content">
-          <Component {...props} />
-          <Footer />
-        </main>
-      </>
+      </div>
     )}
     />
   );

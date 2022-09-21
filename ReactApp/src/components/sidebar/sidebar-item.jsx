@@ -1,26 +1,20 @@
-import React from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Badge, Image, Nav } from "@themesberg/react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Nav } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export default function SidebarItem({ onClick, title, link, external, target, icon, image, badgeText, badgeBg = "secondary", badgeColor = "primary" }) {
-  const location = useLocation();
-  const { pathname } = location;
-  const classNames = badgeText ? "d-flex justify-content-start align-items-center justify-content-between" : "";
-  const navItemClassName = link === pathname ? "active" : "";
-  const linkProps = external ? { href: link } : { as: Link, to: link };
+import './sidebar-item.scss';
 
+export default function SidebarItem({ title, icon, link }) {
   return (
-    <Nav.Item className={navItemClassName} onClick={onClick}>
-      <Nav.Link {...linkProps} target={target} className={classNames}>
+    <Nav.Item className="m-0 p-0">
+      <Nav.Link as={Link} to={link} eventKey={link} className="sidebar-item d-flex">
         <span>
-          {icon ? <span className="sidebar-icon"><FontAwesomeIcon icon={icon} /></span> : null}
-          {image ? <Image src={image} width={20} height={20} className="sidebar-icon svg-icon" /> : null}
-          <span className="sidebar-text">{title}</span>
+          {icon && <FontAwesomeIcon icon={icon} />}
         </span>
-        {badgeText ? (
-          <Badge pill bg={badgeBg} text={badgeColor} className="badge-md notification-count ms-2">{badgeText}</Badge>
-        ) : null}
+        <span className="flex-fill text-start ms-2">
+          {title}
+        </span>
       </Nav.Link>
     </Nav.Item>
   );

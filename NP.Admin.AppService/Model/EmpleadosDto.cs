@@ -30,7 +30,13 @@ namespace NP.Admin.AppService.Model
         //public ICollection<VotosDto> VotosVotadoEmpleado { get; set; }
         //public ICollection<VotosDto> VotosVotanteEmpleado { get; set; }
 
-        public override string Description => this.Apellido;
+        public override string Description => this.Apellido + ", "+ this.Nombre;
+    }
+
+    public class EmpleadoRepresentante
+    {
+        public int Id { get; set; }
+        public string Descripcion { get; set; }
     }
 
     //public class UserRoleDto

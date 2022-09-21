@@ -8,6 +8,7 @@ import toast from 'react-hot-toast';
 import { TranslatableText } from '../../components/translations';
 import { useGetListQuery as useGetRolesQuery } from '../../redux/apis/roles';
 import { useAddMutation, useGetQuery as useGetUserQuery, useUpdateMutation } from '../../redux/apis/users';
+import { Section, SectionBody, SectionHeader, SectionTitle } from '../../components/section';
 
 export default function UserForm({ Id, disabled = false }) {
   const history = useHistory();
@@ -78,26 +79,21 @@ export default function UserForm({ Id, disabled = false }) {
 
   return (
     <Form onSubmit={formik.handleSubmit} className="pt-4">
-      <Card >
-        <Card.Header>
-          <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
-            <div className="d-block mb-4 mb-md-0">
-              <h4>Empleado</h4>
-            </div>
-            <div className="d-block mb-4 mb-md-0">
-              <Button type="button" variant="outline-primary" onClick={onCancelClick}>
-                <TranslatableText  entry="Cancelar" />
-              </Button>
-              <Button type="submit" className="ms-2" hidden={disabled}>
-                <TranslatableText  entry="Guardar" />
-              </Button>
-              <Button type="submit" className="ms-2" hidden={!disabled}>
-                <TranslatableText  entry="Activar" />
-              </Button>
-            </div>
+      <Section>
+        <SectionHeader className="d-flex align-items-center">
+          <SectionTitle className="flex-fill">
+            <TranslatableText  entry="Empleado" />
+          </SectionTitle>
+          <div className="d-block">
+            <Button type="button" variant="outline-primary" onClick={onCancelClick}>
+              <TranslatableText entry="Cancelar" />
+            </Button>
+            <Button type="submit" className="ms-2" hidden={disabled}>
+              <TranslatableText entry="Guardar" />
+            </Button>
           </div>
-        </Card.Header>
-        <Card.Body>
+        </SectionHeader>
+        <SectionBody>
           <Row>
             <Col sm={12} md={6}>
               <Form.Group className="mb-3">
@@ -136,8 +132,8 @@ export default function UserForm({ Id, disabled = false }) {
             </Form.Label>            
             {roles.data?.map((role) => (<Form.Check key={role.id} type="checkbox" {...getCheckProps(role, 'UsuarioRoles')} />))}
           </Form.Group>
-        </Card.Body>
-      </Card>
+          </SectionBody>
+      </Section>
     </Form>
   );
 };

@@ -13,8 +13,11 @@ export const api = createApi({
     getHeader: builder.query({
       query: () => ({ url: 'GetHeader' })
     }),
-    getList: builder.getList()
+    getList: builder.getList(),
+    empleadosRepresentantes: builder.query({
+      query: () => ({url: 'EmpleadosRepresentantes'})      
+    }),
   })
 });
 
-export const { useAddMutation, useDeleteMutation, useUpdateMutation, useGetQuery, useGetHeaderQuery, useGetListQuery } = api;
+export const { useAddMutation, useDeleteMutation, useUpdateMutation, useGetQuery, useGetHeaderQuery, useGetListQuery, useEmpleadosRepresentantesQuery } = api;

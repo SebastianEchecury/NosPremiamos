@@ -191,6 +191,11 @@ namespace NP.WebService.Admin
             services.AddTransient<IEmpleadoAppService, EmpleadoAppService>();
             services.AddTransient<IEmpleadoService, EmpleadoService>();
 
+            //EmpleadosCategoriasAprobadores
+            services.AddTransient<IEmpleadosCategoriasAprobadoresRepository, EmpleadosCategoriasAprobadoresRepository>();
+            services.AddTransient<IEmpleadosCategoriasAprobadoresAppService, EmpleadosCategoriasAprobadoresAppService>();
+            services.AddTransient<IEmpleadosCategoriasAprobadoresService, EmpleadosCategoriasAprobadoresService>();
+
             //Parametros
             services.AddTransient<IParametrosRepository, ParametrosRepository>();
             services.AddTransient<IParametrosAppService, ParametrosAppService>();

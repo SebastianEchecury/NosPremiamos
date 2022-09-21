@@ -42,8 +42,8 @@ export default function Table({ children, values = [], row: Row = () => <></>, o
   }, [])
 
   return (
-    <BootstrapTable>
-      <thead>
+    <BootstrapTable borderless>
+      <thead className="bg-light">
         <tr>
           {Children.map(children, (child) => isValidElement(child) && cloneElement(child, { ...child.props, filter: query.current.filter, onFilterChange: filterChangeHandler, order: query.current.order, onOrderChange: orderChangeHandler }))}
         </tr>

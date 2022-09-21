@@ -1,8 +1,7 @@
 import React from 'react';
-import { Dropdown } from '@themesberg/react-bootstrap';
 
-export default () => {
+export default function SidebarDivider() {
   return (
-    <Dropdown.Divider className="my-3 border-indigo" />
+    <hr />
   );
-};
+}

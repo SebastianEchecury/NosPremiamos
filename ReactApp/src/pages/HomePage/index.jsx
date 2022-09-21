@@ -23,6 +23,8 @@ import Users from '../users'
 import User from '../users/form';
 import Roles from '../roles'
 import Role from '../roles/form';
+import Categorias from '../categorias';
+import Categoria from '../categorias/form'
 import { OtorgarCupos, OtorgarCuposCtg, Saldo, Talonarios } from '../terminales';
 import TalonarioTicketsForm from'../terminales/grillaTalonarios/form';
 import Patentes from '../patentes';
@@ -61,6 +63,12 @@ const HomePage = () => {
         <RouteWithSidebar exact path={Routes.Users.Delete.path} component={Users} />
         <RouteWithSidebar exact path={Routes.Users.Update.path} component={({ match }) => <User Id={match.params.Id} />} />
         <RouteWithSidebar exact path={Routes.Users.View.path} component={({ match }) => <User Id={match.params.Id} disabled={true} />} />
+
+        <RouteWithSidebar exact path={Routes.Categorias.path} component={Categorias} />
+        <RouteWithSidebar exact path={Routes.Categorias.Create.path} component={Categoria} />
+        <RouteWithSidebar exact path={Routes.Categorias.Delete.path} component={Categorias} />
+        <RouteWithSidebar exact path={Routes.Categorias.Update.path} component={({ match }) => <Categoria Id={match.params.Id} />} />
+        <RouteWithSidebar exact path={Routes.Categorias.View.path} component={({ match }) => <Categoria Id={match.params.Id} disabled={true} />} />
 
         <RouteWithSidebar exact path={Routes.Roles.path} component={Roles} />
         <RouteWithSidebar exact path={Routes.Roles.Create.path} component={Role} />

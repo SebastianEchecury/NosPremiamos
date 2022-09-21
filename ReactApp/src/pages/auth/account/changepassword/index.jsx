@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { Col, Row, Form, Button, FormCheck, Container } from '@themesberg/react-bootstrap';
-import { TranslatableText, useTranslations } from "../../../../components/translations";
+import React, { useEffect } from 'react';
+import { Form, Button, Image, Container } from '@themesberg/react-bootstrap';
+import { TranslatableText } from "../../../../components/translations";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useHistory } from 'react-router-dom';
 import { useResetPasswordMutation } from '../../../../redux/apis/auth';
 import { Routes } from './../../../../routes';
+import { Section, SectionTitle } from '../../../../components/section';
+import Logo from '../../../../assets/images/logo.png';
 
 export default   () => {
     const history = useHistory();
@@ -47,80 +49,52 @@ export default   () => {
     };
     
     return (
-        <main>
-        <section className="d-flex align-items-center my-5 mt-lg-6 mb-lg-5">
-            <Container>
-                <Row className="justify-content-center form-bg-image" >
-                    <Col xs={12} className="d-flex align-items-center justify-content-center">
-                        <div className="bg-white shadow-soft border rounded border-light p-4 p-lg-5 w-100 fmxw-500">
-                            <div className="text-center text-md-center mb-4 mt-md-0">
-                            <h3 className="mb-0">
-                                <TranslatableText entry="Cambio de Contraseña" />
-                            </h3>
-                            </div>
-                            <Form className="mt-4" onSubmit={formik.handleSubmit}>
-                            
-                            <Form.Group>
-                            <Form.Group id="password" className="mb-4">
-                                <Form.Label>
-                                    <TranslatableText  entry="Contraseña" />
-                                </Form.Label>                      
-                                    <Form.Control
-                                    type="password"
-                                    {...formik.getFieldProps('password')}
-                                    isInvalid={!!formik.errors.password}
-                                    placeholder='Ingrese su contraseña'
-                                />                        
-                                <Form.Control.Feedback type="invalid">{formik.errors.password}</Form.Control.Feedback>
-                            </Form.Group>
-                                <Form.Group id="passwordnew" className="mb-4">
-                                <Form.Label>
-                                    <TranslatableText  entry="Nueva Contraseña" />
-                                </Form.Label>                      
-                                    <Form.Control
-                                    type="password"
-                                    {...formik.getFieldProps('passwordnueva')}
-                                    isInvalid={!!formik.errors.passwordnueva}
-                                    placeholder='Ingrese su nueva contraseña'
-                                />                        
-                                <Form.Control.Feedback type="invalid">{formik.errors.passwordnueva}</Form.Control.Feedback>
-                            </Form.Group>
-                                <Form.Group id="confirmpassword" className="mb-4">
-                                <Form.Label>
-                                    <TranslatableText entry="Confirmar Contraseña" />
-                                </Form.Label>                      
-                                    <Form.Control
-                                    type="password"
-                                    {...formik.getFieldProps('confirmpassword')}
-                                    isInvalid={!!formik.errors.confirmpassword}
-                                    placeholder='Confirma tu nueva contraseña'
-                                />                        
-                                <Form.Control.Feedback type="invalid">{formik.errors.confirmpassword}</Form.Control.Feedback>
-                                </Form.Group> 
-
-                                <Form.Group id="errorResetPassword" className="mb-4 invalid">    
-                                <Form.Control hidden={true}
-                                    type="invalid"
-                                    {...formik.getFieldProps('errorResetPassword')}
-                                    isInvalid={!!formik.errors.errorResetPassword}
-                                />                  
-                                   <Form.Control.Feedback type="invalid">{formik.errors.errorResetPassword}</Form.Control.Feedback>
-                                </Form.Group>                            
-                                <Button type="submit" variant="primary" className="w-100">
-                                    <TranslatableText   entry="Restableser Contraseña" />
-                                </Button> 
-                                <br/>
-                                <br/>
-                                <Button variant="primary" onClick={onCancelClick} className="w-100">
-                                    <TranslatableText entry="Cancelar" />
-                                </Button>
-                            </Form.Group>
-                            </Form>
-                        </div>
-                    </Col>
-                </Row>
-            </Container>
-        </section>
-    </main>
-  );
+        <Section className="auth p-5 rounded-5">
+        <Container fluid className="text-center">
+        <Image fluid src={Logo} className="mb-3" />
+         </Container>
+        <SectionTitle className="text-center mb-3">
+          <TranslatableText entry="Cambio de Contraseña" />
+        </SectionTitle>
+        <Form onSubmit={formik.handleSubmit}>
+          <Form.Group>
+          <Form.Group id="password" className="mb-3">
+              <Form.Label>
+                <TranslatableText  entry="Contraseña" />*
+              </Form.Label>
+              <Form.Control type="password" placeholder='Ingrese su contraseña' {...formik.getFieldProps('password')} isInvalid={!!formik.errors.password} />
+              <Form.Control.Feedback type="invalid">{formik.errors.password}</Form.Control.Feedback>
+           </Form.Group>  
+            <Form.Group id="passwordnew" className="mb-3">
+              <Form.Label>
+                <TranslatableText entry="Nueva Contraseña" />*
+              </Form.Label>
+              <Form.Control type="password" placeholder='Ingrese su nueva contraseña' {...formik.getFieldProps('passwordnueva')} isInvalid={!!formik.errors.passwordnueva} />
+              <Form.Control.Feedback type="invalid">{formik.errors.passwordnueva}</Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group id="confirmpassword" className="mb-3">
+              <Form.Label>
+                <TranslatableText entry="Confirmar Contraseña" />*
+              </Form.Label>
+              <Form.Control type="password" placeholder='Confirma tu nueva contraseña' {...formik.getFieldProps('confirmpassword')} isInvalid={!!formik.errors.confirmpassword} />
+              <Form.Control.Feedback type="invalid">{formik.errors.confirmpassword}</Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group id="errorResetPassword" className="mb-3 invalid">
+              <Form.Control hidden={true} type="invalid"{...formik.getFieldProps('errorResetPassword')} isInvalid={!!formik.errors.errorResetPassword} />
+              <Form.Control.Feedback type="invalid">{formik.errors.errorResetPassword}</Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group className="d-grid">
+              <Button type="submit" variant="primary">
+                <TranslatableText entry="Restableser Contraseña" />
+              </Button>
+            </Form.Group>
+             <Form.Group className="mt-3 d-grid">
+              <Button variant="outline-primary" onClick={onCancelClick}>
+                <TranslatableText  entry="Cancelar" />
+              </Button>
+            </Form.Group>
+          </Form.Group>
+        </Form>
+      </Section>
+    );
 }

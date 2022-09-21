@@ -2,6 +2,7 @@
 using NP.Admin.Domain;
 using NP.Domain.Entities;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using TECSO.FWK.AppService.Interface;
 
@@ -19,5 +20,7 @@ namespace NP.Admin.AppService.Interface
 
         //Task<EmpleadosDto> GetUserByEmailAsync(string email);
         //Task ResetPassword(int id);
+
+        List<EmpleadoRepresentante> EmpleadosRepresentantes();
     }
 }

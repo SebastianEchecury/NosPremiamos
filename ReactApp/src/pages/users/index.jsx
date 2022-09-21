@@ -52,7 +52,7 @@ const Users = ({ source, onQueryChange }) => {
 
   return (
     <>
-      <Manager header={Header} table={Table} source={source} onQueryChange={onQueryChange} />
+      <Manager header={Header}  entry={'Empleados'} table={Table} source={source} onQueryChange={onQueryChange} />
       <Modal show={!!Id} onHide={onCancelHandler} backdrop="static" keyboard={false}>
         <Modal.Header closeButton>
           <Modal.Title>

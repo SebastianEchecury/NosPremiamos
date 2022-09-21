@@ -18,11 +18,7 @@ namespace NP.WebService.Admin.Controllers
 
         }
         
-        [NonAction]
-        public override Task<IActionResult> DeleteById(int Id)
-        {
-            return base.DeleteById(Id);
-        }
+       
 
     }
 

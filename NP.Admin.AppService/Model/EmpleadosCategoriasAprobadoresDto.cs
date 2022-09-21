@@ -7,7 +7,7 @@ namespace NP.Admin.AppService.Model
         public int EmpleadoId { get; set; }
         public int CategoriaId { get; set; }
 
-        public CategoriasDto Categoria { get; set; }
+        //public CategoriasDto Categoria { get; set; }
         public EmpleadosDto Empleado { get; set; }
 
 

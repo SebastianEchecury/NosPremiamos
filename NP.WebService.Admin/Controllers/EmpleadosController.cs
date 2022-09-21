@@ -87,5 +87,21 @@ namespace NP.WebService.Admin.Controllers
             });
         }
 
+        [HttpGet]
+        [Route("[action]")]
+        public async Task<IActionResult> EmpleadosRepresentantes()
+        {
+            try
+            {
+                var result =  Service.EmpleadosRepresentantes();
+
+                return ReturnData<List<EmpleadoRepresentante>>(result);
+            }
+            catch(Exception ex)
+            {
+                return ReturnError<string[]>(ex);
+            }
+        }
+
     }
 }

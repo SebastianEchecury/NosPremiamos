@@ -5,6 +5,7 @@ import { useLoginMutation } from "../../../redux/apis/auth";
 import { TranslatableText } from "../../../components/translations";
 import { Routes } from "../../../routes";
 import { useSelector } from "react-redux";
+import { Section } from "../../../components/section";
 
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -52,61 +53,39 @@ let Signin = (props) => {
   }, [isLoginError, loginError]);
 
   return (
-    <main>
-      <section className="d-flex align-items-center my-5 mt-lg-6 mb-lg-5">
-        <Container>
-          <Row className="justify-content-center form-bg-image" >
-            <Col xs={12} className="d-flex align-items-center justify-content-center">
-              <div className="bg-white shadow-soft border rounded border-light p-4 p-lg-5 w-100 fmxw-500">
-                <div className="text-center text-md-center mb-4 mt-md-0">
-                  <Image src={Logo} />
-                </div>
-                <Form className="mt-4" onSubmit={formik.handleSubmit}>
-                  <Form.Group id="email" className="mb-4">
-                    <Form.Label>
-                      <TranslatableText entry="Correo" />
-                    </Form.Label>
-                    <Form.Control
-                      {...formik.getFieldProps('email')}
-                      isInvalid={!!formik.errors.email}
-                      placeholder='Correo'
-                      type="email"
-                    />
-                    <Form.Control.Feedback type="invalid">{formik.errors.email}</Form.Control.Feedback>
-                  </Form.Group>
-                  <Form.Group>
-                    <Form.Group id="password" className="mb-4">
-                      <Form.Label>
-                        <TranslatableText  entry="Contraseña" />
-                      </Form.Label>
-                      <Form.Control
-                        type="password"
-                        {...formik.getFieldProps('password')}
-                        isInvalid={!!formik.errors.password}
-                        placeholder='Contraseña'
-                      />
-                      <Form.Control.Feedback type="invalid">{formik.errors.password}</Form.Control.Feedback>
-                    </Form.Group>                    
-                  </Form.Group>
-                  <Form.Group id="errorUserPassword" className="mb-4 invalid">
-                    <Form.Control hidden={true}
-                      type="invalid"
-                      {...formik.getFieldProps('errorUserPassword')}
-                      isInvalid={!!formik.errors.errorUserPassword}
-                    />
-                    <Form.Control.Feedback type="invalid">{formik.errors.errorUserPassword}</Form.Control.Feedback>
-                  </Form.Group>
-                  <Button variant="primary" type="submit" className="w-100">
-                    <TranslatableText  entry="Ingresar" />
-                  </Button>
-                </Form>                
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </section>
-    </main>
-  );
+    <Section className="auth p-5 rounded-5">
+    <Container fluid className="text-center">
+      <Image fluid src={Logo} className="mb-3" />
+    </Container>
+    <Form onSubmit={formik.handleSubmit}>
+      <Form.Group className="mb-3">
+        <Form.Label>
+          <TranslatableText entry="Correo" />*
+        </Form.Label>
+        <Form.Control type="email" {...formik.getFieldProps('email')} isInvalid={!!formik.errors.email} placeholder="Email" />
+        <Form.Control.Feedback type="invalid">{formik.errors.email}</Form.Control.Feedback>
+      </Form.Group>
+      <Form.Group>
+        <Form.Label>
+          <TranslatableText  entry="Contraseña" />*
+        </Form.Label>
+        <Form.Control type="password" {...formik.getFieldProps('password')} isInvalid={!!formik.errors.password} placeholder="Contraseña" />
+        <Form.Control.Feedback type="invalid">{formik.errors.password}</Form.Control.Feedback>
+      </Form.Group>
+      <Form.Group className="mb-3 d-block">
+        <Form.Control hidden={true} type="invalid" {...formik.getFieldProps('errorUserPassword')} isInvalid={!!formik.errors.errorUserPassword} />
+        <Form.Control.Feedback type="invalid">{formik.errors.errorUserPassword}</Form.Control.Feedback>
+      </Form.Group>
+      
+      <Form.Group className="mb-3 d-grid">
+        <Button variant="primary" type="submit">
+          <TranslatableText  entry="Ingresar" />
+        </Button>
+      </Form.Group>      
+    </Form>
+  </Section>
+);
+   
 };
 
 export default Signin;

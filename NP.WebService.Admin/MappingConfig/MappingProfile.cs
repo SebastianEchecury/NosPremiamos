@@ -130,6 +130,11 @@ namespace NP.WebService.Admin
             CreateMap<EmpleadosRolesDto, EmpleadosRoles>()
                 .EqualityComparison((odto, o) => odto.Id == o.Id);
 
+            CreateMap<EmpleadosCategoriasAprobadores, EmpleadosCategoriasAprobadoresDto>()
+    .EqualityComparison((odto, o) => odto.Id == o.Id);
+
+            CreateMap<EmpleadosCategoriasAprobadoresDto, EmpleadosCategoriasAprobadores>()
+                .EqualityComparison((odto, o) => odto.Id == o.Id);
 
 
             //CreateMap<WsRetiroOutput, RetiroDto>();

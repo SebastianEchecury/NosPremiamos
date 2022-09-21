@@ -23,6 +23,13 @@ export const Routes = {
     Update: { path: "/users/:Id/update" },
     View: { path: "/users/:Id/view" }
   },
+  Categorias: {
+    path: "/categorias",
+    Create: { path: "/categorias/create" },
+    Delete: { path: "/categorias/:Id/delete" },
+    Update: { path: "/categorias/:Id/update" },
+    View: { path: "/categorias/:Id/view" }
+  },
   Roles: {
     path: "/roles",
     Create: { path: "/roles/create" },

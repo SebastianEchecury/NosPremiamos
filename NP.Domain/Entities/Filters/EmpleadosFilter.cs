@@ -9,8 +9,11 @@ namespace NP.Admin.Domain.Entities.Filters
 {
     public class EmpleadosFilter : FilterPagedListBase<Empleados, int>
     {
-        public string Nombre { get; internal set; }
+        public string Nombre { get;  set; }
         public string Usuario { get; set; }
+        public bool? Eliminado { get; set; }
+
+        public List<int> Roles { get; set; }
 
         public override List<Expression<Func<Empleados, object>>> GetIncludesForPageList()
         {
@@ -33,6 +36,11 @@ namespace NP.Admin.Domain.Entities.Filters
             if (!string.IsNullOrEmpty(this.Usuario))
             {
                 baseFE = baseFE.And(e => e.Usuario == this.Usuario);
+            }
+
+            if (Eliminado.HasValue)
+            {
+                baseFE = baseFE.And(e => e.Eliminado == this.Eliminado);
             }
 
 

@@ -205,5 +205,30 @@ namespace NP.Admin.AppService
             return result;
         }
 
+
+        public List<EmpleadoRepresentante> EmpleadosRepresentantes()
+        {
+            var filter = new EmpleadosFilter();
+            filter.Eliminado = false;
+
+            var empleados = this.GetDtoAllAsync(filter).Result;
+
+            List<EmpleadoRepresentante> result = new List<EmpleadoRepresentante>();
+
+
+            foreach(var empl in empleados)
+            {
+                if (empl.EmpleadosRoles.Any(e=> e.RolId == 3))
+                {
+                    EmpleadoRepresentante empleRepre = new EmpleadoRepresentante();
+                    empleRepre.Descripcion = empl.Description;
+                    empleRepre.Id = empl.Id;
+                    result.Add(empleRepre);
+                }
+            }
+
+            return result;
+        }
+
     }
 }

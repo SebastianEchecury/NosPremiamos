@@ -1,6 +1,8 @@
 export const apiUrl = {
     Auth: process.env.REACT_APP_API_AUTH_URL,
     Cupos: process.env.REACT_APP_API_CUPOS_URL,
+    Categorias: process.env.REACT_APP_API_CATEGORIAS_URL,
+    EmpleadosCategoria: process.env.REACT_APP_API_EMPLEADOS_CATEGORIAS_URL,
     Parametros: process.env.REACT_APP_API_PARAMETROS_URL,
     Permissions: process.env.REACT_APP_API_PERMISSIONS_URL,
     RecaptchaURL: process.env.REACT_APP_RECAPTCHA_URL,
