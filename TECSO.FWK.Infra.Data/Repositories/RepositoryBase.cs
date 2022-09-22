@@ -184,7 +184,7 @@ namespace TECSO.FWK.Infra.Data.Repositories
             catch (Exception ex)
             {
                 HandleException(ex);
-                throw;
+                throw new EntityNotFoundException(typeof(TEntity), (object)id);
             }
 
         }
@@ -345,8 +345,8 @@ namespace TECSO.FWK.Infra.Data.Repositories
 
         protected virtual void HandleException(Exception ex)
         {
-
-            this.logger.LogError(ex.ToString());
+            if (this.logger != null)
+                this.logger.LogError(ex.ToString());
 
             if (ex is DbUpdateException)
             {
