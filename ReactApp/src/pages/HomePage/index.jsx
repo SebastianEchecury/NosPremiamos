@@ -35,6 +35,7 @@ import LostPassword from './../auth/lostpassword/index';
 import ChangePassword from '../auth/account/changepassword';
 import SuccessPassword from './../auth/account/changepassword/successPassword/index';
 import cobrartasa from '../cobrartasa';
+import EmpleadosCategoriasAprobador from '../categorias/empleadocategoria';
 
 import { useGetHeaderQuery } from '../../redux/apis/users';
 
@@ -62,13 +63,12 @@ const HomePage = () => {
         <RouteWithSidebar exact path={Routes.Users.Create.path} component={User} />
         <RouteWithSidebar exact path={Routes.Users.Delete.path} component={Users} />
         <RouteWithSidebar exact path={Routes.Users.Update.path} component={({ match }) => <User Id={match.params.Id} />} />
-        <RouteWithSidebar exact path={Routes.Users.View.path} component={({ match }) => <User Id={match.params.Id} disabled={true} />} />
 
         <RouteWithSidebar exact path={Routes.Categorias.path} component={Categorias} />
         <RouteWithSidebar exact path={Routes.Categorias.Create.path} component={Categoria} />
         <RouteWithSidebar exact path={Routes.Categorias.Delete.path} component={Categorias} />
         <RouteWithSidebar exact path={Routes.Categorias.Update.path} component={({ match }) => <Categoria Id={match.params.Id} />} />
-        <RouteWithSidebar exact path={Routes.Categorias.View.path} component={({ match }) => <Categoria Id={match.params.Id} disabled={true} />} />
+        <RouteWithSidebar exact path={Routes.EmpleadosCategoriasAprobador.Delete.path} component={EmpleadosCategoriasAprobador} />
 
         <RouteWithSidebar exact path={Routes.Roles.path} component={Roles} />
         <RouteWithSidebar exact path={Routes.Roles.Create.path} component={Role} />

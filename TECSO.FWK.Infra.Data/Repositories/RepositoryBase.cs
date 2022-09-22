@@ -346,7 +346,7 @@ namespace TECSO.FWK.Infra.Data.Repositories
         protected virtual void HandleException(Exception ex)
         {
 
-            this.logger.LogError(ex.ToString());
+            //this.logger.LogError(ex.ToString());
 
             if (ex is DbUpdateException)
             {

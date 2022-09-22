@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Button, Form } from '@themesberg/react-bootstrap';
 import { TranslatableText } from '../../../components/translations';
 import { permissionsKeys } from '../../../utils/permissionsKeys';
@@ -7,7 +7,8 @@ import Modal from 'react-bootstrap/Modal';
 import { useEmpleadosRepresentantesQuery as useGetRepresentantesItemsQuery} from '../../../redux/apis/users';
 import {useAddMutation} from '../../../redux/apis/empleadoscategorias'
 import { useFormik } from 'formik';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 export default function Header() { 
     const history = useHistory();
@@ -25,9 +26,32 @@ export default function Header() {
     }});
 
     const onSaveHandler = () => {
-        var regex = /(\d+)/g; 
+        
+        if(history.location.pathname.includes('create')){
+            formik.setFieldValue('representante', 0)
+            toast.error("Debe crear la categoría y luago agregar los probadores");
+            setShow(false);
+        }
+        else{
+            var regex = /(\d+)/g; 
         add({EmpleadoId: formik.values.representante.id, CategoriaId: history.location.pathname.match(regex)[0]} );
+        }
       };
+
+
+      useEffect(() => {
+        if (isAddSuccess) {
+            formik.setFieldValue('representante', 0)
+          toast.success("Aprobador se registro con exito");
+          setShow(false);
+        }        
+      }, [isAddSuccess, addData]);
+    
+      useEffect(() => {
+        if (isAddError) {
+          toast.error([].concat(...Object.values(JSON.parse(addError.data).Messages)));
+        }
+      }, [isAddError, addError]);
 
   return (
       <>

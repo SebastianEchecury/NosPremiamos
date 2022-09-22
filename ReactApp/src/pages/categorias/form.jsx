@@ -42,7 +42,7 @@ export default function UserForm({ Id, disabled = false }) {
       }
       else {
         formik.setFieldValue('Id',0);
-        return add(values);
+        return add({Descripcion: formik.values.Descripcion, Nombre: formik.values.Nombre, CantidadVotos: formik.values.CantidadVotos, IncluyeNovedades: formik.values.IncluyeNovedades== 1? true:false, RequiereAprobacion: formik.values.RequiereAprobacion==1? 1: 2, EstadoId: 1 });
       }
     }
   });
@@ -168,7 +168,7 @@ export default function UserForm({ Id, disabled = false }) {
           </Col>      
         </Row>
         <br/> 
-        {formik.values.RequiereAprobacion == 1 && <EmpleadosRepresentantes filter={{categoriaId: Id }}></EmpleadosRepresentantes>}
+        {formik.values.RequiereAprobacion == 1 && <EmpleadosRepresentantes filter={{categoriaId: Id? Id:0 }}></EmpleadosRepresentantes>}
         </SectionBody>
     </Section>    
   </Form>

@@ -24,8 +24,8 @@ export default function Row({ value, index, values }) {
       {value.EstadoId == 2 && <Cell><Badge bg="primary-active"><TranslatableText  entry="Inactiva" /></Badge></Cell>}
       <Cell>        
         {PermissionChecker(permissionsKeys.CATEGORIA_UPDATE) && !(value.Usuario == 'admin@admin.com') && <IconButton title='Editar' icon={faEdit} href={Routes.Categorias.Update.path.replace(':Id', value.Id)} className="mx-1" />}
-        {PermissionChecker(permissionsKeys.CATEGORIA_DELETE) && !(value.Usuario == 'admin@admin.com') && !value.Eliminado && <IconButton title='Eliminar' icon={faTrash} href={Routes.Categorias.Delete.path.replace(':Id', value.Id)} className="mx-1" />}
-        {PermissionChecker(permissionsKeys.CATEGORIA_DELETE) && !(value.Usuario == 'admin@admin.com') && value.Eliminado && <IconButton title='Re-Activar' icon={faCheck}  href={Routes.Categorias.Delete.path.replace(':Id', value.Id)} className="mx-1" />}
+        {PermissionChecker(permissionsKeys.CATEGORIA_DELETE) && !(value.Usuario == 'admin@admin.com') && value.EstadoId == 1 && <IconButton title='Eliminar' icon={faTrash} href={Routes.Categorias.Delete.path.replace(':Id', value.Id)} className="mx-1" />}
+        {PermissionChecker(permissionsKeys.CATEGORIA_DELETE) && !(value.Usuario == 'admin@admin.com') && value.EstadoId == 2 && <IconButton title='Activar' icon={faCheck}  href={Routes.Categorias.Delete.path.replace(':Id', value.Id)} className="mx-1" />}
       </Cell>
     </TecsoRow>
   );
