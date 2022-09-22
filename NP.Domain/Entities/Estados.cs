@@ -5,6 +5,12 @@ namespace NP.Domain.Entities
 {
     public partial class Estados: Entity<int>
     {
+        public enum EstadoCategoria
+        {
+            Activo = 1,
+            Inactivo
+        }
+
         public Estados()
         {
             Categorias = new HashSet<Categorias>();
