@@ -11,6 +11,10 @@ namespace NP.Admin.Domain.Entities.Filters
         public string Descripcion { get; set; }
         public string Nombre { get; set; }
         public int? EstadoId { get; set; }
+        public bool? RequiereAprobacion { get; set; }
+        public bool? IncluyeNovedades { get; set; }
+        public int? CantidadVotos { get; set; }
+
 
         public override Expression<Func<Categorias, bool>> GetFilterExpression()
         {
@@ -32,6 +36,24 @@ namespace NP.Admin.Domain.Entities.Filters
             {
                 Expression<Func<Categorias, bool>> filterTextExp = e => e.EstadoId.Equals(this.EstadoId.Value);
                 baseFE = baseFE.And(filterTextExp);
+            }
+
+            if (this.CantidadVotos.HasValue)
+            {
+                baseFE = baseFE.And(e => e.CantidadVotos == this.CantidadVotos.Value);
+
+            }
+
+            if (this.IncluyeNovedades.HasValue)
+            {
+                baseFE = baseFE.And(e => e.IncluyeNovedades == this.IncluyeNovedades.Value);
+
+            }
+
+            if (this.RequiereAprobacion.HasValue)
+            {
+                baseFE = baseFE.And(e => e.RequiereAprobacion == this.RequiereAprobacion.Value);
+
             }
 
             return baseFE;

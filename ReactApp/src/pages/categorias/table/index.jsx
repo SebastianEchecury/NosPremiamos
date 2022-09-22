@@ -61,7 +61,7 @@ export default function Table(props) {
         <TranslatableText  entry="Requiere Aprobación" />
         <SelectFilterDescription className="ms-2" conditions={(value) => ({ RequiereAprobacion: value })} options={statuses} />
         <OptionMenu className="ms-auto">
-          <SelectFilterForm conditions={(value) => ({ RequiereAproBacion: value })} options={statuses} />
+          <SelectFilterForm conditions={(value) => ({ RequiereAprobacion: value })} options={statuses} />
         </OptionMenu>
       </Header> 
       <Header className="d-flex">
@@ -72,7 +72,7 @@ export default function Table(props) {
         </OptionMenu>
       </Header> 
       <Header className="d-flex">
-        <TranslatableText  entry="Accion" />
+        <TranslatableText  entry="Acciones" />
       </Header>
     </TecsoTable>
   );

@@ -12,6 +12,9 @@ namespace NP.Admin.Domain.Entities.Filters
         public string Nombre { get;  set; }
         public string Usuario { get; set; }
         public bool? Eliminado { get; set; }
+        public string Apellido { get; set; }
+
+               
 
         public List<int> Roles { get; set; }
 
@@ -33,9 +36,15 @@ namespace NP.Admin.Domain.Entities.Filters
                 Expression<Func<Empleados, bool>> filterTextExp = e => e.Nombre.Contains(this.Nombre);
                 baseFE = baseFE.And(filterTextExp);
             }
+            if (!String.IsNullOrEmpty(this.Apellido))
+            {
+                Expression<Func<Empleados, bool>> filterTextExp = e => e.Apellido.Contains(this.Apellido);
+                baseFE = baseFE.And(filterTextExp);
+            }
             if (!string.IsNullOrEmpty(this.Usuario))
             {
-                baseFE = baseFE.And(e => e.Usuario == this.Usuario);
+                Expression<Func<Empleados, bool>> filterTextExp = e => e.Usuario.Contains(this.Usuario);
+                baseFE = baseFE.And(filterTextExp);
             }
 
             if (Eliminado.HasValue)

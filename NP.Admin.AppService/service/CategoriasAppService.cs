@@ -1,6 +1,7 @@
 using NP.Admin.AppService.Interface;
 using NP.Admin.AppService.Model;
 using NP.Admin.Domain.Entities;
+using NP.Admin.Domain.Entities.Filters;
 using NP.Admin.Domain.Interfaces.Services;
 using NP.Domain.Entities;
 using System.Threading.Tasks;
@@ -11,9 +12,10 @@ namespace NP.Admin.AppService
 
     public class CategoriasAppService : AppServiceBase<Categorias, CategoriasDto, int, ICategoriasService>, ICategoriasAppService
     {
-        public CategoriasAppService(ICategoriasService serviceBase) : base(serviceBase)
+        private readonly IEmpleadosCategoriasAprobadoresService _ecmpleadosCategoriasAprobadoresService;
+        public CategoriasAppService(ICategoriasService serviceBase, IEmpleadosCategoriasAprobadoresService empleadosCategoriasAprobadoresService) : base(serviceBase)
         {
-
+            _ecmpleadosCategoriasAprobadoresService = empleadosCategoriasAprobadoresService;
 
         }
         public override Task<CategoriasDto> AddAsync(CategoriasDto dto)
@@ -22,10 +24,21 @@ namespace NP.Admin.AppService
             return base.AddAsync(dto);
         }
 
-        public override Task<CategoriasDto> UpdateAsync(CategoriasDto dto)
+        public override async Task<CategoriasDto> UpdateAsync(CategoriasDto dto)
         {
-            dto.EstadoId = (int)Estados.EstadoCategoria.Activo;
-            return base.UpdateAsync(dto);
+            //dto.EstadoId = (int)Estados.EstadoCategoria.Activo;
+            if(dto.RequiereAprobacion.HasValue && !dto.RequiereAprobacion.Value)
+            {
+                EmpleadosCategoriasAprobadoresFilter filter = new EmpleadosCategoriasAprobadoresFilter();
+                filter.categoriaId = dto.Id;
+                var emplCatApro = _ecmpleadosCategoriasAprobadoresService.GetAllAsync(filter).Result;
+                foreach (var eca in emplCatApro)
+                {
+                   await _ecmpleadosCategoriasAprobadoresService.DeleteAsync(eca.Id);
+                }
+            }
+
+            return await base.UpdateAsync(dto);
         }
 
         public override async Task DeleteAsync(int id)
@@ -33,7 +46,14 @@ namespace NP.Admin.AppService
             CategoriasDto categoria = await this.GetDtoByIdAsync(id);
             if (categoria != null)
             {
-                categoria.EstadoId = (int)Estados.EstadoCategoria.Inactivo;
+                if (categoria.EstadoId == (int)Estados.EstadoCategoria.Activo)
+                {
+                    categoria.EstadoId = (int)Estados.EstadoCategoria.Inactivo;
+                }
+                else
+                {
+                    categoria.EstadoId = (int)Estados.EstadoCategoria.Activo;
+                }
                 await base.UpdateAsync(categoria);
             }
         }
