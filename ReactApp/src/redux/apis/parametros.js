@@ -6,16 +6,13 @@ export const api = createApi({
   reducerPath: 'api:parametros',
   url: apiUrl.Parametros,
   endpoints: (builder) => ({
-    getItems: builder.getItems(),
+    update: builder.update(),
+    get: builder.get(),
+    getHeader: builder.query({
+      query: () => ({ url: 'GetHeader' })
+    }),
     getList: builder.getList(),
-    getByToken: builder.query({
-      query: (token) => ({
-        url: 'List',
-        params: { token }
-      }),
-      transformResponse: (response) => (response.items[0])
-    })
   })
 });
 
-export const { useGetItemsQuery, useGetListQuery, useGetByTokenQuery } = api;
+export const { useUpdateMutation, useGetQuery, useGetHeaderQuery, useGetListQuery } = api;

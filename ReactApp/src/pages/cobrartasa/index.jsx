@@ -17,8 +17,6 @@ export default ({ id }) => {
   const [cobrarTasa, { isSuccess: isCobrarTasaSuccess, data: cobrarTasaData, isError: isCobrarTasaError, error: cobrarTasaError }] = useCobrarTasaMutation();
   const { data: { data: representantesPatente = [] } = {} } = useGetRepresentantesPatntesListQuery();
   const { data: representantes = [] } = useGetRepresentantesItemsQuery();
-  const { data: parametroTasaCamionEscalable } = useGetByTokenQuery('IMPORTE_TASA_CAMION_ESCALABLE');
-  const { data: parametroTasaCamionNoEscalable } = useGetByTokenQuery('IMPORTE_TASA_CAMION_NO_ESCALABLE');
 
   const formik = useFormik({
     enableReinitialize: true,
@@ -85,14 +83,14 @@ export default ({ id }) => {
     if (formik.values.escalable == 1) {
       formik.setFieldValue('escalable', 1, false);
       formik.setFieldValue('esEscalable', true, false);
-      formik.setFieldValue('importe', parametroTasaCamionEscalable.valor, false)
+      formik.setFieldValue('importe', 1200, false)
     }
     if (formik.values.escalable == 2) {
       formik.setFieldValue('escalable', 2, false);
       formik.setFieldValue('esEscalable', false, false);
-      formik.setFieldValue('importe', parametroTasaCamionNoEscalable.valor, false)
+      formik.setFieldValue('importe',1200, false)
     }
-  }, [parametroTasaCamionEscalable, parametroTasaCamionNoEscalable, formik.values.escalable, formik.values.esEscalable]);
+  }, [ formik.values.escalable, formik.values.esEscalable]);
 
   useEffect(() => {
     if (formik.values.efectivo == 1) {

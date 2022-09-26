@@ -38,6 +38,8 @@ import cobrartasa from '../cobrartasa';
 import EmpleadosCategoriasAprobador from '../categorias/empleadocategoria';
 
 import { useGetHeaderQuery } from '../../redux/apis/users';
+import Parametros from '../parametros';
+import Parametro from '../parametros/form';
 
 const HomePage = () => {
   const { data: header = {} } = useGetHeaderQuery();
@@ -69,6 +71,9 @@ const HomePage = () => {
         <RouteWithSidebar exact path={Routes.Categorias.Delete.path} component={Categorias} />
         <RouteWithSidebar exact path={Routes.Categorias.Update.path} component={({ match }) => <Categoria Id={match.params.Id} />} />
         <RouteWithSidebar exact path={Routes.EmpleadosCategoriasAprobador.Delete.path} component={EmpleadosCategoriasAprobador} />
+
+        <RouteWithSidebar exact path={Routes.Parametros.path} component={Parametros} />
+        <RouteWithSidebar exact path={Routes.Parametros.Update.path} component={({ match }) => <Parametro Id={match.params.Id} />} />
 
         <RouteWithSidebar exact path={Routes.Roles.path} component={Roles} />
         <RouteWithSidebar exact path={Routes.Roles.Create.path} component={Role} />

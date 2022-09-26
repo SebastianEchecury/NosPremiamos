@@ -35,7 +35,7 @@ export default () => {
       <CollapsableSidebarItem title='Configuracion' icon={faCog}>
         <CollapsableSidebarItem title='Seguridad' icon={faUnlockKeyhole}>
           {PermissionChecker(permissionsKeys.USER_ADD) && <SidebarItem title='Empleados' link="/users" icon={faUserGroup} />}          
-          {PermissionChecker(permissionsKeys.PARAMETRO_UPDATE) && <SidebarItem title='Parametros' link="" icon={faCog} />}
+          {PermissionChecker(permissionsKeys.PARAMETRO_UPDATE) && <SidebarItem title='Parametros' link="/parametros" icon={faCog} />}
         </CollapsableSidebarItem>
         {PermissionChecker(permissionsKeys.CATEGORIA_ADD) && <SidebarItem title='Categorias' link="/categorias" icon={faTasks} />}
       </CollapsableSidebarItem>

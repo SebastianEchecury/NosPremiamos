@@ -31,6 +31,10 @@ export const Routes = {
   EmpleadosCategoriasAprobador: {
     Delete: { path: "/empleadoscategorias/:Id/delete" },
   },
+  Parametros: {
+    path: "/parametros",
+    Update: { path: "/parametros/:Id/update" }
+  },
   Roles: {
     path: "/roles",
     Create: { path: "/roles/create" },
