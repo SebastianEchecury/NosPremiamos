@@ -26,6 +26,8 @@ export default function UserForm({ Id, disabled = false }) {
       Descripcion: Descripcion || '',
       RequiereAprobacion: RequiereAprobacion || '',
       IncluyeNovedades: IncluyeNovedades || '',
+      RequiereAprobacionBool: RequiereAprobacion || '',
+      IncluyeNovedadesBool: IncluyeNovedades || '',
       CantidadVotos: CantidadVotos || '',
       EstadoId: EstadoId || '',
     },
@@ -38,11 +40,11 @@ export default function UserForm({ Id, disabled = false }) {
     }),
     onSubmit: (values) => {
       if (Id) {
-        return update(values);
+        return update({Id:Id, Descripcion: formik.values.Descripcion, Nombre: formik.values.Nombre, CantidadVotos: formik.values.CantidadVotos, IncluyeNovedades: formik.values.IncluyeNovedades == 1? true:false, RequiereAprobacion: formik.values.RequiereAprobacion == 1? true:false , EstadoId: formik.values.EstadoId});
       }
       else {
         formik.setFieldValue('Id',0);
-        return add(values);
+        return add({Descripcion: formik.values.Descripcion, Nombre: formik.values.Nombre, CantidadVotos: formik.values.CantidadVotos, IncluyeNovedades: formik.values.IncluyeNovedades == 1? true:false, RequiereAprobacion: formik.values.RequiereAprobacion == 1? true:false , EstadoId: 1 });
       }
     }
   });
@@ -53,22 +55,23 @@ export default function UserForm({ Id, disabled = false }) {
 
   useEffect(()=>{
     if(IncluyeNovedades){
-      formik.setFieldValue("IncluyeNovedades", 1)
+      formik.setFieldValue("IncluyeNovedades", 1);
+      
     }
     if(!IncluyeNovedades){
-        formik.setFieldValue("IncluyeNovedades", 2)
+        formik.setFieldValue("IncluyeNovedades", 2);
     }
   }, [IncluyeNovedades])
 
   useEffect(()=>{
     if(RequiereAprobacion){
-      formik.setFieldValue("RequiereAprobacion", 1)
+      formik.setFieldValue("RequiereAprobacion", 1);
     }
     if(!RequiereAprobacion){
-        formik.setFieldValue("RequiereAprobacion", 2)
+        formik.setFieldValue("RequiereAprobacion", 2);
     }
   }, [RequiereAprobacion])
-  
+
   useEffect(() => {
     if (isAddSuccess) {
       toast.success("Categoria se registro con exito");
@@ -168,7 +171,7 @@ export default function UserForm({ Id, disabled = false }) {
           </Col>      
         </Row>
         <br/> 
-        {formik.values.RequiereAprobacion == 1 && <EmpleadosRepresentantes filter={{categoriaId: Id }}></EmpleadosRepresentantes>}
+        {formik.values.RequiereAprobacion == 1 && <EmpleadosRepresentantes filter={{categoriaId: Id? Id:0 }}></EmpleadosRepresentantes>}
         </SectionBody>
     </Section>    
   </Form>

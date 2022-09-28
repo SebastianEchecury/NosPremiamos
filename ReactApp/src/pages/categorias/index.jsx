@@ -15,7 +15,7 @@ import { useState } from 'react';
 const Categorias = ({ source, onQueryChange }) => {
   const { Id } = useParams();
   const history = useHistory();
-  const { data: { Eliminado } = {} } = useGetUserQuery(Id, { skip: !!!Id });
+  const { data: { EstadoId } = {} } = useGetUserQuery(Id, { skip: !!!Id });
   const [remove, { isSuccess: isDeleteSuccess, data: deleteData, isError: isDeleteError, error: deleteError }] = useDeleteMutation();
   const [isactivo, setIsActivo] = useState(true);
 
@@ -28,12 +28,12 @@ const Categorias = ({ source, onQueryChange }) => {
 
   useEffect(() => {
     if (isDeleteSuccess) {
-      if(Eliminado)
+      if(EstadoId == 1)
       {
-      toast.success("Se activo asociado con exito");
+      toast.success("Se elimino categoría con exito");
       }
       else{
-        toast.success("Se elimino asociado con exito");
+        toast.success("Se activo categoría con exito");
       }
       history.goBack();
     }
@@ -45,10 +45,10 @@ const Categorias = ({ source, onQueryChange }) => {
   }, [isDeleteSuccess, deleteData, isDeleteError, deleteError]);
 
   useEffect(() => {
-    if(Eliminado){
+    if(EstadoId == 1){
       setIsActivo(false)
     }
-  }, [Eliminado]);
+  }, [EstadoId]);
 
   return (
     <>
@@ -56,22 +56,22 @@ const Categorias = ({ source, onQueryChange }) => {
       <Modal show={!!Id} onHide={onCancelHandler} backdrop="static" keyboard={false}>
         <Modal.Header closeButton>
           <Modal.Title>
-           {(isactivo) && <TranslatableText entry="Eliminar" />}
+           {(!isactivo) && <TranslatableText entry="Eliminar" />}
 
-           {(!isactivo) && <TranslatableText entry="Activar" />}
+           {(isactivo) && <TranslatableText entry="Activar" />}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        {(isactivo) && <TranslatableText  entry="Confirmar Eliminacion" />}
-        {(!isactivo) && <TranslatableText  entry="Confirmar Activación" />}
+        {(!isactivo) && <TranslatableText  entry="Confirmar Eliminacion" />}
+        {(isactivo) && <TranslatableText  entry="Confirmar Activación" />}
         </Modal.Body>
         <Modal.Footer>
           <Button type="button" variant="outline-primary" onClick={onCancelHandler}>
             <TranslatableText  entry="Cancelar" />
           </Button>
           <Button type="button" className="ms-2" onClick={onSaveHandler}>
-          {(isactivo) && <TranslatableText  entry="Eliminar" />}          
-          {(!isactivo) && <TranslatableText  entry="Activar" />}
+          {(!isactivo) && <TranslatableText  entry="Eliminar" />}          
+          {(isactivo) && <TranslatableText  entry="Activar" />}
           </Button>
         </Modal.Footer>
       </Modal>

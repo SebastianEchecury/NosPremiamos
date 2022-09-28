@@ -20,15 +20,20 @@ export const Routes = {
     path: "/users",
     Create: { path: "/users/create" },
     Delete: { path: "/users/:Id/delete" },
-    Update: { path: "/users/:Id/update" },
-    View: { path: "/users/:Id/view" }
+    Update: { path: "/users/:Id/update" }
   },
   Categorias: {
     path: "/categorias",
     Create: { path: "/categorias/create" },
     Delete: { path: "/categorias/:Id/delete" },
-    Update: { path: "/categorias/:Id/update" },
-    View: { path: "/categorias/:Id/view" }
+    Update: { path: "/categorias/:Id/update" }
+  },
+  EmpleadosCategoriasAprobador: {
+    Delete: { path: "/empleadoscategorias/:Id/delete" },
+  },
+  Parametros: {
+    path: "/parametros",
+    Update: { path: "/parametros/:Id/update" }
   },
   Roles: {
     path: "/roles",
