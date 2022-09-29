@@ -4,12 +4,14 @@ using NP.Admin.Domain.Entities;
 using NP.Admin.Domain.Entities.Filters;
 using NP.Admin.Domain.Interfaces.Services;
 using NP.Domain.Entities;
+using NP.Domain.Entities.CustomEntities;
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using TECSO.FWK.AppService;
 
 namespace NP.Admin.AppService
 {
-
     public class CategoriasAppService : AppServiceBase<Categorias, CategoriasDto, int, ICategoriasService>, ICategoriasAppService
     {
         private readonly IEmpleadosCategoriasAprobadoresService _ecmpleadosCategoriasAprobadoresService;
@@ -56,6 +58,11 @@ namespace NP.Admin.AppService
                 }
                 await base.UpdateAsync(categoria);
             }
+        }
+
+        public async Task<List<Ganadores>> Ganadores(DateTime fechaVoto)
+        {
+            return await this._serviceBase.Ganadores(fechaVoto);
         }
     }
 }

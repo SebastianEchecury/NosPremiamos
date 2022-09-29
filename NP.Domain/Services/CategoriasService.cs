@@ -2,6 +2,9 @@ using NP.Admin.Domain.Entities.Filters;
 using NP.Admin.Domain.Interfaces.Repositories;
 using NP.Admin.Domain.Interfaces.Services;
 using NP.Domain.Entities;
+using NP.Domain.Entities.CustomEntities;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,8 +14,6 @@ namespace NP.Admin.Domain.Services
 {
     public class CategoriasService : ServiceBase<Categorias, int, ICategoriasRepository>, ICategoriasService
     {
-
-
         public CategoriasService(ICategoriasRepository Repository)
             : base(Repository)
         {
@@ -31,6 +32,11 @@ namespace NP.Admin.Domain.Services
                 throw new ValidationException("Ya existe una categoría activa con el mismo nombre.");
 
             return await base.ValidateEntity(entity, mode);
+        }
+
+        public async Task<List<Ganadores>> Ganadores(DateTime fechaVoto)
+        {
+            return await this.repository.Ganadores(fechaVoto);
         }
 
     }
