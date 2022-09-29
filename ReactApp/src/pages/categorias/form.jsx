@@ -26,8 +26,6 @@ export default function UserForm({ Id, disabled = false }) {
       Descripcion: Descripcion || '',
       RequiereAprobacion: RequiereAprobacion || '',
       IncluyeNovedades: IncluyeNovedades || '',
-      RequiereAprobacionBool: RequiereAprobacion || '',
-      IncluyeNovedadesBool: IncluyeNovedades || '',
       CantidadVotos: CantidadVotos || '',
       EstadoId: EstadoId || '',
     },
@@ -50,6 +48,9 @@ export default function UserForm({ Id, disabled = false }) {
   });
 
   const onCancelClick = () => {
+    if(formik.values.RequiereAprobacion == 1 && RequiereAprobacion == false){
+      update({Id:Id, Descripcion: formik.values.Descripcion, Nombre: formik.values.Nombre, CantidadVotos: formik.values.CantidadVotos, IncluyeNovedades: formik.values.IncluyeNovedades == 1? true:false, RequiereAprobacion:false , EstadoId: formik.values.EstadoId});
+    }
     history.goBack();
   };
 

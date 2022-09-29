@@ -23,7 +23,7 @@ export default ({ id }) => {
     enableReinitialize: true,
     initialValues: {
       VotadoEmpleadoId: { id: 0 },
-      VotanteEmpleadoId: header.DataObject.Id,
+      VotanteEmpleadoId: header?.DataObject?.Id,
       CategoriaId: {id: 0},
       Motivo: '',
     },

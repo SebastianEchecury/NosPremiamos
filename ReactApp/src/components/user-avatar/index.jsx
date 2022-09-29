@@ -1,11 +1,8 @@
 import React, { forwardRef, useRef } from 'react';
 
-import { useGetHeaderQuery } from '../../redux/apis/users';
-
 import './user-avatar.scss';
 
 export default forwardRef(({ className, ...props }, ref) => {
-  const { data: header } = useGetHeaderQuery();
   const firstName = useRef(localStorage.getItem('usuario')? JSON.parse(localStorage.getItem('usuario')).nombre : '');
   const lastName = useRef(localStorage.getItem('usuario')? JSON.parse(localStorage.getItem('usuario')).apellido : '');
 

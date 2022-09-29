@@ -61,6 +61,7 @@ namespace NP.WebService.Admin.Controllers
                     username = credentials.Email,
                     primerIngreso = User.PrimerIngreso,
                     token = tokenGenerated,
+                    id = User.Id,
                     roles = roles
                 });
             }

@@ -1,6 +1,5 @@
 import React, {useRef} from 'react';
 import { Navbar as BoostrapNavbar } from 'react-bootstrap';
-import { useGetHeaderQuery } from '../../redux/apis/users';
 
 import AppSidebar from '../sidebar';
 import { TranslatableText } from '../translations';
@@ -9,7 +8,6 @@ import UserAvatar from '../user-avatar';
 import UserMenu from './user-menu';
 
 export default function Navbar() {
-  const { data: header } = useGetHeaderQuery();
   const firstName = useRef(localStorage.getItem('usuario')? JSON.parse(localStorage.getItem('usuario')).nombre : '');
   const lastName = useRef(localStorage.getItem('usuario')? JSON.parse(localStorage.getItem('usuario')).apellido : '');
 

@@ -1,23 +1,17 @@
 import React from 'react';
 
-import { Header, OptionMenu, SelectFilterDescription, SelectFilterForm, SortDescription, SortForm, Table as TecsoTable, TextFilterDescription, TextFilterForm } from '../../../components/table';
+import { Header, OptionMenu, SortDescription, SortForm, Table as TecsoTable, TextFilterDescription, TextFilterForm } from '../../../components/table';
 import { TranslatableText } from '../../../components/translations';
 
 
 
 import Row from './row';
 
-export default function Table(props) {
-
-  const statuses = [
-    { description: 'Todos' },
-    { value: 'true', description: 'Activo' },
-    { value: 'false', description: 'Inactivo' }
-  ]; 
-
+export default function Table(props) { 
+const Id = JSON.parse(localStorage.getItem('usuario')).id
   return (
-    <TecsoTable {...props} row={(props) => <Row {...props} />}>
-      <Header className="d-flex">
+    <TecsoTable {...props} row={(props) => <Row {...props} />}>         
+      <Header className="d-flex" filter={{CategoriaRequiereAprobacion:true, EmpleadoAprobador:Id}}>
         <TranslatableText  entry="Voto a" />
         <SortDescription className="ms-2" conditions={(order) => ({ VotadoEmpleado: order })} />
         <TextFilterDescription className="ms-2" conditions={(value) => ({ VotadoEmpleado: value })} />
