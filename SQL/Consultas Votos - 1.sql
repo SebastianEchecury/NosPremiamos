@@ -59,18 +59,18 @@ CREATE PROCEDURE dbo.Votos_VotosEmitidosEmpleado
 AS
 
 	SELECT 
-		V.*,
-		Votante.*,
-		Aprobador.*,
-		C.*
+		V.Id as VotoId, V.FechaVoto, V.Aprobado, V.FechaAprobado, V.Motivo,
+		V.VotadoEmpleadoId, V.VotanteEmpleadoId,
+		Votado.Nombre, Votado.Apellido, Votado.Usuario, 
+		Aprobador.Nombre + ' ' + Aprobador.Apellido as Aprobador,
+		C.Id as CategoriaId, C.Nombre as NombreCategoria
 	FROM Votos V
 		INNER JOIN Categorias C ON V.CategoriaId = C.Id
-		INNER JOIN Empleados Votante ON V.VotanteEmpleadoId = Votante.Id
+		INNER JOIN Empleados Votado ON V.VotadoEmpleadoId = Votado.Id
 		LEFT JOIN Empleados Aprobador ON V.AprobadorEmpleadoId = Aprobador.Id
 	WHERE 
 		C.EstadoId = 1
 		AND V.VotanteEmpleadoId = @empleadoVotanteId
-		AND V.Aprobado = 1
 		AND V.FechaVoto >= @fechaVoto
 
 GO 
@@ -84,13 +84,14 @@ CREATE PROCEDURE dbo.Votos_VotosRecibidosEmpleado
 AS
 
 	SELECT 
-		V.*,
-		Votado.*,
-		Aprobador.*,
-		C.*
+		V.Id as VotoId, V.FechaVoto, V.Aprobado, V.FechaAprobado, V.Motivo,
+		V.VotadoEmpleadoId, V.VotanteEmpleadoId,
+		Votante.Nombre, Votante.Apellido, Votante.Usuario,
+		Aprobador.Nombre + ' ' + Aprobador.Apellido as Aprobador,
+		C.Id as CategoriaId, C.Nombre as NombreCategoria
 	FROM Votos V
 		INNER JOIN Categorias C ON V.CategoriaId = C.Id
-		INNER JOIN Empleados Votado ON V.VotadoEmpleadoId = Votado.Id
+		INNER JOIN Empleados Votante ON V.VotanteEmpleadoId = Votante.Id
 		LEFT JOIN Empleados Aprobador ON V.AprobadorEmpleadoId = Aprobador.Id
 	WHERE 
 		C.EstadoId = 1

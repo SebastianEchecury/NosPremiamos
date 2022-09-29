@@ -47,5 +47,37 @@ namespace NP.infra.Data.Repositories
 
             return ranking;
         }
+
+        public async Task<List<VotosEmitidos>> VotosEmitidos(int empleadoId, DateTime fechaVoto)
+        {
+            List<VotosEmitidos> ranking = new List<VotosEmitidos>();
+
+            var sp = this.Context.LoadStoredProc("dbo.Votos_VotosEmitidosEmpleado")
+                .WithSqlParam("@empleadoVotanteId", new SqlParameter("@empleadoVotanteId", empleadoId))
+                .WithSqlParam("@fechaVoto", new SqlParameter("@fechaVoto", fechaVoto));
+
+            await sp.ExecuteStoredProcAsync((handler) =>
+            {
+                ranking = handler.ReadToList<VotosEmitidos>().ToList();
+            });
+
+            return ranking;
+        }
+
+        public async Task<List<VotosEmitidos>> VotosRecibidos(int empleadoId, DateTime fechaVoto)
+        {
+            List<VotosEmitidos> ranking = new List<VotosEmitidos>();
+
+            var sp = this.Context.LoadStoredProc("dbo.Votos_VotosRecibidosEmpleado")
+                .WithSqlParam("@empleadoVotadoId", new SqlParameter("@empleadoVotadoId", empleadoId))
+                .WithSqlParam("@fechaVoto", new SqlParameter("@fechaVoto", fechaVoto));
+
+            await sp.ExecuteStoredProcAsync((handler) =>
+            {
+                ranking = handler.ReadToList<VotosEmitidos>().ToList();
+            });
+
+            return ranking;
+        }
     }
 }

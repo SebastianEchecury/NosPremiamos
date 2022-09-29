@@ -20,6 +20,16 @@ namespace NP.Admin.Domain.Services
         {
             return await this.repository.Ranking(categoriaId, fechaVoto);
         }
+
+        public async Task<List<VotosEmitidos>> VotosEmitidos(int empleadoId, DateTime fechaVoto)
+        {
+            return await this.repository.VotosEmitidos(empleadoId, fechaVoto);
+        }
+
+        public async Task<List<VotosEmitidos>> VotosRecibidos(int empleadoId, DateTime fechaVoto)
+        {
+            return await this.repository.VotosRecibidos(empleadoId, fechaVoto);
+        }
     }
     
 }

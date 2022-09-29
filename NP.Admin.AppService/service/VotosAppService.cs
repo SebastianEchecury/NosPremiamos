@@ -31,5 +31,15 @@ namespace NP.Admin.AppService
         {
             return await this._serviceBase.Ranking(categoriaId, fechaVoto);
         }
+
+        public async Task<List<VotosEmitidos>> VotosEmitidos(int empleadoId, DateTime fechaVoto)
+        {
+            return await this._serviceBase.VotosEmitidos(empleadoId, fechaVoto);
+        }
+
+        public async Task<List<VotosEmitidos>> VotosRecibidos(int empleadoId, DateTime fechaVoto)
+        {
+            return await this._serviceBase.VotosRecibidos(empleadoId, fechaVoto);
+        }
     }
 }

@@ -54,9 +54,35 @@ namespace NP.WebService.Admin.Controllers
                 return ReturnError<string>(ex);
             }
         }
+
+
+        [HttpGet("VotosEmitidos")]
+        public async Task<IActionResult> VotosEmitidos(int empleadoId, DateTime fechaVoto)
+        {
+            try
+            {
+                var result = await this.Service.VotosEmitidos(empleadoId, fechaVoto);
+                return ReturnData<List<VotosEmitidos>>(result);
+            }
+            catch (Exception ex)
+            {
+                return ReturnError<string>(ex);
+            }
+        }
+
+
+        [HttpGet("VotosRecibidos")]
+        public async Task<IActionResult> VotosRecibidos(int empleadoId, DateTime fechaVoto)
+        {
+            try
+            {
+                var result = await this.Service.VotosRecibidos(empleadoId, fechaVoto);
+                return ReturnData<List<VotosEmitidos>>(result);
+            }
+            catch (Exception ex)
+            {
+                return ReturnError<string>(ex);
+            }
+        }
     }
-
-
- 
-
 }
