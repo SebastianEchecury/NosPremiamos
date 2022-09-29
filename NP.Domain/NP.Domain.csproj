@@ -21,7 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Entities\CustomEntities\" />
     <Folder Include="Model\" />
   </ItemGroup>
 

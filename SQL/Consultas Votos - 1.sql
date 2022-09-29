@@ -6,7 +6,7 @@ CREATE PROCEDURE dbo.Votos_Ranking
 AS
 
 	SELECT TOP 3
-		COUNT(*), V.VotadoEmpleadoId, Votado.Nombre, Votado.Apellido, Votado.Usuario
+		COUNT(*) as CantVotos, V.VotadoEmpleadoId, Votado.Nombre, Votado.Apellido, Votado.Usuario
 
 	FROM Votos V
 		INNER JOIN Categorias C ON V.CategoriaId = C.Id
@@ -36,7 +36,7 @@ AS
 		Categorias C
 		OUTER APPLY (
 			SELECT TOP 1
-				COUNT(*) as Votos, V.VotadoEmpleadoId, Votado.Nombre, Votado.Apellido, Votado.Usuario
+				COUNT(*) as CantVotos, V.VotadoEmpleadoId, Votado.Nombre, Votado.Apellido, Votado.Usuario
 			FROM Votos V
 				INNER JOIN Empleados Votado ON V.VotadoEmpleadoId = Votado.Id
 			WHERE 
