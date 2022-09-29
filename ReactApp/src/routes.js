@@ -28,6 +28,12 @@ export const Routes = {
     Delete: { path: "/categorias/:Id/delete" },
     Update: { path: "/categorias/:Id/update" }
   },
+
+  Controlarvotos: {
+    path: "/controlarvotos",
+    Delete: { path: "/controlarvotos/:Id/delete" },
+  },
+
   EmpleadosCategoriasAprobador: {
     Delete: { path: "/empleadoscategorias/:Id/delete" },
   },
@@ -64,6 +70,9 @@ export const Routes = {
       Generar: { path: "/terminales/talonarios/generar" },
       View: { path: "/terminales/talonarios/:id/view" }
     }
+  },
+  Votar: {
+    path: "/votar"
   },
   CobrarTasa: {
     path: "/cobrartasa"

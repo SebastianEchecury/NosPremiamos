@@ -39,8 +39,8 @@ export default () => {
         </CollapsableSidebarItem>
         {PermissionChecker(permissionsKeys.CATEGORIA_ADD) && <SidebarItem title='Categorias' link="/categorias" icon={faTasks} />}
       </CollapsableSidebarItem>
-      {PermissionChecker(permissionsKeys.VOTO_ADD) && <SidebarItem title="Votar" link="" icon={faEnvelopeOpen} />}   
-      {PermissionChecker(permissionsKeys.VOTO_UPDATE) && <SidebarItem title="Control de Votos" link="" icon={faEnvelopeCircleCheck} />}   
+      {PermissionChecker(permissionsKeys.VOTO_ADD) && <SidebarItem title="Votar" link="/votar" icon={faEnvelopeOpen} />}   
+      {PermissionChecker(permissionsKeys.VOTO_UPDATE) && <SidebarItem title="Control de Votos" link="/controlarvotos" icon={faEnvelopeCircleCheck} />}   
       {PermissionChecker(permissionsKeys.VOTO_VIEW_EMITIDOS) && <SidebarItem title="Mis Votos Emitidos" link="" icon={faEnvelope} />}   
       {PermissionChecker(permissionsKeys.VOTO_VIEW) && <SidebarItem title="Mis Votos" link="" icon={faArchive} />}
       {PermissionChecker(permissionsKeys.VOTO_VIEW_RANKING) && <SidebarItem title="Ranking de Votos" link="" icon={faLineChart} />}

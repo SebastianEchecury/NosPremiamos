@@ -151,19 +151,19 @@ namespace NP.infra.Data.EntityConfig
                 entity.HasOne(d => d.Categoria)
                     .WithMany(p => p.Votos)
                     .HasForeignKey(d => d.CategoriaId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    //.OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Votos_Categorias");
 
                 entity.HasOne(d => d.VotadoEmpleado)
                     .WithMany(p => p.VotosVotadoEmpleado)
                     .HasForeignKey(d => d.VotadoEmpleadoId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    //.OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Votos_Empleados1");
 
                 entity.HasOne(d => d.VotanteEmpleado)
                     .WithMany(p => p.VotosVotanteEmpleado)
                     .HasForeignKey(d => d.VotanteEmpleadoId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    //.OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Votos_Empleados2");
             });
         }

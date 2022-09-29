@@ -35,7 +35,9 @@ import LostPassword from './../auth/lostpassword/index';
 import ChangePassword from '../auth/account/changepassword';
 import SuccessPassword from './../auth/account/changepassword/successPassword/index';
 import cobrartasa from '../cobrartasa';
+import votar from '../votar';
 import EmpleadosCategoriasAprobador from '../categorias/empleadocategoria';
+import Controlarvotos from '../controlarvotos'
 
 import { useGetHeaderQuery } from '../../redux/apis/users';
 import Parametros from '../parametros';
@@ -75,6 +77,12 @@ const HomePage = () => {
         <RouteWithSidebar exact path={Routes.Parametros.path} component={Parametros} />
         <RouteWithSidebar exact path={Routes.Parametros.Update.path} component={({ match }) => <Parametro Id={match.params.Id} />} />
 
+        <RouteWithSidebar exact path={Routes.Votar.path} component={votar} />
+        <RouteWithSidebar exact path={Routes.NotFound.path} component={NotFound} />
+
+        <RouteWithSidebar exact path={Routes.Controlarvotos.path} component={Controlarvotos} />
+        <RouteWithSidebar exact path={Routes.Controlarvotos.Delete.path} component={Controlarvotos} />
+
         <RouteWithSidebar exact path={Routes.Roles.path} component={Roles} />
         <RouteWithSidebar exact path={Routes.Roles.Create.path} component={Role} />
         <RouteWithSidebar exact path={Routes.Roles.Delete.path} component={Roles} />
@@ -99,7 +107,7 @@ const HomePage = () => {
         <RouteWithSidebar exact path={Routes.Terminales.Talonarios.Generar.path} component={() => <Talonarios id={header.terminal?.id} />} />
         <RouteWithSidebar exact path={Routes.Terminales.Talonarios.View.path} component={({match}) => <TalonarioTicketsForm id={match.params.id} />} />
         <RouteWithSidebar exact path={Routes.CobrarTasa.path} component={cobrartasa} />
-        <RouteWithSidebar exact path={Routes.NotFound.path} component={NotFound} />
+
       </>
     </Switch>
   );

@@ -16,7 +16,7 @@ namespace NP.Admin.AppService.Model
         public CategoriasDto()
         {
             EmpleadosCategoriasAprobadores = new HashSet<EmpleadosCategoriasAprobadoresDto>();
-            Votos = new HashSet<VotosDto>();
+            //Votos = new HashSet<VotosDto>();
         }
 
         public string Descripcion { get; set; }
@@ -28,7 +28,7 @@ namespace NP.Admin.AppService.Model
 
         public EstadosDto Estado { get; set; }
         public ICollection<EmpleadosCategoriasAprobadoresDto> EmpleadosCategoriasAprobadores { get; set; }
-        public ICollection<VotosDto> Votos { get; set; }
+        //public ICollection<VotosDto> Votos { get; set; }
 
         public override string Description => this.Descripcion;
     }

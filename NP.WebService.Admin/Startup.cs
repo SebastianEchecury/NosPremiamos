@@ -211,6 +211,11 @@ namespace NP.WebService.Admin
             services.AddTransient<IRoleAppService, RoleAppService>();
             services.AddTransient<IRoleService, RoleService>();
 
+            //Votos
+            services.AddTransient<IVotosRepository, VotosRepository>();
+            services.AddTransient<IVotosAppService, VotosAppService>();
+            services.AddTransient<IVotosService, VotosService>();
+
             //EmpleadosRoles
             services.AddTransient<IEmpleadoRolesRepository, EmpleadoRolesRepository>();
             services.AddTransient<IEmpleadoRolesAppService, EmpleadoRolesAppService>();

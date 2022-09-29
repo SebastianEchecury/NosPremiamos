@@ -18,6 +18,7 @@ import { api as contenidos} from './apis/contenidos';
 import { api as talonarioTickets} from './apis/talonario-tickets';
 import {api as userRoles} from './apis/user-roles';
 import {api as categorias} from './apis/categorias';
+import {api as votos} from './apis/votos';
 import {api as empleadosCategorias} from './apis/empleadoscategorias';
 
 import authReducer from './slices/auth';
@@ -42,7 +43,8 @@ const apis = [
   talonarioTickets,
   userRoles,
   categorias,
-  empleadosCategorias
+  empleadosCategorias,
+  votos
 
 ];
 
