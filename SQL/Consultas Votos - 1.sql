@@ -30,8 +30,9 @@ CREATE PROCEDURE dbo.Categorias_Ganadores
 AS
 
 	SELECT 
-		C.*,
-		Ganador.*
+		C.Nombre as Categoria,
+		ISNULL(Ganador.Nombre + ' ' + Apellido, 'Sin ganador') as Ganador,
+		Ganador.CantVotos
 	FROM 
 		Categorias C
 		OUTER APPLY (
@@ -48,7 +49,7 @@ AS
 		) AS Ganador
 	WHERE 
 		C.EstadoId = 1
-
+	ORDER BY Ganador.CantVotos DESC
 GO 
 
 CREATE PROCEDURE dbo.Votos_VotosEmitidosEmpleado
