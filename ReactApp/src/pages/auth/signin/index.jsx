@@ -62,14 +62,14 @@ let Signin = (props) => {
         <Form.Label>
           <TranslatableText entry="Correo" />*
         </Form.Label>
-        <Form.Control type="email" {...formik.getFieldProps('email')} isInvalid={!!formik.errors.email} placeholder="Email" />
+        <Form.Control type="email" {...formik.getFieldProps('email')} isInvalid={!!formik.errors.email && formik.touched.email} placeholder="Email" />
         <Form.Control.Feedback type="invalid">{formik.errors.email}</Form.Control.Feedback>
       </Form.Group>
       <Form.Group>
         <Form.Label>
           <TranslatableText  entry="Contraseña" />*
         </Form.Label>
-        <Form.Control type="password" {...formik.getFieldProps('password')} isInvalid={!!formik.errors.password} placeholder="Contraseña" />
+        <Form.Control type="password" {...formik.getFieldProps('password')} isInvalid={!!formik.errors.password && formik.touched.password} placeholder="Contraseña" />
         <Form.Control.Feedback type="invalid">{formik.errors.password}</Form.Control.Feedback>
       </Form.Group>
       <Form.Group className="mb-3 d-block">
