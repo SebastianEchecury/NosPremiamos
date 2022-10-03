@@ -13,6 +13,11 @@ namespace NP.Admin.Domain.Entities.Filters
         public bool? CategoriaRequiereAprobacion { get; set; }
 
         public int? EmpleadoAprobador { get; set; }
+        public string Motivo { get; set; }
+        public string VotadoEmpleado { get; set; }
+        public string VotanteEmpleado { get; set; }
+        public string Categoria { get; set; }
+
 
         public override Expression<Func<Votos, bool>> GetFilterExpression()
         {
@@ -26,6 +31,30 @@ namespace NP.Admin.Domain.Entities.Filters
             if (this.EmpleadoAprobador.HasValue)
             {
                 baseFE = baseFE.And(e => e.Categoria.EmpleadosCategoriasAprobadores.Any(r=> r.EmpleadoId == EmpleadoAprobador));
+            }
+
+            if (!String.IsNullOrEmpty(this.Motivo))
+            {
+                Expression<Func<Votos, bool>> filterTextExp = e => e.Motivo.Contains(this.Motivo);
+                baseFE = baseFE.And(filterTextExp);
+            }
+
+            if (!String.IsNullOrEmpty(this.VotanteEmpleado))
+            {
+                Expression<Func<Votos, bool>> filterTextExp = e => (e.VotanteEmpleado.Apellido + ", " + e.VotanteEmpleado.Nombre).Contains(this.VotanteEmpleado);
+                baseFE = baseFE.And(filterTextExp);
+            }
+
+            if (!String.IsNullOrEmpty(this.VotadoEmpleado))
+            {
+                Expression<Func<Votos, bool>> filterTextExp = e => (e.VotadoEmpleado.Apellido + ", " + e.VotadoEmpleado.Nombre).Contains(this.VotadoEmpleado);
+                baseFE = baseFE.And(filterTextExp);
+            }
+
+            if (!String.IsNullOrEmpty(this.Categoria))
+            {
+                Expression<Func<Votos, bool>> filterTextExp = e => e.Categoria.Nombre.Contains(this.Categoria);
+                baseFE = baseFE.And(filterTextExp);
             }
 
             return baseFE;
