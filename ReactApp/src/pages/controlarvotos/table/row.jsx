@@ -1,10 +1,9 @@
 import React from 'react';
 import { Badge } from 'react-bootstrap';
-import { faCheck, faEdit,  faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faEdit,  faTrash, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 import IconButton from '../../../components/icon-button';
 import { Cell, Row as TecsoRow } from '../../../components/table';
-import { TranslatableText } from '../../../components/translations';
 import { Routes } from '../../../routes';
 import { permissionsKeys } from '../../../utils/permissionsKeys';
 import PermissionChecker from '../../../components/permissionChecker';
@@ -18,8 +17,8 @@ export default function Row({ value, index, values }) {
       <Cell>{value.Categoria.Nombre}</Cell>
       <Cell>{value.Motivo}</Cell>
       <Cell>        
-        {PermissionChecker(permissionsKeys.VOTO_UPDATE) && !value.Eliminado && <IconButton title='Aprobar' icon={faTrash} href={Routes.Users.Delete.path.replace(':Id', value.Id)} className="mx-1" />}
-        {PermissionChecker(permissionsKeys.VOTO_UPDATE)  && value.Eliminado && <IconButton title='Rechazar' icon={faCheck} href={Routes.Users.Delete.path.replace(':Id', value.Id)} className="mx-1" />}
+        {PermissionChecker(permissionsKeys.VOTO_UPDATE)  && <IconButton title='Aprobar' icon={faCheck} href={Routes.Controlarvotos.Update.path.replace(':Id', value.Id)} className="mx-1" />}
+        {PermissionChecker(permissionsKeys.VOTO_UPDATE)  && <IconButton title='Rechazar' icon={faXmark} href={Routes.Controlarvotos.Delete.path.replace(':Id', value.Id)} className="mx-1" />}
       </Cell>
     </TecsoRow>
   );

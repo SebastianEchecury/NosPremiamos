@@ -43,7 +43,7 @@ export default ({ id }) => {
 
   useEffect(() => {
     if (isVotarSuccess) {
-      toast.success(votarData.message);
+      toast.success('Se registro voto con exito' );
       formik.resetForm();
       history.push(Routes.Dashboard.path);
       
@@ -54,8 +54,7 @@ export default ({ id }) => {
     if (isVotarError) {
       formik.setErrors(votarError.data);
 
-      const errors = [].concat(...Object.values(votarError.data)).join('\n');
-      toast.error(errors);
+      toast.error([].concat(...Object.values(JSON.parse(votarError.data).Messages)));
     }
   }, [isVotarError, votarError]);
 

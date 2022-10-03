@@ -82,6 +82,7 @@ const HomePage = () => {
 
         <RouteWithSidebar exact path={Routes.Controlarvotos.path} component={Controlarvotos} />
         <RouteWithSidebar exact path={Routes.Controlarvotos.Delete.path} component={Controlarvotos} />
+        <RouteWithSidebar exact path={Routes.Controlarvotos.Update.path} component={Controlarvotos} />
 
         <RouteWithSidebar exact path={Routes.Roles.path} component={Roles} />
         <RouteWithSidebar exact path={Routes.Roles.Create.path} component={Role} />

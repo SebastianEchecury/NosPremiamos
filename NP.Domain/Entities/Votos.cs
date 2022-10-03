@@ -16,6 +16,7 @@ namespace NP.Domain.Entities
         public int CategoriaId { get; set; }
         public string Motivo { get; set; }
         public bool? Aprobado { get; set; }
+        public string MotivoRechazo { get; set; }
 
         public Empleados AprobadorEmpleado { get; set; }
         public Categorias Categoria { get; set; }

@@ -31,8 +31,7 @@ const EmpleadosRepresentantes = ({ source, onQueryChange }) => {
           history.goBack();
         }
         else if (isDeleteError) {
-          const errors = [].concat(...Object.values(deleteError.data));
-          toast.error(errors);
+          toast.error([].concat(...Object.values(JSON.parse(deleteError.data).Messages)));
           history.goBack();
         }
       }, [isDeleteSuccess, deleteData, isDeleteError, deleteError]);

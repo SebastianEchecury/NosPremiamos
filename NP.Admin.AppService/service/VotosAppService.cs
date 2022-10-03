@@ -41,5 +41,11 @@ namespace NP.Admin.AppService
         {
             return await this._serviceBase.VotosRecibidos(empleadoId, fechaVoto);
         }
+
+        public override Task DeleteAsync(int id)
+        {
+            return base.DeleteAsync(id);
+        }   
+
     }
 }

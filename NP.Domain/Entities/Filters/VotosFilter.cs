@@ -20,7 +20,7 @@ namespace NP.Admin.Domain.Entities.Filters
             
             if (this.CategoriaRequiereAprobacion.HasValue)
             {
-                baseFE = baseFE.And(e => e.Categoria.RequiereAprobacion == this.CategoriaRequiereAprobacion.Value);
+                baseFE = baseFE.And(e => e.Categoria.RequiereAprobacion == this.CategoriaRequiereAprobacion.Value && e.Aprobado == null);
             }
 
             if (this.EmpleadoAprobador.HasValue)

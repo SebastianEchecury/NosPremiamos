@@ -32,6 +32,7 @@ export const Routes = {
   Controlarvotos: {
     path: "/controlarvotos",
     Delete: { path: "/controlarvotos/:Id/delete" },
+    Update: { path: "/controlarvotos/:Id/update" }
   },
 
   EmpleadosCategoriasAprobador: {

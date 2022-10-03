@@ -12,6 +12,7 @@ namespace NP.Admin.AppService.Model
         public DateTime? FechaAprobado { get; set; }
         public int CategoriaId { get; set; }
         public string Motivo { get; set; }
+        public string MotivoRechazo { get; set; }
 
         public EmpleadosDto AprobadorEmpleado { get; set; }
         public CategoriasDto Categoria { get; set; }
