@@ -84,5 +84,16 @@ namespace NP.WebService.Admin.Controllers
                 return ReturnError<string>(ex);
             }
         }
+
+        public override Task<IActionResult> GetAllAsync(VotosFilter filter)
+        {
+            if (filter.MisVotos.HasValue && filter.MisVotos.Value)
+                return this.VotosRecibidos(filter.UsuarioId,string.IsNullOrEmpty(filter.FechaVoto)? Convert.ToDateTime("01/"+DateTime.Now.Month+"/"+ DateTime.Now.Year): Convert.ToDateTime(filter.FechaVoto));
+
+            if (filter.VotosEmitidos.HasValue && filter.VotosEmitidos.Value)
+                return this.VotosEmitidos(filter.UsuarioId, string.IsNullOrEmpty(filter.FechaVoto) ? Convert.ToDateTime("01/" + DateTime.Now.Month + "/" + DateTime.Now.Year) : Convert.ToDateTime(filter.FechaVoto));
+
+            return base.GetAllAsync(filter);
+        }
     }
 }

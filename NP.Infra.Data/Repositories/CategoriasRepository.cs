@@ -27,12 +27,23 @@ namespace NP.infra.Data.Repositories
             return e => e.Id == id;
         }
 
-        public async Task<List<Ganadores>> Ganadores(DateTime fechaVoto)
+        public async Task<List<Ganadores>> Ganadores(DateTime fechaVoto, string filtroNombre, string filtroCategoria)
         {
             List<Ganadores> ranking = new List<Ganadores>();
 
-            var sp = this.Context.LoadStoredProc("dbo.Categorias_Ganadores")
-                .WithSqlParam("@fechaVoto", new SqlParameter("@fechaVoto", fechaVoto));
+            var sp = this.Context.LoadStoredProc("dbo.Categorias_Ganadores");
+            if (string.IsNullOrEmpty(filtroNombre)) 
+                sp.WithSqlParam("@filtroNombre", new SqlParameter("@filtroNombre", DBNull.Value));
+            else
+                sp.WithSqlParam("@filtroNombre", new SqlParameter("@filtroNombre", filtroNombre));
+
+            if (string.IsNullOrEmpty(filtroCategoria))
+                sp.WithSqlParam("@filtroCategoria", new SqlParameter("@filtroCategoria", DBNull.Value));
+            else
+                sp.WithSqlParam("@filtroCategoria", new SqlParameter("@filtroCategoria", filtroCategoria));
+
+
+            sp.WithSqlParam("@fechaVoto", new SqlParameter("@fechaVoto", fechaVoto));
 
             await sp.ExecuteStoredProcAsync((handler) =>
             {

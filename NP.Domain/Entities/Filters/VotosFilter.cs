@@ -17,6 +17,10 @@ namespace NP.Admin.Domain.Entities.Filters
         public string VotadoEmpleado { get; set; }
         public string VotanteEmpleado { get; set; }
         public string Categoria { get; set; }
+        public bool?  MisVotos { get; set; }
+        public bool? VotosEmitidos { get; set; }
+        public string FechaVoto { get; set; }
+        public int UsuarioId { get; set; }
 
 
         public override Expression<Func<Votos, bool>> GetFilterExpression()

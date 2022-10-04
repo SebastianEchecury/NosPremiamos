@@ -34,9 +34,9 @@ namespace NP.Admin.Domain.Services
             return await base.ValidateEntity(entity, mode);
         }
 
-        public async Task<List<Ganadores>> Ganadores(DateTime fechaVoto)
+        public async Task<List<Ganadores>> Ganadores(DateTime fechaVoto, string filtroNombre, string filtroCategoria)
         {
-            return await this.repository.Ganadores(fechaVoto);
+            return await this.repository.Ganadores(fechaVoto, filtroNombre, filtroCategoria);
         }
 
     }

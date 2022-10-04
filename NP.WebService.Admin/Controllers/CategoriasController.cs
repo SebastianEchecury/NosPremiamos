@@ -20,12 +20,12 @@ namespace NP.WebService.Admin.Controllers
         }
 
         [HttpGet("GanadoresMensuales")]
-        public async Task<IActionResult> GanadoresMensuales()
+        public async Task<IActionResult> GanadoresMensuales(string filtroNombre, string filtroCategoria)
         {
             try
             {
                 var fechaVoto = new DateTime(DateTime.Now.Year, DateTime.Now.Month - 1, 1);
-                var result = await this.Service.Ganadores(fechaVoto);
+                var result = await this.Service.Ganadores(fechaVoto, filtroNombre, filtroCategoria);
                 return ReturnData<List<Ganadores>>(result);
             }
             catch (Exception ex)
@@ -40,13 +40,26 @@ namespace NP.WebService.Admin.Controllers
             try
             {
                 var fechaVoto = new DateTime(DateTime.Now.Year, 1, 1);
-                var result = await this.Service.Ganadores(fechaVoto);
+                var result = await this.Service.Ganadores(fechaVoto, null, null);
                 return ReturnData<List<Ganadores>>(result);
             }
             catch (Exception ex)
             {
                 return ReturnError<string>(ex);
             }
+        }
+
+        public override Task<IActionResult> GetAllAsync(CategoriasFilter filter)
+        {
+            if(filter.RankingVotos.HasValue && filter.RankingVotos.Value)
+            {
+                
+              return this.GanadoresMensuales(filter.Ganador, filter.Categoria);
+
+            }
+
+
+            return base.GetAllAsync(filter);
         }
     }
 }

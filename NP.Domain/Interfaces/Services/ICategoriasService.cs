@@ -12,6 +12,6 @@ namespace NP.Admin.Domain.Interfaces.Services
 {
     public interface ICategoriasService : IServiceBase<Categorias, int>
     {
-        Task<List<Ganadores>> Ganadores(DateTime fechaVoto);
+        Task<List<Ganadores>> Ganadores(DateTime fechaVoto, string filtroNombre, string filtroCategoria);
     }
 }

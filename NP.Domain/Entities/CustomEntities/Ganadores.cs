@@ -9,5 +9,6 @@ namespace NP.Domain.Entities.CustomEntities
         public string Categoria { get; set; }
         public string Ganador { get; set; }
         public int CantVotos { get; set; }
+        public int VotosCategoria { get; set; }
     }
 }

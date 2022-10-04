@@ -3,6 +3,7 @@ using System.Linq.Expressions;
 using System;
 using TECSO.FWK.Domain.Extensions;
 using NP.Domain.Entities;
+using NP.Domain.Entities.CustomEntities;
 
 namespace NP.Admin.Domain.Entities.Filters
 {
@@ -13,8 +14,10 @@ namespace NP.Admin.Domain.Entities.Filters
         public int? EstadoId { get; set; }
         public bool? RequiereAprobacion { get; set; }
         public bool? IncluyeNovedades { get; set; }
-        public int? CantidadVotos { get; set; }
-
+        public int? CantidadVotos { get; set; } 
+        public bool? RankingVotos { get; set; }
+        public string Categoria { get; set; }
+        public string Ganador { get; set; }
 
         public override Expression<Func<Categorias, bool>> GetFilterExpression()
         {

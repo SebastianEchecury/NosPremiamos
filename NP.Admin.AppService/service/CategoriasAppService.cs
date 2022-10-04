@@ -60,9 +60,9 @@ namespace NP.Admin.AppService
             }
         }
 
-        public async Task<List<Ganadores>> Ganadores(DateTime fechaVoto)
+        public async Task<List<Ganadores>> Ganadores(DateTime fechaVoto,string filtroNombre, string filtroCategoria)
         {
-            return await this._serviceBase.Ganadores(fechaVoto);
+            return await this._serviceBase.Ganadores(fechaVoto, filtroNombre, filtroCategoria);
         }
     }
 }

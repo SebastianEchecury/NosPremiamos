@@ -11,6 +11,6 @@ namespace NP.Admin.AppService.Interface
 {
     public interface ICategoriasAppService : IAppServiceBase<Categorias, CategoriasDto, int>
     {
-        Task<List<Ganadores>> Ganadores(DateTime fechaVoto);
+        Task<List<Ganadores>> Ganadores(DateTime fechaVoto, string filtroNombre, string filtroCategoria);
     }
 }

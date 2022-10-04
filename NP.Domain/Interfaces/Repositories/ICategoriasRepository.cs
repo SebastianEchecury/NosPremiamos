@@ -10,6 +10,6 @@ namespace NP.Admin.Domain.Interfaces.Repositories
 {
     public interface ICategoriasRepository : IRepositoryBase<Categorias,int>
     {
-        Task<List<Ganadores>> Ganadores(DateTime fechaVoto);
+        Task<List<Ganadores>> Ganadores(DateTime fechaVoto, string filtroNombre, string filtroCategoria);
     }
 }
