@@ -5,15 +5,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 import { TranslatableText } from '../translations';
-
-import { useLogoutMutation } from '../../redux/apis/auth';
+import { useHistory } from 'react-router-dom';
 import { useGetHeaderQuery } from '../../redux/apis/users';
+import { Routes } from '../../routes';
 
 import UserMenuToggle from './user-menu-toogle';
 
 export default function UserMenu() {
   const { refetch } = useGetHeaderQuery();
-  const [logout] = useLogoutMutation();
   const token = useSelector((state) => state.auth.token);
 
   useEffect(() => {
@@ -21,9 +20,9 @@ export default function UserMenu() {
       refetch();
     }
   }, [token]);
-
+  let history = useHistory();
   const clickHandler = () => {
-    logout();
+    history.push(Routes.Signin.path);
   };
 
   return (

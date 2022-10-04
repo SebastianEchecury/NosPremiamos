@@ -1,10 +1,9 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useGetTranslationValuesQuery } from '../../redux/apis/translations';
 import { add } from '../../redux/slices/missing-translations';
 
 export default function useTranslations({ group, keys = [], fill = true }) {
-  const query = useGetTranslationValuesQuery(group);
+  const query = ''
   const dispatch = useDispatch();
 
   useEffect(() => {

@@ -3,9 +3,8 @@ import { useFormik } from "formik";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Form } from "@themesberg/react-bootstrap";
-import { TranslatableText, useTranslations } from "../../../translations";
+import { TranslatableText } from "../../../translations";
 
-import { translationsGroupNames } from "../../../../utils/translationsGroupNames";
 
 export default function TextFilterForm({ filter = {}, value: getValue, conditions: getConditions = (value) => ({}), onFilterChange = (filter) => { } }) {
   getValue = getValue || ((filter) => {
@@ -13,8 +12,6 @@ export default function TextFilterForm({ filter = {}, value: getValue, condition
     const key = Object.keys(conditions)[0];
     return filter[key];
   });
-
-  const { translations } = useTranslations({ group: translationsGroupNames.Generic, keys: ['Value'] });
 
   const formik = useFormik({
     enableReinitialize: true,
@@ -28,11 +25,11 @@ export default function TextFilterForm({ filter = {}, value: getValue, condition
   return (
     <Form onSubmit={formik.handleSubmit}>
       <Form.Group className="mb-3">
-        <Form.Control type="text" placeholder={translations.Value} {...formik.getFieldProps('value')} />
+        <Form.Control type="text"  {...formik.getFieldProps('value')} />
       </Form.Group>
       <Button type="submit">
         <FontAwesomeIcon icon={faSearch} className="mx-1" />
-        <TranslatableText group={translationsGroupNames.Generic} entry="Search" />
+        <TranslatableText  entry="Buscar" />
       </Button>
     </Form>
   );
