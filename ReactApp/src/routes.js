@@ -35,6 +35,18 @@ export const Routes = {
     Update: { path: "/controlarvotos/:Id/update" }
   },
 
+  Rankingvotos:{
+    path: "/rankingvotos",
+  },
+
+  Misvotos:{
+    path: "/misvotos",
+  },
+
+  VotosEmitidos:{
+    path: "/votosemitidos",
+  },
+
   EmpleadosCategoriasAprobador: {
     Delete: { path: "/empleadoscategorias/:Id/delete" },
   },
