@@ -57,11 +57,11 @@ namespace NP.WebService.Admin.Controllers
 
 
         [HttpGet("VotosEmitidos")]
-        public async Task<IActionResult> VotosEmitidos(int empleadoId, DateTime fechaVoto)
+        public async Task<IActionResult> VotosEmitidos(int empleadoId, DateTime fechaVoto, string categoria, string aprobador, string votado, string motivo)
         {
             try
             {
-                var result = await this.Service.VotosEmitidos(empleadoId, fechaVoto);
+                var result = await this.Service.VotosEmitidos(empleadoId, fechaVoto, categoria, aprobador, votado, motivo);
                 return ReturnData<List<VotosEmitidos>>(result);
             }
             catch (Exception ex)
@@ -72,11 +72,11 @@ namespace NP.WebService.Admin.Controllers
 
 
         [HttpGet("VotosRecibidos")]
-        public async Task<IActionResult> VotosRecibidos(int empleadoId, DateTime fechaVoto)
+        public async Task<IActionResult> VotosRecibidos(int empleadoId, DateTime fechaVoto, string categoria, string aprobador, string votante, string motivo)
         {
             try
             {
-                var result = await this.Service.VotosRecibidos(empleadoId, fechaVoto);
+                var result = await this.Service.VotosRecibidos(empleadoId, fechaVoto, categoria, aprobador, votante, motivo);
                 return ReturnData<List<VotosEmitidos>>(result);
             }
             catch (Exception ex)
@@ -88,10 +88,10 @@ namespace NP.WebService.Admin.Controllers
         public override Task<IActionResult> GetAllAsync(VotosFilter filter)
         {
             if (filter.MisVotos.HasValue && filter.MisVotos.Value)
-                return this.VotosRecibidos(filter.UsuarioId,string.IsNullOrEmpty(filter.FechaVoto)? Convert.ToDateTime("01/"+DateTime.Now.Month+"/"+ DateTime.Now.Year): Convert.ToDateTime(filter.FechaVoto));
+                return this.VotosRecibidos(filter.UsuarioId,string.IsNullOrEmpty(filter.FechaVoto)? Convert.ToDateTime("01/"+DateTime.Now.Month+"/"+ DateTime.Now.Year): Convert.ToDateTime(filter.FechaVoto), filter.Categoria, filter.Aprobador, filter.Votante, filter.Motivo);
 
             if (filter.VotosEmitidos.HasValue && filter.VotosEmitidos.Value)
-                return this.VotosEmitidos(filter.UsuarioId, string.IsNullOrEmpty(filter.FechaVoto) ? Convert.ToDateTime("01/" + DateTime.Now.Month + "/" + DateTime.Now.Year) : Convert.ToDateTime(filter.FechaVoto));
+                return this.VotosEmitidos(filter.UsuarioId, string.IsNullOrEmpty(filter.FechaVoto) ? Convert.ToDateTime("01/" + DateTime.Now.Month + "/" + DateTime.Now.Year) : Convert.ToDateTime(filter.FechaVoto), filter.Categoria, filter.Aprobador, filter.Votado, filter.Motivo);
 
             return base.GetAllAsync(filter);
         }

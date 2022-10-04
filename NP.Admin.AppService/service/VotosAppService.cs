@@ -32,14 +32,14 @@ namespace NP.Admin.AppService
             return await this._serviceBase.Ranking(categoriaId, fechaVoto);
         }
 
-        public async Task<List<VotosEmitidos>> VotosEmitidos(int empleadoId, DateTime fechaVoto)
+        public async Task<List<VotosEmitidos>> VotosEmitidos(int empleadoId, DateTime fechaVoto, string categoria, string aprobador, string votado, string motivo)
         {
-            return await this._serviceBase.VotosEmitidos(empleadoId, fechaVoto);
+            return await this._serviceBase.VotosEmitidos(empleadoId, fechaVoto, categoria, aprobador, votado, motivo);
         }
 
-        public async Task<List<VotosEmitidos>> VotosRecibidos(int empleadoId, DateTime fechaVoto)
+        public async Task<List<VotosEmitidos>> VotosRecibidos(int empleadoId, DateTime fechaVoto, string categoria, string aprobador, string votante, string motivo)
         {
-            return await this._serviceBase.VotosRecibidos(empleadoId, fechaVoto);
+            return await this._serviceBase.VotosRecibidos(empleadoId, fechaVoto, categoria, aprobador, votante, motivo);
         }
 
         public override Task DeleteAsync(int id)

@@ -49,13 +49,33 @@ namespace NP.infra.Data.Repositories
             return ranking;
         }
 
-        public async Task<List<VotosEmitidos>> VotosEmitidos(int empleadoId, DateTime fechaVoto)
+        public async Task<List<VotosEmitidos>> VotosEmitidos(int empleadoId, DateTime fechaVoto, string categoria, string aprobador, string votado, string motivo)
         {
             List<VotosEmitidos> ranking = new List<VotosEmitidos>();
 
             var sp = this.Context.LoadStoredProc("dbo.Votos_VotosEmitidosEmpleado")
                 .WithSqlParam("@empleadoVotanteId", new SqlParameter("@empleadoVotanteId", empleadoId))
                 .WithSqlParam("@fechaVoto", new SqlParameter("@fechaVoto", fechaVoto));
+
+            if (!String.IsNullOrEmpty(categoria))
+                sp.WithSqlParam("@categoria", new SqlParameter("@categoria", categoria));
+            else
+                sp.WithSqlParam("@categoria", new SqlParameter("@categoria", DBNull.Value));
+
+            if (!String.IsNullOrEmpty(aprobador))
+                sp.WithSqlParam("@aprobador", new SqlParameter("@aprobador", aprobador));
+            else
+                sp.WithSqlParam("@aprobador", new SqlParameter("@aprobador", DBNull.Value));
+
+            if (!String.IsNullOrEmpty(votado))
+                sp.WithSqlParam("@votado", new SqlParameter("@votado", votado));
+            else
+                sp.WithSqlParam("@votado", new SqlParameter("@votado", DBNull.Value));
+
+            if (!String.IsNullOrEmpty(motivo))
+                sp.WithSqlParam("@motivo", new SqlParameter("@motivo", motivo));
+            else
+                sp.WithSqlParam("@motivo", new SqlParameter("@motivo", DBNull.Value));
 
             await sp.ExecuteStoredProcAsync((handler) =>
             {
@@ -65,13 +85,33 @@ namespace NP.infra.Data.Repositories
             return ranking;
         }
 
-        public async Task<List<VotosEmitidos>> VotosRecibidos(int empleadoId, DateTime fechaVoto)
+        public async Task<List<VotosEmitidos>> VotosRecibidos(int empleadoId, DateTime fechaVoto, string categoria, string aprobador, string votante, string motivo)
         {
             List<VotosEmitidos> ranking = new List<VotosEmitidos>();
 
             var sp = this.Context.LoadStoredProc("dbo.Votos_VotosRecibidosEmpleado")
                 .WithSqlParam("@empleadoVotadoId", new SqlParameter("@empleadoVotadoId", empleadoId))
                 .WithSqlParam("@fechaVoto", new SqlParameter("@fechaVoto", fechaVoto));
+
+            if (!String.IsNullOrEmpty(categoria))
+                sp.WithSqlParam("@categoria", new SqlParameter("@categoria", categoria));
+            else
+                sp.WithSqlParam("@categoria", new SqlParameter("@categoria", DBNull.Value));
+
+            if (!String.IsNullOrEmpty(aprobador))
+                sp.WithSqlParam("@aprobador", new SqlParameter("@aprobador", aprobador));
+            else
+                sp.WithSqlParam("@aprobador", new SqlParameter("@aprobador", DBNull.Value));
+
+            if (!String.IsNullOrEmpty(votante))
+                sp.WithSqlParam("@votante", new SqlParameter("@votante", votante));
+            else
+                sp.WithSqlParam("@votante", new SqlParameter("@votante", DBNull.Value));
+
+            if (!String.IsNullOrEmpty(motivo))
+                sp.WithSqlParam("@motivo", new SqlParameter("@motivo", motivo));
+            else
+                sp.WithSqlParam("@motivo", new SqlParameter("@motivo", DBNull.Value));
 
             await sp.ExecuteStoredProcAsync((handler) =>
             {

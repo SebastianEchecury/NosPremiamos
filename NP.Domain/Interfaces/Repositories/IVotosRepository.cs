@@ -11,7 +11,7 @@ namespace NP.Admin.Domain.Interfaces.Repositories
     public interface IVotosRepository : IRepositoryBase<Votos,int>
     {
         Task<List<Ranking>> Ranking(int? categoriaId, DateTime fechaVoto);
-        Task<List<VotosEmitidos>> VotosEmitidos(int empleadoId, DateTime fechaVoto);
-        Task<List<VotosEmitidos>> VotosRecibidos(int empleadoId, DateTime fechaVoto);
+        Task<List<VotosEmitidos>> VotosEmitidos(int empleadoId, DateTime fechaVoto, string categoria, string aprobador, string votado, string motivo);
+        Task<List<VotosEmitidos>> VotosRecibidos(int empleadoId, DateTime fechaVoto, string categoria, string aprobador, string votante, string motivo);
     }
 }

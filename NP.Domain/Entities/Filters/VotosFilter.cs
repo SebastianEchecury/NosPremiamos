@@ -21,6 +21,9 @@ namespace NP.Admin.Domain.Entities.Filters
         public bool? VotosEmitidos { get; set; }
         public string FechaVoto { get; set; }
         public int UsuarioId { get; set; }
+        public string Aprobador { get; set; }
+        public string Votado { get; set; }
+        public string Votante { get; set; }
 
 
         public override Expression<Func<Votos, bool>> GetFilterExpression()

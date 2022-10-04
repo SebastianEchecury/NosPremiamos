@@ -21,14 +21,14 @@ namespace NP.Admin.Domain.Services
             return await this.repository.Ranking(categoriaId, fechaVoto);
         }
 
-        public async Task<List<VotosEmitidos>> VotosEmitidos(int empleadoId, DateTime fechaVoto)
+        public async Task<List<VotosEmitidos>> VotosEmitidos(int empleadoId, DateTime fechaVoto, string categoria, string aprobador, string votado, string motivo)
         {
-            return await this.repository.VotosEmitidos(empleadoId, fechaVoto);
+            return await this.repository.VotosEmitidos(empleadoId, fechaVoto, categoria, aprobador, votado, motivo);
         }
 
-        public async Task<List<VotosEmitidos>> VotosRecibidos(int empleadoId, DateTime fechaVoto)
+        public async Task<List<VotosEmitidos>> VotosRecibidos(int empleadoId, DateTime fechaVoto, string categoria, string aprobador, string votante, string motivo)
         {
-            return await this.repository.VotosRecibidos(empleadoId, fechaVoto);
+            return await this.repository.VotosRecibidos(empleadoId, fechaVoto, categoria, aprobador, votante, motivo);
         }
     }
     
