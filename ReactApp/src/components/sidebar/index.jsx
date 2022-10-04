@@ -41,9 +41,9 @@ export default () => {
       </CollapsableSidebarItem>
       {PermissionChecker(permissionsKeys.VOTO_ADD) && <SidebarItem title="Votar" link="/votar" icon={faEnvelopeOpen} />}   
       {PermissionChecker(permissionsKeys.VOTO_UPDATE) && <SidebarItem title="Control de Votos" link="/controlarvotos" icon={faEnvelopeCircleCheck} />}   
-      {PermissionChecker(permissionsKeys.VOTO_VIEW_EMITIDOS) && <SidebarItem title="Mis Votos Emitidos" link="" icon={faEnvelope} />}   
-      {PermissionChecker(permissionsKeys.VOTO_VIEW) && <SidebarItem title="Mis Votos" link="" icon={faArchive} />}
-      {PermissionChecker(permissionsKeys.VOTO_VIEW_RANKING) && <SidebarItem title="Ranking de Votos" link="" icon={faLineChart} />}
+      {PermissionChecker(permissionsKeys.VOTO_VIEW_EMITIDOS) && <SidebarItem title="Mis Votos Emitidos" link="/votosemitidos" icon={faEnvelope} />}   
+      {PermissionChecker(permissionsKeys.VOTO_VIEW) && <SidebarItem title="Mis Votos" link="/misvotos" icon={faArchive} />}
+      {PermissionChecker(permissionsKeys.VOTO_VIEW_RANKING) && <SidebarItem title="Ranking de Votos" link="/rankingvotos" icon={faLineChart} />}
       <SidebarSpace />
       <SidebarDivider />
       <Nav.Item className="m-0 p-0">

@@ -42,6 +42,9 @@ import Controlarvotos from '../controlarvotos'
 import { useGetHeaderQuery } from '../../redux/apis/users';
 import Parametros from '../parametros';
 import Parametro from '../parametros/form';
+import Rankingvotos from '../rankingvotos';
+import Misvotos from '../misvotos';
+import VotosEmitidos from '../votosemitidos';
 
 const HomePage = () => {
   const { data: header = {} } = useGetHeaderQuery();
@@ -83,6 +86,10 @@ const HomePage = () => {
         <RouteWithSidebar exact path={Routes.Controlarvotos.path} component={Controlarvotos} />
         <RouteWithSidebar exact path={Routes.Controlarvotos.Delete.path} component={Controlarvotos} />
         <RouteWithSidebar exact path={Routes.Controlarvotos.Update.path} component={Controlarvotos} />
+
+        <RouteWithSidebar exact path={Routes.Rankingvotos.path} component={Rankingvotos} />
+        <RouteWithSidebar exact path={Routes.Misvotos.path} component={Misvotos} />
+        <RouteWithSidebar exact path={Routes.VotosEmitidos.path} component={VotosEmitidos} />
 
         <RouteWithSidebar exact path={Routes.Roles.path} component={Roles} />
         <RouteWithSidebar exact path={Routes.Roles.Create.path} component={Role} />
