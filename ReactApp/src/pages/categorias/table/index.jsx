@@ -17,8 +17,8 @@ export default function Table(props) {
 
   const estado = [
     { description: 'Todos' },
-    { value: 'true', description: 'Activa' },
-    { value: 'false', description: 'Inactiva' }
+    { value: 1, description: 'Activa' },
+    { value: 2, description: 'Inactiva' }
   ]; 
 
   return (

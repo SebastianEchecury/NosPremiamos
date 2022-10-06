@@ -43,11 +43,11 @@ export default function SortForm({ order = [], value: getValue, conditions: getC
     <div className="d-grid gap">
       <Button variant={value === 'asc' ? undefined : 'link'} onClick={handleSortAscendingClick}>
         <FontAwesomeIcon icon={faSortAmountUp} className="me-2" />
-        <TranslatableText group={translationsGroupNames.Generic} entry="SortAscending" />
+        <TranslatableText group={translationsGroupNames.Generic} entry="Ascendente" />
       </Button>
       <Button variant={value === 'desc' ? undefined : 'link'} onClick={handleSortDescendingClick}>
         <FontAwesomeIcon icon={faSortAmountDown} className="me-2" />
-        <TranslatableText group={translationsGroupNames.Generic} entry="SortDescending" />
+        <TranslatableText group={translationsGroupNames.Generic} entry="Descendente" />
       </Button>
     </div>
   );
