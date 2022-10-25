@@ -2,6 +2,7 @@ import React, { Children, cloneElement, isValidElement, useEffect, useRef, useSt
 import { Table as BootstrapTable } from "@themesberg/react-bootstrap";
 
 import { useHistory } from 'react-router-dom';
+import TranslatableText from './../translations/TranslatableText';
 
 export default function Table({ children, values = [], row: Row = () => <></>, onQueryChange = (query) => { } }) {
   const history = useHistory();
@@ -48,9 +49,12 @@ export default function Table({ children, values = [], row: Row = () => <></>, o
           {Children.map(children, (child) => isValidElement(child) && cloneElement(child, { ...child.props, filter: query.current.filter, onFilterChange: filterChangeHandler, order: query.current.order, onOrderChange: orderChangeHandler }))}
         </tr>
       </thead>
-      <tbody>
+      {values.length > 0 && <tbody>
         {values.map((value, index, values) => <Row key={index} value={value} index={index} values={values} />)}
-      </tbody>
+      </tbody>}
+      {values.length <= 0 && <tbody>
+        <TranslatableText entry="No hay registros" />
+      </tbody>}
     </BootstrapTable>
   );
 }
