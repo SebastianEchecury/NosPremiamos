@@ -28,9 +28,9 @@ export default function Table(props) {
       </Header>
       <Header  className="d-flex">
         <TranslatableText  entry="Categoría" />
-        <TextFilterDescription className="ms-2" conditions={(value) => ({ NombreCategoria: value })} />
+        <TextFilterDescription className="ms-2" conditions={(value) => ({ Categoria: value })} />
         <OptionMenu className="ms-auto">
-          <TextFilterForm conditions={(value) => ({ NombreCategoria: value })} />
+          <TextFilterForm conditions={(value) => ({ Categoria: value })} />
         </OptionMenu>
       </Header> 
       <Header  className="d-flex">
