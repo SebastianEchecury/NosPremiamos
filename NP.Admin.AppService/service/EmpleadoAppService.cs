@@ -15,6 +15,8 @@ using NP.Admin.Domain.Entities;
 using System.Net.Mail;
 using System;
 using NP.Admin.Domain.Entities.Filters;
+using System.Text;
+using System.Text.RegularExpressions;
 
 namespace NP.Admin.AppService
 {
@@ -88,6 +90,14 @@ namespace NP.Admin.AppService
             if (user.Id == 0)
             {
                 throw new ValidationException("Error en el cambio de contraseña");
+            }
+
+            if (input.PasswordNueva.Length < 8 ||
+                new Regex("[A-Z]").Matches(input.PasswordNueva).Count == 0 ||
+                new Regex("[a-a]").Matches(input.PasswordNueva).Count == 0||
+                new Regex("[0-9]").Matches(input.PasswordNueva).Count == 0)
+            {
+                throw new ValidationException("La contraseña debe ser de al menos 8 caracteres y contener al menos una letra mayúscula, una minúscula y un número");
             }
 
             var hp = new PasswordHasher<Empleados>();
