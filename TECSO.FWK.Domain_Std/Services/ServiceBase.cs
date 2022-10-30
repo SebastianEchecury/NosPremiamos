@@ -137,9 +137,9 @@ namespace TECSO.FWK.Domain.Services
 
         
 
-        public virtual Task DeleteAsync(TPrimaryKey id)
+        public virtual async Task DeleteAsync(TPrimaryKey id)
         {            
-            return _repository.DeleteAsync(id);
+            await _repository.DeleteAsync(id);
         }
 
         public void Dispose()

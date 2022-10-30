@@ -184,25 +184,20 @@ namespace NP.Admin.AppService
             return result;
         }
 
-        public override Task DeleteAsync(int id)
+        public override async Task DeleteAsync(int id)
         {
-            var result = base.DeleteAsync(id);
+            await base.DeleteAsync(id);
 
-            if(result.Exception == null)
+            var empleado = this.GetByIdAsync(id).Result;
+            if (!empleado.Eliminado.Value && !empleado.PrimerIngreso.Value)
             {
-                var empleado = this.GetByIdAsync(id).Result;
-                if(!empleado.Eliminado.Value && !empleado.PrimerIngreso.Value)
-                {
-                    MailMessage mail = new MailMessage();
-                    mail.To.Add(empleado.Usuario);
-                    mail.Subject = "Bienvenido a Nos Premiamos";
-                    mail.Body = string.Format("Hola {0}, {1} esta es tu contraseña: {2} para volver a activar tu usuario deberas ingresar y seguir los pasos para cambiarla la contraseña", empleado.Apellido, empleado.Nombre, empleado.Apellido);
+                MailMessage mail = new MailMessage();
+                mail.To.Add(empleado.Usuario);
+                mail.Subject = "Bienvenido a Nos Premiamos";
+                mail.Body = string.Format("Hola {0}, {1} esta es tu contraseña: {2} para volver a activar tu usuario deberas ingresar y seguir los pasos para cambiarla la contraseña", empleado.Apellido, empleado.Nombre, empleado.Apellido);
 
-                    userEmailer.SendEmail(mail);
-                }
+                userEmailer.SendEmail(mail);
             }
-
-            return result;
         }
 
 

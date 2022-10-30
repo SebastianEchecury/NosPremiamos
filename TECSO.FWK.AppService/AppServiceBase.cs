@@ -100,9 +100,9 @@ namespace TECSO.FWK.AppService
 
 
 
-        public virtual Task DeleteAsync(TPrimaryKey id)
+        public virtual async Task DeleteAsync(TPrimaryKey id)
         {
-            return _serviceBase.DeleteAsync(id);
+            await _serviceBase.DeleteAsync(id);
         }
 
 
