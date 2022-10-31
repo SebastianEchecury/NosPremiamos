@@ -32,13 +32,16 @@ namespace NP.Admin.Domain.Services
             return await this.repository.VotosRecibidos(empleadoId, fechaVoto, categoria, aprobador, votante, motivo);
         }
 
-        protected override async Task<bool> ValidateEntity(Votos entity, SaveMode mode)
+
+        public override Task<Votos> AddAsync(Votos entity)
         {
             if (entity.VotanteEmpleadoId == entity.VotadoEmpleadoId)
                 throw new ValidationException("El empleado votado no puede ser el mismo que el empleado que vota.");
 
-            return await base.ValidateEntity(entity, mode);
+            return base.AddAsync(entity);
         }
+
+        
     }
     
 }

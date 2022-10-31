@@ -52,8 +52,7 @@ export default ({ id }) => {
 
   useEffect(() => {
     if (isVotarError) {
-      formik.setErrors(votarError.data);
-
+      
       toast.error([].concat(...Object.values(JSON.parse(votarError.data).Messages)));
     }
   }, [isVotarError, votarError]);
