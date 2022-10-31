@@ -94,7 +94,7 @@ namespace NP.Admin.AppService
 
             if (input.PasswordNueva.Length < 8 ||
                 new Regex("[A-Z]").Matches(input.PasswordNueva).Count == 0 ||
-                new Regex("[a-a]").Matches(input.PasswordNueva).Count == 0||
+                new Regex("[a-z]").Matches(input.PasswordNueva).Count == 0||
                 new Regex("[0-9]").Matches(input.PasswordNueva).Count == 0)
             {
                 throw new ValidationException("La contraseña debe ser de al menos 8 caracteres y contener al menos una letra mayúscula, una minúscula y un número");
