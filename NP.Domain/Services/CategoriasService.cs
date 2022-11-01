@@ -19,19 +19,19 @@ namespace NP.Admin.Domain.Services
         {
         }
 
-        protected override async Task<bool> ValidateEntity(Categorias entity, SaveMode mode)
+        public override Task<Categorias> AddAsync(Categorias entity)
         {
             bool exist = this.repository.GetAllAsync(new CategoriasFilter()
-                                                            {
-                                                                Nombre = entity.Nombre,
-                                                                EstadoId = (int)Estados.EstadoCategoria.Activo,
-                                                                Id = entity.Id
-                                                            }).Result.Any(c => c.Id != entity.Id);
+            {
+                Nombre = entity.Nombre,
+                EstadoId = (int)Estados.EstadoCategoria.Activo,
+                Id = entity.Id
+            }).Result.Any(c => c.Id != entity.Id);
 
             if (exist)
                 throw new ValidationException("Ya existe una categoría activa con el mismo nombre.");
 
-            return await base.ValidateEntity(entity, mode);
+            return base.AddAsync(entity);
         }
 
         public async Task<List<Ganadores>> Ganadores(DateTime fechaVoto, string filtroNombre, string filtroCategoria)
