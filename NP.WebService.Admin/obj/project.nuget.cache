@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "vlYJr/cDhEVZxx/1sxeLosVs2f+zWPb984Zp4Zt5kn9gCUM4yoJZ9xAIx4bqkmkniqpZQDl/11ayc3kHEvdArg==",
+  "dgSpecHash": "SsISEc4913kepQC5ZTeMwflofnWtqpOgL9dTy7C69t9dR4GXK06mc0MunaZAHJeyP123EysM/4+bQkaSgb006w==",
   "success": true,
   "projectFilePath": "C:\\Proyectos\\NosPremiamos\\NP.WebService.Admin\\NP.WebService.Admin.csproj",
   "expectedPackageFiles": [
@@ -8,7 +8,9 @@
     "C:\\Users\\maria.labus\\.nuget\\packages\\automapper.collection\\4.0.0\\automapper.collection.4.0.0.nupkg.sha512",
     "C:\\Users\\maria.labus\\.nuget\\packages\\automapper.collection.entityframework\\4.0.0\\automapper.collection.entityframework.4.0.0.nupkg.sha512",
     "C:\\Users\\maria.labus\\.nuget\\packages\\automapper.collection.linqtosql\\4.0.0\\automapper.collection.linqtosql.4.0.0.nupkg.sha512",
+    "C:\\Users\\maria.labus\\.nuget\\packages\\automapper.extensions.expressionmapping\\1.0.0\\automapper.extensions.expressionmapping.1.0.0.nupkg.sha512",
     "C:\\Users\\maria.labus\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\5.0.1\\automapper.extensions.microsoft.dependencyinjection.5.0.1.nupkg.sha512",
+    "C:\\Users\\maria.labus\\.nuget\\packages\\entityframework\\6.1.3\\entityframework.6.1.3.nupkg.sha512",
     "C:\\Users\\maria.labus\\.nuget\\packages\\epplus\\4.5.2.1\\epplus.4.5.2.1.nupkg.sha512",
     "C:\\Users\\maria.labus\\.nuget\\packages\\geojson.net\\1.1.64\\geojson.net.1.1.64.nupkg.sha512",
     "C:\\Users\\maria.labus\\.nuget\\packages\\json\\1.0.1\\json.1.0.1.nupkg.sha512",
@@ -379,6 +381,13 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xpath.xdocument\\4.3.0\\system.xml.xpath.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\maria.labus\\.nuget\\packages\\system.xml.xpath.xmldocument\\4.3.0\\system.xml.xpath.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\windowsazure.storage\\8.1.4\\windowsazure.storage.8.1.4.nupkg.sha512",
+    "C:\\Users\\maria.labus\\.nuget\\packages\\xunit\\2.4.2\\xunit.2.4.2.nupkg.sha512",
+    "C:\\Users\\maria.labus\\.nuget\\packages\\xunit.abstractions\\2.0.3\\xunit.abstractions.2.0.3.nupkg.sha512",
+    "C:\\Users\\maria.labus\\.nuget\\packages\\xunit.analyzers\\1.0.0\\xunit.analyzers.1.0.0.nupkg.sha512",
+    "C:\\Users\\maria.labus\\.nuget\\packages\\xunit.assert\\2.4.2\\xunit.assert.2.4.2.nupkg.sha512",
+    "C:\\Users\\maria.labus\\.nuget\\packages\\xunit.core\\2.4.2\\xunit.core.2.4.2.nupkg.sha512",
+    "C:\\Users\\maria.labus\\.nuget\\packages\\xunit.extensibility.core\\2.4.2\\xunit.extensibility.core.2.4.2.nupkg.sha512",
+    "C:\\Users\\maria.labus\\.nuget\\packages\\xunit.extensibility.execution\\2.4.2\\xunit.extensibility.execution.2.4.2.nupkg.sha512",
     "C:\\Users\\maria.labus\\.nuget\\packages\\zxing.net\\0.16.4\\zxing.net.0.16.4.nupkg.sha512",
     "C:\\Users\\maria.labus\\.nuget\\packages\\tecso.fwk.apiservices\\1.0.0\\tecso.fwk.apiservices.1.0.0.nupkg.sha512",
     "C:\\Users\\maria.labus\\.nuget\\packages\\tecso.fwk.infra.data\\1.0.0\\tecso.fwk.infra.data.1.0.0.nupkg.sha512"
@@ -388,7 +397,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'AutoMapper.Collection.EntityFramework 4.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v2.1'. This package may not be fully compatible with your project.",
+      "message": "Package 'AutoMapper.Collection.EntityFramework 4.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework '.NETCoreApp,Version=v2.1'. This package may not be fully compatible with your project.",
       "libraryId": "AutoMapper.Collection.EntityFramework",
       "targetGraphs": [
         ".NETCoreApp,Version=v2.1"
@@ -398,7 +407,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'AutoMapper.Collection.LinqToSQL 4.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v2.1'. This package may not be fully compatible with your project.",
+      "message": "Package 'AutoMapper.Collection.LinqToSQL 4.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework '.NETCoreApp,Version=v2.1'. This package may not be fully compatible with your project.",
       "libraryId": "AutoMapper.Collection.LinqToSQL",
       "targetGraphs": [
         ".NETCoreApp,Version=v2.1"
@@ -408,7 +417,17 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'JSON 1.0.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v2.1'. This package may not be fully compatible with your project.",
+      "message": "Package 'EntityFramework 6.1.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework '.NETCoreApp,Version=v2.1'. This package may not be fully compatible with your project.",
+      "libraryId": "EntityFramework",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.1"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'JSON 1.0.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework '.NETCoreApp,Version=v2.1'. This package may not be fully compatible with your project.",
       "libraryId": "JSON",
       "targetGraphs": [
         ".NETCoreApp,Version=v2.1"

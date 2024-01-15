@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "+NV8/627175eQFMCFawaDEISzVb9x64b6S0GLV0zfVD6WLpoHlDsrm6jSESyN9G6IshLd5hqnLPTq8JhXSN9zQ==",
+  "dgSpecHash": "BFNvbm6EzgINjUMr2dcdv4apRktB5/n2oMF+llN+tXShufGrJdHX4qicq9p/fb1m9/vXlS5oM+k89avudEGOcg==",
   "success": true,
   "projectFilePath": "C:\\Proyectos\\NosPremiamos\\NP.Infra.Data\\NP.Infra.Data.csproj",
   "expectedPackageFiles": [
@@ -110,6 +110,13 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512",
     "C:\\Users\\maria.labus\\.nuget\\packages\\system.threading\\4.0.11\\system.threading.4.0.11.nupkg.sha512",
     "C:\\Users\\maria.labus\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
+    "C:\\Users\\maria.labus\\.nuget\\packages\\xunit\\2.4.2\\xunit.2.4.2.nupkg.sha512",
+    "C:\\Users\\maria.labus\\.nuget\\packages\\xunit.abstractions\\2.0.3\\xunit.abstractions.2.0.3.nupkg.sha512",
+    "C:\\Users\\maria.labus\\.nuget\\packages\\xunit.analyzers\\1.0.0\\xunit.analyzers.1.0.0.nupkg.sha512",
+    "C:\\Users\\maria.labus\\.nuget\\packages\\xunit.assert\\2.4.2\\xunit.assert.2.4.2.nupkg.sha512",
+    "C:\\Users\\maria.labus\\.nuget\\packages\\xunit.core\\2.4.2\\xunit.core.2.4.2.nupkg.sha512",
+    "C:\\Users\\maria.labus\\.nuget\\packages\\xunit.extensibility.core\\2.4.2\\xunit.extensibility.core.2.4.2.nupkg.sha512",
+    "C:\\Users\\maria.labus\\.nuget\\packages\\xunit.extensibility.execution\\2.4.2\\xunit.extensibility.execution.2.4.2.nupkg.sha512",
     "C:\\Users\\maria.labus\\.nuget\\packages\\tecso.fwk.infra.data\\1.0.0\\tecso.fwk.infra.data.1.0.0.nupkg.sha512"
   ],
   "logs": []
